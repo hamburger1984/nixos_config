@@ -117,6 +117,10 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
+    # config = ''
+    #   [General]
+    #   Enable=Source,Sink,Media,Socket
+    # '';
     package = pkgs.bluezFull;
   };
 
@@ -167,6 +171,16 @@
       # defaultSession = "xfce";
     };
   };
+
+  systemd.services.powertop-autotune = {
+    description = "PowerTop Auto-Tune";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/powertop --auto-tune";
+    };
+    wantedBy = [ "default.target" ];
+  };
+  systemd.services.powertop-autotune.enable = true;
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
@@ -252,16 +266,10 @@
       aria
       exa
       file
-      htop
       httpie
       joe
       mosh
-      powertop
       pwsafe
-      rsync
-      silver-searcher
-      tree
-      ytop
 
       # Bash
       bash
@@ -590,6 +598,7 @@
     cpufrequtils
     firmwareLinuxNonfree
     glxinfo
+    htop
     libGL_driver
     libfprint
     libva
@@ -599,10 +608,15 @@
     modemmanager
     mtools # installing clonezilla needs this
     parted
+    powertop
+    rsync
+    silver-searcher
     syslinux # installing clonezilla needs this
+    tree
     unclutter
     wayland
     wget
+    ytop
   ];
 }
 
