@@ -17,12 +17,14 @@
     { #device = "/dev/disk/by-label/nixos";
       device = "/dev/disk/by-uuid/06f7a944-0f53-4611-aa95-ab912360dc35";
       fsType = "ext4";
+      options = [ "noatime" "discard" ];
     };
 
   fileSystems."/boot" =
     { #device = "/dev/disk/by-label/boot";
       device = "/dev/disk/by-uuid/B13E-3912";
       fsType = "vfat";
+      options = [ "noatime" "discard" ];
     };
 
   swapDevices =
