@@ -113,6 +113,7 @@
     mosh
     pwsafe
     qrcode
+    gitAndTools.gitui
 
     # Bash
     bash
