@@ -13,6 +13,7 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -134,10 +135,7 @@
       plasma5.enable = true;
 
       # Enable the Gnome Desktop Environment.
-      # gnome3.enable = true;
-
-      # Enable XFCF Desktop Environment
-      # xfce.enable = true;
+      #gnome3.enable = true;
     };
 
     # AMD driver
@@ -149,10 +147,11 @@
     libinput.tapping = true;
 
     displayManager = {
-      # gdm.enable = true;
+      # KDE
       sddm.enable = true;
 
-      # defaultSession = "xfce";
+      # Gnome3
+      # gdm.enable = true;
     };
   };
 
@@ -228,38 +227,45 @@
     file
     firmwareLinuxNonfree
     glxinfo
-    htop
-    iftop
     inotify-tools
-    iotop
     libGL_driver
     libfprint
     libva
     libxkbcommon
-    lm_sensors
-    lshw
     lsof
     lz4
     mesa
     modemmanager
     mtools # installing clonezilla needs this
+    nerdfonts
+    p7zip
     parted
     pciutils
     powertop
     pwgen
     rsync
     silver-searcher
-    smartmontools
-    strace
     syslinux # installing clonezilla needs this
     tree
     unclutter
     usbutils
-    wayland
     wget
     whois
     xz
+    #wayland
+
+    # monitoring
+    htop
+    iftop
+    iotop
+    lm_sensors
+    lshw
+    smartmontools
+    strace
     ytop
+
+    # logitech
+    logitech-udev-rules
   ];
 }
 

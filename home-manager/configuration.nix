@@ -4,6 +4,7 @@
   imports = [
     ./programs/neovim.nix
     ./programs/bash.nix
+    ./programs/git.nix
     ./programs/direnv.nix
   ];
 
@@ -12,45 +13,69 @@
   };
 
   home.packages = with pkgs; [
-    # Editors
-    arduino
-    nerdfonts
-    vscode
 
-    # Languages
+    #--- Languages ---#
     dotnet-sdk_3
     lua
     nim
     python3
+    zig
 
-    ## Desktop tools
+    #--- Theming ---#
+    adapta-gtk-theme
+    adapta-kde-theme
+    papirus-icon-theme
+    vanilla-dmz
+
+    #--- Desktop Programs ---#
+    arduino
+    digikam
     firefox
     keepassxc
     libreoffice
     qmapshack
+    solaar
     spotify # nonfree
+    tdesktop
+    vscode # broken?!
 
     #--- KDE/Plasma ---#
-    adapta-kde-theme
-    arc-kde-theme
-    plasma-browser-integration
-    plasma5.powerdevil
-    plasma5.sddm-kcm
     ark
-    digikam
+    colord-kde
+    dragon
     filelight
-    kcharselect
-    kcalc
-    kwin-dynamic-workspaces
-    kwin-tiling
-    krohnkite
     gwenview
-    kdeApplications.kdegraphics-thumbnailers
+    kcalc
+    kcharselect
+    #kdeApplications.kdegraphics-thumbnailers
+    kdeApplications.kdenlive
     kdeApplications.ksystemlog
     kdeApplications.okular
-    kmymoney
+    kdeApplications.spectacle
+    kdeFrameworks.bluez-qt
+    kdeFrameworks.modemmanager-qt
+    kdeFrameworks.networkmanager-qt
+    kdeFrameworks.syntax-highlighting
+    #kmymoney
+    krohnkite
     ksysguard
+    kwin-dynamic-workspaces
+    kwin-tiling
     partition-manager
+    plasma-browser-integration
+    plasma5.bluedevil
+    #plasma5.breeze-grub
+    #plasma5.breeze-gtk
+    #plasma5.breeze-qt5
+    plasma5.kdeplasma-addons
+    plasma5.kwayland-integration
+    plasma5.plasma-browser-integration
+    plasma5.plasma-nm
+    plasma5.powerdevil
+    plasma5.sddm-kcm
+    plasma5.user-manager
+    plasma5.xdg-desktop-portal-kde
+    redshift-plasma-applet
 
     #--- Gnome3 ---#
     # gnome3.baobab
@@ -75,25 +100,19 @@
     # Icon Themes
     # flat-remix-icon-theme
     # paper-icon-theme
-    # papirus-icon-theme
-
-    # Cursors
-    # vanilla-dmz
 
     # Games
     # steam
-    # zeroadPackages.zeroad-data
-    # zeroadPackages.zeroad-unwrapped ## segfault?!
     openra
-    zeroad
+    #zeroad #requires broken package?!
 
     ## Basic tools
     aria
     exa
     httpie
-    joe
     mosh
     pwsafe
+    qrcode
 
     # Bash
     bash

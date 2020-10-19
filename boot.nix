@@ -6,19 +6,26 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    plymouth.enable = true;
+    #plymouth.enable = true;
 
     tmpOnTmpfs = true;
 
+    initrd = {
+      availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "rtsx_pci_sdmmc" ];
+      kernelModules = [ ];
+    };
+
     # amd graphics, acpi_call makes tlp work for newer thinkpads
-    kernelModules = [ "amdgpu" "acpi_call" ];
+    kernelModules = [ "amdgpu" "acpi_call" "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
-    # fix load/restore of backlight, turn off spectre mitigations
-    kernelParams = [ "acpi_backlight=native" "mitigations=off" ];
+    kernelParams = [ "acpi_backlight=native" ];
+    # turn off spectre mitigations -> "mitigations=off"
+    # fix load/restore of backlight -> "acpi_backlight=native"
 
     # Fresh(er) kernel?
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_testing;
+    #kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_5_7;
   };
 }
