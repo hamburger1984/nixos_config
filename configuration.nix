@@ -13,7 +13,7 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
+  #nixpkgs.config.allowBroken = true;
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -163,7 +163,7 @@
     };
     wantedBy = [ "default.target" ];
   };
-  systemd.services.powertop-autotune.enable = true;
+  systemd.services.powertop-autotune.enable = false;
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
@@ -251,8 +251,9 @@
     usbutils
     wget
     whois
+    xclip
     xz
-    #wayland
+    wayland
 
     # monitoring
     htop
@@ -262,7 +263,6 @@
     lshw
     smartmontools
     strace
-    ytop
 
     # logitech
     logitech-udev-rules
