@@ -61,6 +61,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  # Qemu/libvirtd
+  virtualisation.libvirtd.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -185,7 +188,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
-    extraGroups = [ "audio" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
+    extraGroups = [ "audio" "libvirtd" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
   };
 
   home-manager.useUserPackages = true;

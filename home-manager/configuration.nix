@@ -41,14 +41,14 @@
 
     #--- KDE/Plasma ---#
     ark
+    bibata-cursors
     colord-kde
     dragon
     filelight
     gwenview
     kcalc
     kcharselect
-    #kdeApplications.kdegraphics-thumbnailers
-    kdeApplications.kdenlive
+    #kdeApplications.kdenlive
     kdeApplications.ksystemlog
     kdeApplications.okular
     kdeApplications.spectacle
@@ -57,10 +57,7 @@
     kdeFrameworks.networkmanager-qt
     kdeFrameworks.syntax-highlighting
     #kmymoney
-    krohnkite
     ksysguard
-    kwin-dynamic-workspaces
-    kwin-tiling
     partition-manager
     plasma-browser-integration
     plasma5.bluedevil
@@ -109,11 +106,16 @@
     ## Basic tools
     aria
     exa
+    gitAndTools.gitui
     httpie
+    libvirt
     mosh
     pwsafe
+    qemu
+    qemu_kvm
     qrcode
-    gitAndTools.gitui
+    ranger
+    virtmanager
 
     # Bash
     bash
