@@ -259,6 +259,7 @@
     wayland
 
     # monitoring
+    bpytop
     htop
     iftop
     iotop
