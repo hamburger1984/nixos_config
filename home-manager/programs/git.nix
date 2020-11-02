@@ -12,6 +12,7 @@
       core.editor = "nvim";
       colur.ui = true;
       color.diff = true;
+      pull.rebase = true;
     };
   };
 }

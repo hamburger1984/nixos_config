@@ -16,8 +16,11 @@
 
     #--- Languages ---#
     dotnet-sdk_3
+    elixir
+    erlang
     lua
     nim
+    nodejs
     python3
     zig
 
