@@ -36,6 +36,12 @@
     firefox
     keepassxc
     libreoffice
+    lyx
+    #texlive.combined.scheme-basic
+    texlive.combined.scheme-medium
+    #texlive.combined.scheme-full
+    #texlive.combined.scheme-tetex
+    #tectonic
     qmapshack
     solaar
     spotify # nonfree
