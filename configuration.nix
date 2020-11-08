@@ -115,8 +115,12 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
+
     driSupport = true;
+    extraPackages = with pkgs; [ amdvlk ];
+
     driSupport32Bit = true;
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
   # Trackpoint
@@ -127,6 +131,8 @@
 
   services.xserver = {
     enable = true;
+    # link config to /etc/X11/xorg.conf
+    exportConfiguration = true;
 
     layout = "de";
     xkbOptions = "eurosign:e";
@@ -224,7 +230,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    amdvlk
     cpufrequtils
     dmidecode
     file
@@ -252,6 +257,7 @@
     tree
     unclutter
     usbutils
+    vulkan-tools
     wget
     whois
     xclip
