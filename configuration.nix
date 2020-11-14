@@ -236,6 +236,7 @@
     firmwareLinuxNonfree
     glxinfo
     inotify-tools
+    kwayland-integration
     libGL_driver
     libfprint
     libva

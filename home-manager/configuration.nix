@@ -108,7 +108,7 @@
     # paper-icon-theme
 
     # Games
-    # steam
+    steam
     openra
     #zeroad #requires broken package?!
 
