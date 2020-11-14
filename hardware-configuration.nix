@@ -5,8 +5,7 @@
 
 {
   imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
+    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
   fileSystems."/" =
     { #device = "/dev/disk/by-label/nixos";
@@ -24,7 +23,7 @@
 
   swapDevices =
     [ #{ device = "/dev/disk/by-label/swap"; }
-      { device = "/dev/disk/by-uuid/4b5a9aef-935a-45af-9332-beecdcb2d4a7"; }
+      #{ device = "/dev/disk/by-uuid/4b5a9aef-935a-45af-9332-beecdcb2d4a7"; }
     ];
 
   nix.maxJobs = lib.mkDefault 16;

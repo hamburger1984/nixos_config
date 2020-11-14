@@ -6,7 +6,9 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      <nixos-hardware/lenovo/thinkpad/l14/amd>
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./boot.nix
       <home-manager/nixos>
