@@ -25,9 +25,6 @@
 
   powerManagement.enable = true;
 
-  # disable udev settle
-  # systemd.services.systemd-udev-settle.serviceConfig.ExecStart = ["" "${pkgs.coreutils}/bin/true"];
-
   networking = {
     hostName = "nix2020-14"; # Define your hostname.
 
@@ -174,7 +171,7 @@
     };
     wantedBy = [ "default.target" ];
   };
-  systemd.services.powertop-autotune.enable = false;
+  systemd.services.powertop-autotune.enable = true;
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
