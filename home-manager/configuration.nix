@@ -24,6 +24,29 @@
     python3
     zig
 
+    #--- Development ---#
+    #arduino
+    gitAndTools.gitui
+    httpie
+    #jetbrains.rider
+    unityhub
+    #vscode
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.Nix
+        ms-python.python
+        vscodevim.vim
+      ]
+      ++ vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "csharp";
+          publisher = "ms-dotnettools";
+          version = "1.23.6";
+          sha256 = "0dc0krp5z8ayk59jhm1n91lldwgr7a8f6al8h5m75kl7q4ib7rlk";
+        }
+      ];
+    })
+
     #--- Theming ---#
     adapta-gtk-theme
     adapta-kde-theme
@@ -31,22 +54,20 @@
     vanilla-dmz
 
     #--- Desktop Programs ---#
-    arduino
     digikam
     firefox
     keepassxc
     libreoffice
     lyx
-    #texlive.combined.scheme-basic
-    texlive.combined.scheme-medium
-    #texlive.combined.scheme-full
-    #texlive.combined.scheme-tetex
-    #tectonic
+    pwsafe
     qmapshack
     solaar
     spotify # nonfree
     tdesktop
-    vscode
+    #texlive.combined.scheme-basic
+    texlive.combined.scheme-medium
+    #texlive.combined.scheme-full
+    #texlive.combined.scheme-tetex
 
     #--- KDE/Plasma ---#
     ark
@@ -97,41 +118,37 @@
     # gnome3.shotwell
     # gnomeExtensions.sound-output-device-chooser
 
-    # Gnome3 Themes
+    #--- Gnome3 Themes ---#
     # arc-theme
     # amber-theme
     # plano-theme
     # stilo-themes
 
-    # Icon Themes
+    #--- Icon Themes ---#
     # flat-remix-icon-theme
     # paper-icon-theme
 
-    # Games
+    #--- Games ---#
     steam
     openra
     # zeroad <- requires broken spidermonkey_38
 
-    ## Basic tools
-    aria
-    exa
-    gitAndTools.gitui
-    httpie
+    #--- Basic tools ---#
+    exa # todo: alias/replace ls?!
+    qrcode
+
+    #--- VMs ---#
     libvirt
-    mosh
-    pwsafe
     qemu
     qemu_kvm
-    qrcode
-    ranger
     virtmanager
 
-    # Bash
+    #--- Bash ---#
     bash
     bash-completion
     powerline-go
 
-    # Bat
+    #--- Bat ---#
     bat
     bat-extras.batdiff
     bat-extras.batgrep
