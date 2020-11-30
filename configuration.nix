@@ -7,8 +7,9 @@
 {
   imports =
     [
-      <nixos-hardware/lenovo/thinkpad/l14/amd>
-      # Include the results of the hardware scan.
+      # this does not allow to choose my own kernel version
+      #<nixos-hardware/lenovo/thinkpad/l14/amd>
+
       ./hardware-configuration.nix
       ./boot.nix
       <home-manager/nixos>
@@ -119,7 +120,7 @@
     extraPackages = with pkgs; [ amdvlk ];
 
     driSupport32Bit = true;
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
   };
 
   # Trackpoint
@@ -171,12 +172,14 @@
     };
     wantedBy = [ "default.target" ];
   };
-  systemd.services.powertop-autotune.enable = true;
+  systemd.services.powertop-autotune.enable = false;
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
 
   programs.dconf.enable = true;
+
+  #programs.steam.enable = true;
 
   fonts = {
     enableDefaultFonts = true;
@@ -265,10 +268,12 @@
     wayland
 
     # monitoring
+    bmon
     bpytop
     htop
     iftop
     iotop
+    #iptraf
     lm_sensors
     lshw
     smartmontools
@@ -276,6 +281,9 @@
 
     # logitech
     logitech-udev-rules
+
+    # compiler
+    gcc
   ];
 }
 

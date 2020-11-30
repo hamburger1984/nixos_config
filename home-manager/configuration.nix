@@ -46,7 +46,7 @@
     solaar
     spotify # nonfree
     tdesktop
-    vscode # broken?!
+    vscode
 
     #--- KDE/Plasma ---#
     ark
@@ -70,9 +70,9 @@
     partition-manager
     plasma-browser-integration
     plasma5.bluedevil
-    #plasma5.breeze-grub
-    #plasma5.breeze-gtk
-    #plasma5.breeze-qt5
+    plasma5.breeze-grub
+    plasma5.breeze-gtk
+    plasma5.breeze-qt5
     plasma5.kdeplasma-addons
     plasma5.kwayland-integration
     plasma5.plasma-browser-integration
@@ -110,7 +110,7 @@
     # Games
     steam
     openra
-    #zeroad #requires broken package?!
+    # zeroad <- requires broken spidermonkey_38
 
     ## Basic tools
     aria
