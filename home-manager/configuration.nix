@@ -54,6 +54,7 @@
     vanilla-dmz
 
     #--- Desktop Programs ---#
+    calibre
     digikam
     firefox
     keepassxc
