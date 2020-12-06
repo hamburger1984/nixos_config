@@ -6,6 +6,7 @@
     ./programs/bash.nix
     ./programs/git.nix
     ./programs/direnv.nix
+    ./programs/firefox.nix
   ];
 
   home.sessionVariables = {
@@ -27,6 +28,8 @@
     #--- Development ---#
     #arduino
     gitAndTools.gitui
+    gitAndTools.git-ignore
+    gitAndTools.qgit
     httpie
     #jetbrains.rider
     unityhub
@@ -44,6 +47,42 @@
           version = "1.23.6";
           sha256 = "0dc0krp5z8ayk59jhm1n91lldwgr7a8f6al8h5m75kl7q4ib7rlk";
         }
+        {
+          name = "nuget-reverse-package-search";
+          publisher = "jesschadwick";
+          version = "0.1.68";
+          sha256 = "11jqh3na6nx0ycj9rd95x6rb97p6dgrn6acqvjsiym18yflg5h0v";
+        }
+        {
+          name = "csharpextensions";
+          publisher = "kreativ-software";
+          version = "1.3.6";
+          sha256 = "0nwcg6w7hjaw1jb8gdhx0bghlgnvwbs42zlhivhbh8va671yrmwp";
+        }
+        #{
+        #  name = "dotnet";
+        #  publisher = "formulahendry";
+        #  version = "0.0.4";
+        #  sha256 = "1c2wxjfm6cfyllxnia7qs6h2ymhwdr4nglks39nm1wv5z84j2aa5";
+        #}
+        {
+          name = "dotnet";
+          publisher = "leo-labs";
+          version = "1.3.0";
+          sha256 = "1qgpaid2hfv77b24fr4zwyd9izff730rzxcg0dimjgmd1fy16cpz";
+        }
+        #{
+        #  name = "vscode-nuget-package-manager";
+        #  publisher = "jmrog";
+        #  version = "1.1.6";
+        #  sha256 = "0vjl3lwc73zc6gg3czgdixb0nhcv3sw7yjhadnpccygmanndki30";
+        #}
+        {
+          name = "vscode-nuget-gallery";
+          publisher = "patcx";
+          version = "0.0.23";
+          sha256 = "0nr826yj03v9s9flwsla9279gsbnq56ssl6bxg92hxv4qwid3i00";
+        }
       ];
     })
 
@@ -56,7 +95,7 @@
     #--- Desktop Programs ---#
     calibre
     digikam
-    firefox
+    #firefox
     keepassxc
     libreoffice
     lyx
@@ -98,10 +137,11 @@
     plasma5.kdeplasma-addons
     plasma5.kwayland-integration
     plasma5.plasma-browser-integration
+    #plasma5.plasma-disks
     plasma5.plasma-nm
     plasma5.powerdevil
     plasma5.sddm-kcm
-    plasma5.user-manager
+    #plasma5.user-manager
     plasma5.xdg-desktop-portal-kde
     redshift-plasma-applet
 
@@ -137,6 +177,10 @@
     #--- Basic tools ---#
     exa # todo: alias/replace ls?!
     qrcode
+
+    #--- nix development ---#
+    nixpkgs-review
+    nix-review
 
     #--- VMs ---#
     libvirt
