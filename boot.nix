@@ -24,7 +24,8 @@
     # fix load/restore of backlight -> "acpi_backlight=native"
 
     # Fresh(er) kernel?
-    kernelPackages = pkgs.linuxPackages_testing; # <- was using this
-    #kernelPackages = pkgs.linuxPackages_latest; <- this is (probably?) set by hardware repository
+    #kernelPackages = pkgs.linuxPackages_5_10;
+    #kernelPackages = pkgs.linuxPackages_testing; # <- was using this
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 }

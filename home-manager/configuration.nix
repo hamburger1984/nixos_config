@@ -29,9 +29,12 @@
     #arduino
     gitAndTools.gitui
     gitAndTools.git-ignore
-    gitAndTools.qgit
+    gitAndTools.tig
+    #gitAndTools.qgit
     httpie
     #jetbrains.rider
+    micro
+    #qtcreator
     unityhub
     #vscode
     (vscode-with-extensions.override {
@@ -95,19 +98,38 @@
     #--- Desktop Programs ---#
     calibre
     digikam
-    #firefox
+    focuswriter
     keepassxc
     libreoffice
     lyx
+    marble
     pwsafe
     qmapshack
+    smplayer
     solaar
     spotify # nonfree
     tdesktop
+    teams
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
+    vlc
+    zoom-us
+
+    # ... testing
+    calligra
+    qlandkartegt
+    smtube
+    qtikz
+    nextcloud-client
+    partition-manager
+    heaptrack
+    digitalbitbox
+    qtcreator
+    #qpdfview # <- https://github.com/DreamSourceLab/DSView/commit/33e3d896a47e559de95b26b13121bef10827e88d
+    rstudio
+    trojita
 
     #--- KDE/Plasma ---#
     ark
@@ -116,9 +138,10 @@
     dragon
     filelight
     gwenview
+    kate
     kcalc
     kcharselect
-    #kdeApplications.kdenlive
+    kdeApplications.kdenlive
     kdeApplications.ksystemlog
     kdeApplications.okular
     kdeApplications.spectacle
@@ -126,7 +149,7 @@
     kdeFrameworks.modemmanager-qt
     kdeFrameworks.networkmanager-qt
     kdeFrameworks.syntax-highlighting
-    #kmymoney
+    kmymoney
     ksysguard
     partition-manager
     plasma-browser-integration
@@ -137,11 +160,10 @@
     plasma5.kdeplasma-addons
     plasma5.kwayland-integration
     plasma5.plasma-browser-integration
-    #plasma5.plasma-disks
+    plasma5.plasma-disks
     plasma5.plasma-nm
     plasma5.powerdevil
     plasma5.sddm-kcm
-    #plasma5.user-manager
     plasma5.xdg-desktop-portal-kde
     redshift-plasma-applet
 
@@ -172,7 +194,7 @@
     #--- Games ---#
     steam
     openra
-    # zeroad <- requires broken spidermonkey_38
+    #zeroad # <- requires broken spidermonkey_38
 
     #--- Basic tools ---#
     exa # todo: alias/replace ls?!

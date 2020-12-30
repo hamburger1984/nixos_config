@@ -249,6 +249,7 @@
     modemmanager
     mtools # installing clonezilla needs this
     nerdfonts
+    ntfs3g
     p7zip
     parted
     pciutils
@@ -284,6 +285,7 @@
 
     # compiler
     gcc
+    llvm
   ];
 }
 
