@@ -26,5 +26,5 @@
       #{ device = "/dev/disk/by-uuid/4b5a9aef-935a-45af-9332-beecdcb2d4a7"; }
     ];
 
-  nix.maxJobs = lib.mkDefault 16;
+  nix.maxJobs = lib.mkDefault 15; # keep one spare core
 }

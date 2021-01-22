@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 
+let
+  libsForQt5 = pkgs.plasma5Packages;
+  inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
+
+in
 {
   imports = [
     ./programs/neovim.nix
@@ -13,7 +18,9 @@
     EDITOR = "nvim";
   };
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+    with libsForQt5;
+    with plasma5; with kdeApplications; with kdeFrameworks; [
 
     #--- Languages ---#
     dotnet-sdk_3
@@ -30,25 +37,27 @@
     gitAndTools.gitui
     gitAndTools.git-ignore
     gitAndTools.tig
-    #gitAndTools.qgit
+    gnumake
     httpie
     #jetbrains.rider
     micro
+    python38Packages.pip
+    python38Packages.pylint
+    python38Packages.flake8
     #qtcreator
     unityhub
-    #vscode
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
-        bbenoist.Nix
-        ms-python.python
-        vscodevim.vim
+        #bbenoist.Nix
+        #ms-python.python
+        #vscodevim.vim
       ]
       ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "csharp";
-          publisher = "ms-dotnettools";
-          version = "1.23.6";
-          sha256 = "0dc0krp5z8ayk59jhm1n91lldwgr7a8f6al8h5m75kl7q4ib7rlk";
+          name = "Nix";
+          publisher = "bbenoist";
+          version = "1.0.1";
+          sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
         }
         {
           name = "nuget-reverse-package-search";
@@ -62,18 +71,37 @@
           version = "1.3.6";
           sha256 = "0nwcg6w7hjaw1jb8gdhx0bghlgnvwbs42zlhivhbh8va671yrmwp";
         }
-        #{
-        #  name = "dotnet";
-        #  publisher = "formulahendry";
-        #  version = "0.0.4";
-        #  sha256 = "1c2wxjfm6cfyllxnia7qs6h2ymhwdr4nglks39nm1wv5z84j2aa5";
-        #}
         {
           name = "dotnet";
           publisher = "leo-labs";
           version = "1.3.0";
           sha256 = "1qgpaid2hfv77b24fr4zwyd9izff730rzxcg0dimjgmd1fy16cpz";
         }
+        {
+          name = "csharp";
+          publisher = "ms-dotnettools";
+          version = "1.23.8";
+          sha256 = "1lb3y7fs2c6kbygjfls7lc3dc8snlspkfa15mp49srhc0kbxcgff";
+        }
+        {
+          name = "python";
+          publisher = "ms-python";
+          version = "2020.12.424452561";
+          sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
+        }
+        {
+          name = "vscode-nuget-gallery";
+          publisher = "patcx";
+          version = "0.0.24";
+          sha256 = "1gcg9j5318wc7c362iandkjk9im5nzfqaip3zqaxvwrl4wly6ada";
+        }
+        {
+          name = "vim";
+          publisher = "vscodevim";
+          version = "1.18.5";
+          sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
+        }
+
         #{
         #  name = "vscode-nuget-package-manager";
         #  publisher = "jmrog";
@@ -81,13 +109,21 @@
         #  sha256 = "0vjl3lwc73zc6gg3czgdixb0nhcv3sw7yjhadnpccygmanndki30";
         #}
         {
-          name = "vscode-nuget-gallery";
-          publisher = "patcx";
-          version = "0.0.23";
-          sha256 = "0nr826yj03v9s9flwsla9279gsbnq56ssl6bxg92hxv4qwid3i00";
+          name = "esp-idf-extension";
+          publisher = "espressif";
+          version = "0.6.0";
+          sha256 = "15al07hhb3gssa6sbjsxh7aswklcm08a08hqnmp4z3b4r8xblvfc";
         }
       ];
     })
+
+    #--- micropython ---#
+    #adafruit-ampy
+    esptool
+    #micropython
+    #mpfshell
+    #rshell
+    thonny
 
     #--- Theming ---#
     adapta-gtk-theme
@@ -105,7 +141,7 @@
     marble
     pwsafe
     qmapshack
-    smplayer
+    signal-desktop
     solaar
     spotify # nonfree
     tdesktop
@@ -114,26 +150,25 @@
     texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
+    trojita
     vlc
     zoom-us
 
-    # ... testing
-    calligra
-    qlandkartegt
-    smtube
-    qtikz
-    nextcloud-client
-    partition-manager
-    heaptrack
-    digitalbitbox
-    qtcreator
+    # nixpkg ... testing
+    #qlandkartegt
+    #qtikz
+    #nextcloud-client
+    #partition-manager
+    #heaptrack
+    #digitalbitbox
+    #qtcreator
     #qpdfview # <- https://github.com/DreamSourceLab/DSView/commit/33e3d896a47e559de95b26b13121bef10827e88d
-    rstudio
-    trojita
+    #rstudio
 
     #--- KDE/Plasma ---#
     ark
     bibata-cursors
+    #calligra
     colord-kde
     dragon
     filelight
@@ -142,8 +177,12 @@
     kcalc
     kcharselect
     kdeApplications.kdenlive
+    konversation
+    #kdeApplications.konversation
     kdeApplications.ksystemlog
     kdeApplications.okular
+    partition-manager
+    #kdeApplications.partition-manager
     kdeApplications.spectacle
     kdeFrameworks.bluez-qt
     kdeFrameworks.modemmanager-qt
@@ -151,7 +190,6 @@
     kdeFrameworks.syntax-highlighting
     kmymoney
     ksysguard
-    partition-manager
     plasma-browser-integration
     plasma5.bluedevil
     plasma5.breeze-grub
@@ -167,31 +205,8 @@
     plasma5.xdg-desktop-portal-kde
     redshift-plasma-applet
 
-    #--- Gnome3 ---#
-    # gnome3.baobab
-    # gnome3.cheese
-    # gnome3.eog
-    # gnome3.evince
-    # gnome3.gedit
-    # gnome3.gnome-applets
-    # gnome3.gnome-bluetooth
-    # gnome3.gnome-disk-utility
-    # gnome3.gnome-power-manager
-    # gnome3.gnome-tweaks
-    # gnome3.shotwell
-    # gnomeExtensions.sound-output-device-chooser
-
-    #--- Gnome3 Themes ---#
-    # arc-theme
-    # amber-theme
-    # plano-theme
-    # stilo-themes
-
-    #--- Icon Themes ---#
-    # flat-remix-icon-theme
-    # paper-icon-theme
-
     #--- Games ---#
+    discord
     steam
     openra
     #zeroad # <- requires broken spidermonkey_38
@@ -205,10 +220,10 @@
     nix-review
 
     #--- VMs ---#
-    libvirt
-    qemu
-    qemu_kvm
-    virtmanager
+    #libvirt
+    #qemu
+    #qemu_kvm
+    #virtmanager
 
     #--- Bash ---#
     bash

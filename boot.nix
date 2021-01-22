@@ -25,7 +25,7 @@
 
     # Fresh(er) kernel?
     #kernelPackages = pkgs.linuxPackages_5_10;
-    #kernelPackages = pkgs.linuxPackages_testing; # <- was using this
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_testing; # <- was using this
+    #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

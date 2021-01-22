@@ -62,7 +62,7 @@
   time.timeZone = "Europe/Berlin";
 
   # Qemu/libvirtd
-  virtualisation.libvirtd.enable = true;
+  #virtualisation.libvirtd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -82,7 +82,7 @@
   # Enable fwupd .. firmware update
   services.fwupd.enable = true;
 
-  # Fingerprints?!
+  # Fingerprints?! broken?!
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
@@ -117,10 +117,11 @@
     enable = true;
 
     driSupport = true;
-    extraPackages = with pkgs; [ amdvlk ];
+    #extraPackages = with pkgs; [ amdvlk ];
 
     driSupport32Bit = true;
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
+    #extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
+    extraPackages32 = with pkgs; [ pkgsi686Linux.libva ];
   };
 
   # Trackpoint
@@ -152,8 +153,10 @@
 
     # Enable touchpad support.
     libinput.enable = true;
-    libinput.naturalScrolling = false;
-    libinput.tapping = true;
+    libinput.touchpad = {
+      naturalScrolling = false;
+      tapping = true;
+    };
 
     displayManager = {
       # KDE
@@ -196,7 +199,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
-    extraGroups = [ "audio" "libvirtd" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
+    extraGroups = [ "audio" "dialout" "libvirtd" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
   };
 
   home-manager.useUserPackages = true;
@@ -235,12 +238,11 @@
     cpufrequtils
     dmidecode
     file
-    firmwareLinuxNonfree
+    #firmwareLinuxNonfree
     glxinfo
     inotify-tools
     kwayland-integration
     libGL_driver
-    libfprint
     libva
     libxkbcommon
     lsof
@@ -250,6 +252,7 @@
     mtools # installing clonezilla needs this
     nerdfonts
     ntfs3g
+    ofono
     p7zip
     parted
     pciutils
