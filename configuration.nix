@@ -96,6 +96,11 @@
     enable = true;
     support32Bit = true;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
+    daemon = {
+      config = {
+        realtime-scheduling = true;
+      };
+    };
     extraConfig = ''
       load-module module-switch-on-connect
     '';
@@ -105,6 +110,8 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
+    hsphfpd.enable = true;
+    config.general.enable = "Source,Sink,Media,Socket";
     # config = ''
     #   [General]
     #   Enable=Source,Sink,Media,Socket
@@ -117,16 +124,18 @@
     enable = true;
 
     driSupport = true;
-    #extraPackages = with pkgs; [ amdvlk ];
+    extraPackages = with pkgs; [ amdvlk ];
 
     driSupport32Bit = true;
-    #extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
-    extraPackages32 = with pkgs; [ pkgsi686Linux.libva ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
+    #extraPackages32 = with pkgs; [ pkgsi686Linux.libva ];
   };
 
   # Trackpoint
   hardware.trackpoint = {
     enable = true;
+    #sensitivity = 160; # default=128
+    speed = 100; # default=97
     emulateWheel = true;
   };
 
@@ -182,8 +191,6 @@
 
   programs.dconf.enable = true;
 
-  #programs.steam.enable = true;
-
   fonts = {
     enableDefaultFonts = true;
 
@@ -238,7 +245,7 @@
     cpufrequtils
     dmidecode
     file
-    #firmwareLinuxNonfree
+    firmwareLinuxNonfree
     glxinfo
     inotify-tools
     kwayland-integration
@@ -277,7 +284,6 @@
     htop
     iftop
     iotop
-    #iptraf
     lm_sensors
     lshw
     smartmontools

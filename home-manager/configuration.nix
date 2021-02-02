@@ -181,6 +181,7 @@ in
     #kdeApplications.konversation
     kdeApplications.ksystemlog
     kdeApplications.okular
+    krita
     partition-manager
     #kdeApplications.partition-manager
     kdeApplications.spectacle
