@@ -4,6 +4,7 @@ let
   libsForQt5 = pkgs.plasma5Packages;
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
+  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_5_0 sdk_3_1 aspnetcore_5_0 aspnetcore_3_1 ];
 in
 {
   imports = [
@@ -23,34 +24,39 @@ in
     with plasma5; with kdeApplications; with kdeFrameworks; [
 
     #--- Languages ---#
-    dotnet-sdk_3
-    elixir
-    erlang
-    lua
+    #coreclr
+    dotnetCombined
+    #dotnet-sdk_5
+    #dotnetCorePackages.aspnetcore_5_0
+    #dotnetCorePackages.net_5_0
+    #dotnetCorePackages.sdk_5_0
+    #elixir
+    #erlang
+    #lua
     nim
     nodejs
     python3
-    zig
+    #zig
 
     #--- Development ---#
     #arduino
+    gibo
     gitAndTools.gitui
     gitAndTools.git-ignore
     gitAndTools.tig
+    gitflow
+    dotnetPackages.GitVersionTree
     gnumake
     httpie
-    #jetbrains.rider
-    micro
+    jetbrains.rider
+    #micro
     python38Packages.pip
     python38Packages.pylint
     python38Packages.flake8
     #qtcreator
-    unityhub
+    #unityhub
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
-        #bbenoist.Nix
-        #ms-python.python
-        #vscodevim.vim
       ]
       ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -58,6 +64,12 @@ in
           publisher = "bbenoist";
           version = "1.0.1";
           sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
+        }
+        {
+          name = "esp-idf-extension";
+          publisher = "espressif";
+          version = "1.0.3";
+          sha256 = "04rpnngx21xmz63nw11lmwjkslgj7lc6x90cspipalbpd5w7npac";
         }
         {
           name = "nuget-reverse-package-search";
@@ -80,14 +92,14 @@ in
         {
           name = "csharp";
           publisher = "ms-dotnettools";
-          version = "1.23.8";
-          sha256 = "1lb3y7fs2c6kbygjfls7lc3dc8snlspkfa15mp49srhc0kbxcgff";
+          version = "1.23.11";
+          sha256 = "0i099xvwls2y18bwn9wc0nsq62xb8ynmz6wh4nc8yxmb62x25k59";
         }
         {
           name = "python";
           publisher = "ms-python";
-          version = "2020.12.424452561";
-          sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
+          version = "2021.5.842923320";
+          sha256 = "183ram995n9dqg7d9g3bn30a1mg7nkkg4knr814f4j9lqzsai22r";
         }
         {
           name = "vscode-nuget-gallery";
@@ -98,22 +110,15 @@ in
         {
           name = "vim";
           publisher = "vscodevim";
-          version = "1.18.5";
-          sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
+          version = "1.20.2";
+          sha256 = "1cziklj7589d1kbfmla2if99n952pk7959hkhq37zch2i3m1qmi2";
         }
-
         #{
         #  name = "vscode-nuget-package-manager";
         #  publisher = "jmrog";
         #  version = "1.1.6";
         #  sha256 = "0vjl3lwc73zc6gg3czgdixb0nhcv3sw7yjhadnpccygmanndki30";
         #}
-        {
-          name = "esp-idf-extension";
-          publisher = "espressif";
-          version = "0.6.0";
-          sha256 = "15al07hhb3gssa6sbjsxh7aswklcm08a08hqnmp4z3b4r8xblvfc";
-        }
       ];
     })
 
@@ -136,21 +141,24 @@ in
     digikam
     focuswriter
     keepassxc
-    libreoffice
-    lyx
+    #libreoffice
+    #lyx
     marble
     pwsafe
     qmapshack
     signal-desktop
+    #slack
     solaar
     spotify # nonfree
     tdesktop
-    teams
+    #teams
+
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
-    trojita
+
+    #trojita
     vlc
     zoom-us
 
@@ -170,14 +178,16 @@ in
     bibata-cursors
     #calligra
     colord-kde
-    dragon
+    #dragon
     filelight
     gwenview
+    kamoso
     kate
     kcalc
     kcharselect
-    kdeApplications.kdenlive
-    konversation
+    #kdeApplications.kdenlive
+    #konversation
+    ktouch
     #kdeApplications.konversation
     kdeApplications.ksystemlog
     kdeApplications.okular
@@ -189,7 +199,7 @@ in
     kdeFrameworks.modemmanager-qt
     kdeFrameworks.networkmanager-qt
     kdeFrameworks.syntax-highlighting
-    kmymoney
+    #kmymoney
     ksysguard
     plasma-browser-integration
     plasma5.bluedevil
@@ -207,9 +217,10 @@ in
     redshift-plasma-applet
 
     #--- Games ---#
-    discord
+    discord-canary
+    #discord
     steam
-    openra
+    #openra
     #zeroad # <- requires broken spidermonkey_38
 
     #--- Basic tools ---#
@@ -217,8 +228,8 @@ in
     qrcode
 
     #--- nix development ---#
-    nixpkgs-review
-    nix-review
+    #nixpkgs-review
+    #nix-review
 
     #--- VMs ---#
     #libvirt

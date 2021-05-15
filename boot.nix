@@ -16,6 +16,7 @@
     };
 
     # amd graphics, acpi_call makes tlp work for newer thinkpads
+    # amdgpu-pro is currently failing
     kernelModules = [ "amdgpu" "acpi_call" "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
@@ -23,9 +24,7 @@
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
-    # Fresh(er) kernel?
-    #kernelPackages = pkgs.linuxPackages_5_10;
-    kernelPackages = pkgs.linuxPackages_testing; # <- was using this
+    kernelPackages = pkgs.linuxPackages_testing;
     #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

@@ -90,6 +90,10 @@
   # Enable CUPS to print documents.
   #services.printing.enable = true;
 
+  services.ofono = {
+    enable = true;
+  };
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio = {
@@ -101,6 +105,9 @@
         realtime-scheduling = true;
       };
     };
+    #extraConfig = ''
+    #  load-module module-bluetooth-policy auto_switch=2
+    #'';
     extraConfig = ''
       load-module module-switch-on-connect
     '';
@@ -110,8 +117,8 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    hsphfpd.enable = true;
-    config.general.enable = "Source,Sink,Media,Socket";
+    #hsphfpd.enable = true;
+    settings.general.enable = "Source,Sink,Media,Socket";
     # config = ''
     #   [General]
     #   Enable=Source,Sink,Media,Socket
@@ -158,6 +165,7 @@
     };
 
     # AMD driver
+    # amdgpu-pro is currently failing
     videoDrivers = [ "amdgpu" ];
 
     # Enable touchpad support.
@@ -259,11 +267,12 @@
     mtools # installing clonezilla needs this
     nerdfonts
     ntfs3g
-    ofono
+    #ofono
     p7zip
     parted
     pciutils
     powertop
+    #pulseaudio-hsphfpd
     pwgen
     rsync
     silver-searcher
@@ -294,7 +303,10 @@
 
     # compiler
     gcc
-    llvm
+
+    bash
+
+    gparted
   ];
 }
 

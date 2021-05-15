@@ -107,6 +107,12 @@
         PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
       fi
       export HISTIGNORE="&:[ ]*:exit:ls:l:bg:fg:history:clear"
+
+      export PATH="$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin"
+
+      alias ls="exa"
+      alias l="exa -l"
+      alias ll="exa -la"
     '';
   };
 }

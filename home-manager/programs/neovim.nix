@@ -204,9 +204,13 @@
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
 
     plugins = with pkgs.vimPlugins; [
-      vim-nix
       vim-airline
       gruvbox
+
+      neovim-sensible
+
+      vim-nix
+      nim-vim
 
       coc-nvim
       coc-fzf
