@@ -64,6 +64,12 @@
   # Qemu/libvirtd
   #virtualisation.libvirtd.enable = true;
 
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -295,6 +301,7 @@
     iotop
     lm_sensors
     lshw
+    multitail
     smartmontools
     strace
 

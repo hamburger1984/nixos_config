@@ -40,12 +40,14 @@ in
 
     #--- Development ---#
     #arduino
+    #docker
+    docker-compose
+    dotnetPackages.GitVersionTree
     gibo
     gitAndTools.gitui
     gitAndTools.git-ignore
     gitAndTools.tig
     gitflow
-    dotnetPackages.GitVersionTree
     gnumake
     httpie
     jetbrains.rider
