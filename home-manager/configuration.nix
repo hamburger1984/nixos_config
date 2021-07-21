@@ -32,24 +32,24 @@ in
     #dotnetCorePackages.sdk_5_0
     #elixir
     #erlang
-    #lua
+    lua
     nim
     nodejs
     python3
-    #zig
+    rustc
+    zig
 
     #--- Development ---#
     #arduino
-    #docker
-    docker-compose
-    dotnetPackages.GitVersionTree
-    gibo
+    #docker-compose
+    #dotnetPackages.GitVersionTree
+    #gibo
     gitAndTools.gitui
     gitAndTools.git-ignore
     gitAndTools.tig
-    gitflow
     gnumake
     httpie
+    #gitflow
     jetbrains.rider
     #micro
     python38Packages.pip
@@ -61,54 +61,54 @@ in
       vscodeExtensions = with vscode-extensions; [
       ]
       ++ vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "Nix";
-          publisher = "bbenoist";
-          version = "1.0.1";
-          sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
-        }
-        {
-          name = "esp-idf-extension";
-          publisher = "espressif";
-          version = "1.0.3";
-          sha256 = "04rpnngx21xmz63nw11lmwjkslgj7lc6x90cspipalbpd5w7npac";
-        }
-        {
-          name = "nuget-reverse-package-search";
-          publisher = "jesschadwick";
-          version = "0.1.68";
-          sha256 = "11jqh3na6nx0ycj9rd95x6rb97p6dgrn6acqvjsiym18yflg5h0v";
-        }
-        {
-          name = "csharpextensions";
-          publisher = "kreativ-software";
-          version = "1.3.6";
-          sha256 = "0nwcg6w7hjaw1jb8gdhx0bghlgnvwbs42zlhivhbh8va671yrmwp";
-        }
-        {
-          name = "dotnet";
-          publisher = "leo-labs";
-          version = "1.3.0";
-          sha256 = "1qgpaid2hfv77b24fr4zwyd9izff730rzxcg0dimjgmd1fy16cpz";
-        }
-        {
-          name = "csharp";
-          publisher = "ms-dotnettools";
-          version = "1.23.11";
-          sha256 = "0i099xvwls2y18bwn9wc0nsq62xb8ynmz6wh4nc8yxmb62x25k59";
-        }
-        {
-          name = "python";
-          publisher = "ms-python";
-          version = "2021.5.842923320";
-          sha256 = "183ram995n9dqg7d9g3bn30a1mg7nkkg4knr814f4j9lqzsai22r";
-        }
-        {
-          name = "vscode-nuget-gallery";
-          publisher = "patcx";
-          version = "0.0.24";
-          sha256 = "1gcg9j5318wc7c362iandkjk9im5nzfqaip3zqaxvwrl4wly6ada";
-        }
+        #{
+        #  name = "Nix";
+        #  publisher = "bbenoist";
+        #  version = "1.0.1";
+        #  sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
+        #}
+        #{
+        #  name = "esp-idf-extension";
+        #  publisher = "espressif";
+        #  version = "1.0.3";
+        #  sha256 = "04rpnngx21xmz63nw11lmwjkslgj7lc6x90cspipalbpd5w7npac";
+        #}
+        #{
+        #  name = "nuget-reverse-package-search";
+        #  publisher = "jesschadwick";
+        #  version = "0.1.68";
+        #  sha256 = "11jqh3na6nx0ycj9rd95x6rb97p6dgrn6acqvjsiym18yflg5h0v";
+        #}
+        #{
+        #  name = "csharpextensions";
+        #  publisher = "kreativ-software";
+        #  version = "1.3.6";
+        #  sha256 = "0nwcg6w7hjaw1jb8gdhx0bghlgnvwbs42zlhivhbh8va671yrmwp";
+        #}
+        #{
+        #  name = "dotnet";
+        #  publisher = "leo-labs";
+        #  version = "1.3.0";
+        #  sha256 = "1qgpaid2hfv77b24fr4zwyd9izff730rzxcg0dimjgmd1fy16cpz";
+        #}
+        #{
+        #  name = "csharp";
+        #  publisher = "ms-dotnettools";
+        #  version = "1.23.11";
+        #  sha256 = "0i099xvwls2y18bwn9wc0nsq62xb8ynmz6wh4nc8yxmb62x25k59";
+        #}
+        #{
+        #  name = "python";
+        #  publisher = "ms-python";
+        #  version = "2021.5.842923320";
+        #  sha256 = "183ram995n9dqg7d9g3bn30a1mg7nkkg4knr814f4j9lqzsai22r";
+        #}
+        #{
+        #  name = "vscode-nuget-gallery";
+        #  publisher = "patcx";
+        #  version = "0.0.24";
+        #  sha256 = "1gcg9j5318wc7c362iandkjk9im5nzfqaip3zqaxvwrl4wly6ada";
+        #}
         {
           name = "vim";
           publisher = "vscodevim";
@@ -126,11 +126,11 @@ in
 
     #--- micropython ---#
     #adafruit-ampy
-    esptool
+    #esptool
     #micropython
     #mpfshell
     #rshell
-    thonny
+    #thonny
 
     #--- Theming ---#
     adapta-gtk-theme
@@ -145,7 +145,7 @@ in
     keepassxc
     #libreoffice
     #lyx
-    marble
+    #marble
     pwsafe
     qmapshack
     signal-desktop
@@ -164,17 +164,6 @@ in
     vlc
     zoom-us
 
-    # nixpkg ... testing
-    #qlandkartegt
-    #qtikz
-    #nextcloud-client
-    #partition-manager
-    #heaptrack
-    #digitalbitbox
-    #qtcreator
-    #qpdfview # <- https://github.com/DreamSourceLab/DSView/commit/33e3d896a47e559de95b26b13121bef10827e88d
-    #rstudio
-
     #--- KDE/Plasma ---#
     ark
     bibata-cursors
@@ -189,20 +178,17 @@ in
     kcharselect
     #kdeApplications.kdenlive
     #konversation
-    ktouch
-    #kdeApplications.konversation
+    #ktouch
     kdeApplications.ksystemlog
     kdeApplications.okular
     krita
     partition-manager
-    #kdeApplications.partition-manager
+    kdeApplications.partition-manager
     kdeApplications.spectacle
     kdeFrameworks.bluez-qt
     kdeFrameworks.modemmanager-qt
     kdeFrameworks.networkmanager-qt
     kdeFrameworks.syntax-highlighting
-    #kmymoney
-    ksysguard
     plasma-browser-integration
     plasma5.bluedevil
     plasma5.breeze-grub
@@ -219,8 +205,7 @@ in
     redshift-plasma-applet
 
     #--- Games ---#
-    discord-canary
-    #discord
+    discord
     steam
     #openra
     #zeroad # <- requires broken spidermonkey_38

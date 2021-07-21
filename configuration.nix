@@ -65,10 +65,10 @@
   #virtualisation.libvirtd.enable = true;
 
   # Docker
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-  };
+  #virtualisation.docker = {
+  #  enable = true;
+  #  enableOnBoot = false;
+  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -89,16 +89,17 @@
   services.fwupd.enable = true;
 
   # Fingerprints?! broken?!
-  services.fprintd.enable = true;
-  security.pam.services.login.fprintAuth = true;
-  security.pam.services.xscreensaver.fprintAuth = true;
+  #services.fprintd.enable = true;
+  #security.pam.services.login.fprintAuth = true;
+  #security.pam.services.xscreensaver.fprintAuth = true;
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
 
-  services.ofono = {
-    enable = true;
-  };
+  # either this or hsphfpd?
+  #services.ofono = {
+  #  enable = false;
+  #};
 
   # Enable sound.
   sound.enable = true;
@@ -123,7 +124,8 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    #hsphfpd.enable = true;
+    # either this or ofono?
+    hsphfpd.enable = true;
     settings.general.enable = "Source,Sink,Media,Socket";
     # config = ''
     #   [General]
@@ -137,7 +139,7 @@
     enable = true;
 
     driSupport = true;
-    extraPackages = with pkgs; [ amdvlk ];
+    extraPackages = with pkgs; [ amdvlk libva ];
 
     driSupport32Bit = true;
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
@@ -154,8 +156,9 @@
 
   services.xserver = {
     enable = true;
+
     # link config to /etc/X11/xorg.conf
-    exportConfiguration = true;
+    #exportConfiguration = true;
 
     layout = "de";
     xkbOptions = "eurosign:e";
@@ -220,7 +223,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
-    extraGroups = [ "audio" "dialout" "libvirtd" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
+    # "libvirtd" <- not using libvirt currently
+    extraGroups = [ "audio" "dialout" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
   };
 
   home-manager.useUserPackages = true;
@@ -234,16 +238,23 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 60d";
     };
 
     extraOptions = ''
+      substituters = https://cache.nixos.org https://cache.ngi0.nixos.org/
+      trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA=
       keep-outputs = true
       keep-derivations = true
     '';
 
+    #contentAddressedByDefault = true;
+    #experimental-features = nix-command flakes ca-derivations ca-references
+
     trustedUsers = [ "root" "andreas" ];
   };
+
+  #nix.package = pkgs.nixUnstable;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -261,16 +272,15 @@
     file
     firmwareLinuxNonfree
     glxinfo
+    #hydra-check
     inotify-tools
-    kwayland-integration
+    libcgroup
     libGL_driver
     libva
     libxkbcommon
     lsof
     lz4
     mesa
-    modemmanager
-    mtools # installing clonezilla needs this
     nerdfonts
     ntfs3g
     #ofono
@@ -282,7 +292,6 @@
     pwgen
     rsync
     silver-searcher
-    syslinux # installing clonezilla needs this
     tree
     unclutter
     usbutils
@@ -291,29 +300,36 @@
     whois
     xclip
     xz
-    wayland
+
+    #modemmanager
+    #kwayland-integration
+    #wayland
+
+    #mtools # installing clonezilla needs this
+    #syslinux # installing clonezilla needs this
 
     # monitoring
-    bmon
+    #bmon
     bpytop
     htop
     iftop
     iotop
     lm_sensors
     lshw
-    multitail
+    #multitail
     smartmontools
     strace
+    #sysbench
 
     # logitech
     logitech-udev-rules
 
     # compiler
-    gcc
+    #gcc
+    #llvm
 
     bash
 
     gparted
   ];
 }
-

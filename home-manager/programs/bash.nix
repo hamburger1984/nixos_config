@@ -113,6 +113,11 @@
       alias ls="exa"
       alias l="exa -l"
       alias ll="exa -la"
+
+      # fix startup window of rider
+      # .. see also: https://intellij-support.jetbrains.com/hc/en-us/community/posts/360010714820-IDE-welcome-window-disappears-from-window-manager-KDE-window-selection-list
+      export _JAVA_AWT_WM_NONREPARENTING=1
+
     '';
   };
 }

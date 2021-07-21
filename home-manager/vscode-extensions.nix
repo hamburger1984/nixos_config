@@ -29,12 +29,12 @@
     version = "1.23.8";
     sha256 = "1lb3y7fs2c6kbygjfls7lc3dc8snlspkfa15mp49srhc0kbxcgff";
   }
-  {
-    name = "python";
-    publisher = "ms-python";
-    version = "2020.12.424452561";
-    sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
-  }
+  #{
+  #  name = "python";
+  #  publisher = "ms-python";
+  #  version = "2020.12.424452561";
+  #  sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
+  #}
   {
     name = "vscode-nuget-gallery";
     publisher = "patcx";
