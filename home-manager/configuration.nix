@@ -24,12 +24,7 @@ in
     with plasma5; with kdeApplications; with kdeFrameworks; [
 
     #--- Languages ---#
-    #coreclr
     dotnetCombined
-    #dotnet-sdk_5
-    #dotnetCorePackages.aspnetcore_5_0
-    #dotnetCorePackages.net_5_0
-    #dotnetCorePackages.sdk_5_0
     #elixir
     #erlang
     lua
@@ -50,29 +45,19 @@ in
     gitAndTools.tig
     gnumake
     httpie
-    #gitflow
     jetbrains.rider
-    #micro
     python38Packages.pip
     python38Packages.pylint
     python38Packages.flake8
-    #qtcreator
-    #unityhub
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
-        bbenoist.Nix
+        bbenoist.nix
         ms-python.python
         ms-dotnettools.csharp
         ms-vscode.cpptools
         vscodevim.vim
       ]
       ++ vscode-utils.extensionsFromVscodeMarketplace [
-        #{
-        #  name = "esp-idf-extension";
-        #  publisher = "espressif";
-        #  version = "1.0.3";
-        #  sha256 = "04rpnngx21xmz63nw11lmwjkslgj7lc6x90cspipalbpd5w7npac";
-        #}
         {
           name = "platformio-ide";
           publisher = "platformio";
@@ -85,12 +70,6 @@ in
           version = "2021.8.1066828098";
           sha256 = "1c2h77648h7vg7mv86yhxqn4krfj2q969p72hyglb5jhb1bsq8c2";
         }
-        #{
-        #  name = "cpptools";
-        #  publisher = "ms-vscode";
-        #  version = "1.5.1";
-        #  sha256 = "1016bxfx4gs3ivqgpq7bkwc1cyvg2jv7y7mzrwg3ldx7kfbjgyxh";
-        #}
       ];
     })
 
@@ -182,6 +161,8 @@ in
 
     #--- Basic tools ---#
     exa # todo: alias/replace ls?!
+    zoxide
+    broot
     qrcode
 
     #--- nix development ---#
