@@ -337,8 +337,8 @@
     logitech-udev-rules
 
     # compiler
-    #gcc
-    #llvm
+    gcc
+    llvm
 
     bash
 

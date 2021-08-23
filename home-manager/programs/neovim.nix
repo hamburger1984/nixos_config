@@ -156,18 +156,8 @@
           set t_Co=256
       endif
       set background=dark
-      "colorscheme landscape
-      "colorscheme despacio
-      "colorscheme moonshine
-      "colorscheme moonshine_lowcontrast
-      "colorscheme moonshine_minimal
-      colorscheme gruvbox
-      "colorscheme hybrid_material
-      "
-      "let g:one_allow_italics = 1 " I love italic for comments
-      "colorscheme one
-      "let g:alduin_Shout_Dragon_Aspect = 1 " almost black
-      "colorscheme alduin
+      "colorscheme gruvbox
+      colorscheme base16-gruvbox-dark-medium
 
       "-------------------------------------------------------------------------------
       " some suggestions from coc
@@ -200,14 +190,85 @@
         autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
       augroup END
 
+      "-------------------------------------------------------------------------------
+      " LUA - bufferline
+      "-------------------------------------------------------------------------------
+      " see https://github.com/akinsho/bufferline.nvim
+      lua << EOF
+      require("bufferline").setup{
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        diagnostics = "nvim_lsp"
+      }
+      EOF
+
+
+      "-------------------------------------------------------------------------------
+      " LUA - lspconfig
+      "-------------------------------------------------------------------------------
+      " see https://github.com/neovim/nvim-lspconfig
+      "lua << EOF
+      "local nvim_lsp = require('lspconfig')
+      "local servers = { 'tsserver' }
+      "for _, lsp in ipairs(servers) do
+      "  nvim_lsp[lsp].setup{}
+      "end
+      "EOF
+
+      "-------------------------------------------------------------------------------
+      " LUA - indent blank line
+      "-------------------------------------------------------------------------------
+      " see https://github.com/lukas-reineke/indent-blankline.nvim
+      lua << EOF
+      require("indent_blankline").setup {}
+      EOF
     '';
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
 
-    plugins = with pkgs.vimPlugins; [
-      vim-airline
-      gruvbox
+    #plugins = with pkgs.vimPlugins; [
+    #  neovim-sensible
 
+    #  (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+    #  nvim-treesitter-context
+    #  nvim-ts-rainbow
+
+    #  nvim-lspconfig      # configuring lsp servers
+    #  nvim-compe          # lsp completion menu
+    #  lsp_signature-nvim  # signature hint while typing
+    #  lspkind-nvim        # pictograms for lsp completion items
+
+    #  neoformat           # formatting
+
+    #  nvim-tree-lua       # file tree
+
+    #  nvim-web-devicons   # icons
+
+    #  telescope-nvim      # fuzzy find + preview
+
+    #  indent-blankline-nvim # show indents on blank lines as well
+
+    #  galaxyline-nvim
+    #  nvim-bufferline-lua
+
+    #  nvim-autopairs
+    #  neoscroll-nvim
+    #];
+
+    plugins = with pkgs.vimPlugins; [
       neovim-sensible
+
+      gruvbox
+      nvim-base16
+
+      nvim-web-devicons
+
+      vim-airline
+
+      nvim-bufferline-lua
+
+      indent-blankline-nvim # show indents on blank lines as well
+
+      gitsigns-nvim
 
       vim-nix
       nim-vim
@@ -218,6 +279,7 @@
       coc-python
       coc-vimtex
       coc-yaml
+
     ];
   };
 }

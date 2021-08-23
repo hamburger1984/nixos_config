@@ -88,11 +88,13 @@ in
     vanilla-dmz
 
     #--- Desktop Programs ---#
-    #calibre
+    calibre
     digikam
+    droidcam
+    elementary-planner
     focuswriter
     keepassxc
-    #libreoffice
+    libreoffice
     #lyx
     #marble
     pwsafe
