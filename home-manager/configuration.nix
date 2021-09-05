@@ -46,32 +46,27 @@ in
     gnumake
     httpie
     jetbrains.rider
-    python38Packages.pip
-    python38Packages.pylint
-    python38Packages.flake8
+    python3Packages.pip
+    python3Packages.pylint
+    python3Packages.flake8
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         bbenoist.nix
         ms-python.python
         ms-dotnettools.csharp
+        ms-toolsai.jupyter
         ms-vscode.cpptools
+        nimsaem.nimvscode
+        platformio.platformio-ide
         vscodevim.vim
-      ]
-      ++ vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "platformio-ide";
-          publisher = "platformio";
-          version = "2.3.2";
-          sha256 = "0z7cd6ya0mr10lwdbh47j8if3spwzz2scr8v06jfs0q4h8ybzgf4";
-        }
-        {
-          name = "jupyter";
-          publisher = "ms-toolsai";
-          version = "2021.8.1066828098";
-          sha256 = "1c2h77648h7vg7mv86yhxqn4krfj2q969p72hyglb5jhb1bsq8c2";
-        }
       ];
     })
+    SDL2
+    SDL2_gfx
+    SDL2_image
+    SDL2_mixer
+    SDL2_net
+    SDL2_ttf
 
     #--- micropython ---#
     #adafruit-ampy
@@ -84,40 +79,44 @@ in
     #--- Theming ---#
     adapta-gtk-theme
     adapta-kde-theme
+    bibata-cursors
     papirus-icon-theme
-    vanilla-dmz
+    #vanilla-dmz
+
+    #--- Communication ---#
+    discord
+    signal-desktop
+    tdesktop
+    #teams
+    #trojita
+    zoom-us
 
     #--- Desktop Programs ---#
     calibre
     digikam
     droidcam
     elementary-planner
+    exiftool
     focuswriter
     keepassxc
     libreoffice
     #lyx
     #marble
-    pwsafe
+    #pwsafe
     qmapshack
-    signal-desktop
     #slack
     solaar
     spotify # nonfree
-    tdesktop
-    #teams
 
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
 
-    #trojita
     vlc
-    zoom-us
 
     #--- KDE/Plasma ---#
     ark
-    bibata-cursors
     #calligra
     colord-kde
     #dragon
@@ -134,7 +133,7 @@ in
     kdeApplications.okular
     krita
     partition-manager
-    kdeApplications.partition-manager
+    #kdeApplications.partition-manager
     kdeApplications.spectacle
     kdeFrameworks.bluez-qt
     kdeFrameworks.modemmanager-qt
@@ -156,7 +155,6 @@ in
     redshift-plasma-applet
 
     #--- Games ---#
-    discord
     steam
     #openra
     #zeroad # <- requires broken spidermonkey_38
@@ -176,6 +174,7 @@ in
     #qemu
     #qemu_kvm
     #virtmanager
+    #virtualbox
 
     #--- Bash ---#
     bash

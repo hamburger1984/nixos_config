@@ -164,7 +164,7 @@
   hardware.trackpoint = {
     enable = true;
     #sensitivity = 160; # default=128
-    speed = 100; # default=97
+    speed = 98; # too fast: 100; # default=97
     emulateWheel = true;
   };
 

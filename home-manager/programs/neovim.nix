@@ -264,7 +264,7 @@
 
       vim-airline
 
-      nvim-bufferline-lua
+      bufferline-nvim
 
       indent-blankline-nvim # show indents on blank lines as well
 
