@@ -3,7 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, ... }:
-
+#let
+#  echo = "${pkgs.coreutils}/bin/echo";
+#  tee = "${pkgs.coreutils}/bin/tee";
+#in
 {
   imports =
     [
@@ -221,6 +224,10 @@
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+
+  #services.udev.extraRules = ''
+  #  SUBSYSTEMS=="input", ATTRS{name}=="Keychron K8", RUN+="${echo} 0 | ${tee} /sys/module/hid_apple/parameters/fnmode"
+  #'';
 
   programs.dconf.enable = true;
 
