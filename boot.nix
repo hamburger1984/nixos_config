@@ -20,6 +20,10 @@
     kernelModules = [ "amdgpu" "acpi_call" "kvm-amd" ];
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
+    extraModprobeConfig = ''
+      options hid_apple fnmode=0
+      '';
+
     kernelParams = [ "acpi_backlight=native" "mitigations=off" ];
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
