@@ -32,8 +32,14 @@ in
     nodejs
     platformio
     python3
-    rustc
     zig
+
+    #--- Rust ---
+    cargo
+    clippy
+    rls
+    rustc
+    rustfmt
 
     #--- Development ---#
     #arduino
@@ -52,7 +58,7 @@ in
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         bbenoist.nix
-        ms-python.python
+        #ms-python.python
         ms-dotnettools.csharp
         ms-toolsai.jupyter
         ms-vscode.cpptools
@@ -107,6 +113,7 @@ in
     #slack
     solaar
     spotify # nonfree
+    stellarium
 
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium
@@ -160,10 +167,10 @@ in
     #zeroad # <- requires broken spidermonkey_38
 
     #--- Basic tools ---#
-    exa # todo: alias/replace ls?!
-    zoxide
     broot
+    exa # todo: alias/replace ls?!
     qrcode
+    zoxide
 
     #--- nix development ---#
     #nixpkgs-review

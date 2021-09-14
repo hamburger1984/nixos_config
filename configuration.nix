@@ -11,7 +11,7 @@
   imports =
     [
       # this does not allow to choose my own kernel version
-      #<nixos-hardware/lenovo/thinkpad/l14/amd>
+      <nixos-hardware/lenovo/thinkpad/l14/amd>
 
       ./hardware-configuration.nix
       ./boot.nix
@@ -157,6 +157,7 @@
 
     driSupport = true;
     extraPackages = with pkgs; [ amdvlk libva ];
+    # rocm-opencl-icd <- breaks steam?!
 
     driSupport32Bit = true;
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];

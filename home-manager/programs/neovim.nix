@@ -272,14 +272,15 @@
 
       vim-nix
       nim-vim
+      rust-tools-nvim
 
       coc-nvim
       coc-fzf
       coc-json
       coc-python
+      coc-rust-analyzer
       coc-vimtex
       coc-yaml
-
     ];
   };
 }
