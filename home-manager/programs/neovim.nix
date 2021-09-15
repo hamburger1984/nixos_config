@@ -86,6 +86,17 @@
       map <Leader>b <esc>:new<CR>
 
       "-------------------------------------------------------------------------------
+      " toggle file tree
+      "-------------------------------------------------------------------------------
+      nnoremap <Leader>e :NvimTreeToggle<CR>
+
+      "-------------------------------------------------------------------------------
+      " format file
+      "-------------------------------------------------------------------------------
+      nnoremap <Leader>F :Neoformat<CR>
+      vnoremap <Leader>F :Neoformat<CR>
+
+      "-------------------------------------------------------------------------------
       " close current file, but keep buffers intact
       "-------------------------------------------------------------------------------
       map <Leader>x <esc>:bp\|bd #<CR>
@@ -202,7 +213,6 @@
       }
       EOF
 
-
       "-------------------------------------------------------------------------------
       " LUA - lspconfig
       "-------------------------------------------------------------------------------
@@ -222,65 +232,169 @@
       lua << EOF
       require("indent_blankline").setup {}
       EOF
+
+      "-------------------------------------------------------------------------------
+      " LUA - treesitter
+      "-------------------------------------------------------------------------------
+      " see https://github.com/nvim-treesitter/nvim-treesitter
+      lua << EOF
+      require('nvim-treesitter.configs').setup {
+        -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "go",
+                             "html", "java", "javascript", "json", "latex",
+                             "lua", "markdown", "nix", "python", "ruby",
+                             "rust", "toml", "typescript", "yaml", "zig" },
+        -- List of parsers to ignore installing
+        -- ignore_install = { },
+        highlight = {
+          -- false will disable the whole extension
+          enable = true,
+          -- list of language that will be disabled
+          -- disable = { },
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false,
+        },
+        indent = {
+          -- experimental feature
+          enable = true
+        },
+      }
+      EOF
+
+      " 1. enable toggle fold with <Leader>f
+      " 2. don't have everything collapsed on file load
+      " 3. uncomment treesitter usage for folding
+      "set foldmethod=expr
+      "set foldexpr=nvim_treesitter#foldexpr()
+      "-------------------------------------------------------------------------------
+      " LUA - telescope
+      "-------------------------------------------------------------------------------
+      " see https://github.com/nvim-telescope/telescope.nvim
+      lua << EOF
+      require('telescope').setup{
+        defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case'
+          },
+          prompt_prefix = "> ",
+          selection_caret = "> ",
+          entry_prefix = "  ",
+          initial_mode = "insert",
+          selection_strategy = "reset",
+          sorting_strategy = "descending",
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              mirror = false,
+            },
+            vertical = {
+              mirror = false,
+            },
+          },
+          file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+          file_ignore_patterns = {},
+          generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+          winblend = 0,
+          border = {},
+          borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+          color_devicons = true,
+          use_less = true,
+          path_display = {},
+          set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+          file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+          grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+          qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+          -- Developer configurations: Not meant for general override
+          buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+        }
+      }
+      EOF
+
     '';
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
 
-    #plugins = with pkgs.vimPlugins; [
-    #  neovim-sensible
-
-    #  (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
-    #  nvim-treesitter-context
-    #  nvim-ts-rainbow
-
-    #  nvim-lspconfig      # configuring lsp servers
-    #  nvim-compe          # lsp completion menu
-    #  lsp_signature-nvim  # signature hint while typing
-    #  lspkind-nvim        # pictograms for lsp completion items
-
-    #  neoformat           # formatting
-
-    #  nvim-tree-lua       # file tree
-
-    #  nvim-web-devicons   # icons
-
-    #  telescope-nvim      # fuzzy find + preview
-
-    #  indent-blankline-nvim # show indents on blank lines as well
-
-    #  galaxyline-nvim
-    #  nvim-bufferline-lua
-
-    #  nvim-autopairs
-    #  neoscroll-nvim
-    #];
-
     plugins = with pkgs.vimPlugins; [
       neovim-sensible
-
-      gruvbox
       nvim-base16
 
-      nvim-web-devicons
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+      nvim-treesitter-context
+      nvim-ts-rainbow
 
-      vim-airline
+      nvim-cmp            # completion menu
+      cmp-buffer          # buffer completion source
 
-      bufferline-nvim
+      nvim-lspconfig      # configuring lsp servers
+      lsp_signature-nvim  # signature hint while typing
+      lspkind-nvim        # pictograms for lsp completion items
+
+      neoformat           # formatting
+
+      nvim-tree-lua       # file tree
+
+      nvim-web-devicons   # icons
+
+      telescope-nvim      # fuzzy find + preview
 
       indent-blankline-nvim # show indents on blank lines as well
 
       gitsigns-nvim
+      galaxyline-nvim
+      bufferline-nvim
 
-      vim-nix
+      nvim-autopairs
+      neoscroll-nvim
+
+      # languages
       nim-vim
+      python-mode
       rust-tools-nvim
-
-      coc-nvim
-      coc-fzf
-      coc-json
-      coc-python
-      coc-rust-analyzer
-      coc-vimtex
-      coc-yaml
+      rust-vim
+      vim-csharp
+      vim-go
+      vim-json
+      vim-lua
+      vim-nix
+      zig-vim
     ];
+
+    #plugins = with pkgs.vimPlugins; [
+    #  neovim-sensible
+
+    #  gruvbox
+    #  nvim-base16
+
+    #  nvim-web-devicons
+
+    #  vim-airline
+
+    #  bufferline-nvim
+
+    #  indent-blankline-nvim # show indents on blank lines as well
+
+    #  gitsigns-nvim
+
+    #  vim-nix
+    #  nim-vim
+    #  rust-tools-nvim
+
+    #  coc-nvim
+    #  coc-fzf
+    #  coc-json
+    #  coc-python
+    #  coc-rust-analyzer
+    #  coc-vimtex
+    #  coc-yaml
+    #];
   };
 }
