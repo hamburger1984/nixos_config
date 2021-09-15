@@ -47,6 +47,7 @@ in
     #dotnetPackages.GitVersionTree
     #gibo
     gitAndTools.gitui
+    gitAndTools.git-cliff
     gitAndTools.git-ignore
     gitAndTools.tig
     gnumake

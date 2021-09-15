@@ -28,7 +28,8 @@
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_5_14;
+    #kernelPackages = pkgs.linuxPackages_testing;
     #kernelPackages = pkgs.linuxPackages_latest;
   };
 }
