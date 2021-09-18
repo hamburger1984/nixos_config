@@ -150,7 +150,7 @@ in
     plasma-browser-integration
     plasma5.bluedevil
     plasma5.breeze-grub
-    plasma5.breeze-gtk
+    #plasma5.breeze-gtk
     plasma5.breeze-qt5
     plasma5.kdeplasma-addons
     plasma5.kwayland-integration

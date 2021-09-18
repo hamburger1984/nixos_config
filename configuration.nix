@@ -185,7 +185,10 @@
       xterm.enable = false;
 
       # Enable the KDE Desktop Environment.
-      plasma5.enable = true;
+      plasma5 = {
+        enable = true;
+        #runUsingSystemd = true;
+      };
 
       # Enable the Gnome Desktop Environment.
       #gnome3.enable = true;
@@ -206,7 +209,10 @@
 
     displayManager = {
       # KDE
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
+      };
 
       # Gnome3
       # gdm.enable = true;
@@ -225,6 +231,7 @@
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+  services.udev.packages = [ pkgs.logitech-udev-rules ];
 
   #services.udev.extraRules = ''
   #  SUBSYSTEMS=="input", ATTRS{name}=="Keychron K8", RUN+="${echo} 0 | ${tee} /sys/module/hid_apple/parameters/fnmode"
