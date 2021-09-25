@@ -68,12 +68,12 @@ in
         vscodevim.vim
       ];
     })
-    SDL2
-    SDL2_gfx
-    SDL2_image
-    SDL2_mixer
-    SDL2_net
-    SDL2_ttf
+    #SDL2
+    #SDL2_gfx
+    #SDL2_image
+    #SDL2_mixer
+    #SDL2_net
+    #SDL2_ttf
 
     #--- micropython ---#
     #adafruit-ampy
@@ -93,7 +93,7 @@ in
     #--- Communication ---#
     discord
     signal-desktop
-    tdesktop
+    #tdesktop
     #teams
     #trojita
     zoom-us
@@ -101,23 +101,24 @@ in
     #--- Desktop Programs ---#
     calibre
     digikam
-    droidcam
-    elementary-planner
+    #droidcam
+    #elementary-planner
     exiftool
-    focuswriter
+    #focuswriter
     keepassxc
     libreoffice
     #lyx
     #marble
     #pwsafe
     qmapshack
+    skrooge
     #slack
     solaar
     spotify # nonfree
     stellarium
 
     #texlive.combined.scheme-basic
-    texlive.combined.scheme-medium
+    # > texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
 
@@ -149,29 +150,27 @@ in
     kdeFrameworks.syntax-highlighting
     plasma-browser-integration
     plasma5.bluedevil
-    plasma5.breeze-grub
-    #plasma5.breeze-gtk
+    plasma5.breeze-gtk
     plasma5.breeze-qt5
+    plasma5.breeze-plymouth
     plasma5.kdeplasma-addons
     plasma5.kwayland-integration
     plasma5.plasma-browser-integration
     plasma5.plasma-disks
     plasma5.plasma-nm
+    plasma5.plasma-thunderbolt
     plasma5.powerdevil
     plasma5.sddm-kcm
     plasma5.xdg-desktop-portal-kde
     redshift-plasma-applet
 
+    #--- Gnome ---#
+    #gnomeExtensions.appindicator
+
     #--- Games ---#
     steam
     #openra
     #zeroad # <- requires broken spidermonkey_38
-
-    #--- Basic tools ---#
-    broot
-    exa # todo: alias/replace ls?!
-    qrcode
-    zoxide
 
     #--- nix development ---#
     #nixpkgs-review
@@ -188,6 +187,10 @@ in
     bash
     bash-completion
     powerline-go
+    broot
+    exa # todo: alias/replace ls?!
+    fzf
+    zoxide
 
     #--- Bat ---#
     bat

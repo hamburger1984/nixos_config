@@ -99,8 +99,17 @@
       # export dropbox="$HOME/Dropbox"
       #----- stolen from: https://github.com/mrzool/bash-sensible -----#
 
+      # Workaround for nix-shell --pure
+      if [ "$IN_NIX_SHELL" == "pure" ]; then
+        if [ -x "$HOME/.nix-profile/bin/powerline-go" ]; then
+          alias powerline-go="$HOME/.nix-profile/bin/powerline-go"
+        elif [ -x "/run/current-system/sw/bin/powerline-go" ]; then
+          alias powerline-go="/run/current-system/sw/bin/powerline-go"
+        fi
+      fi
+
       function _update_ps1() {
-        PS1="$(powerline-go -error $?)"
+        PS1="$(powerline-go -error $? -modules time,user,host,perms,cwd,git,hg,jobs,exit)"
       }
 
       if [ "$TERM" != "linux" ] && [ -x "$(command -v powerline-go)" ]; then
@@ -135,12 +144,6 @@
               return "$code"
           fi
       }
-
-
-      # fix startup window of rider
-      # .. see also: https://intellij-support.jetbrains.com/hc/en-us/community/posts/360010714820-IDE-welcome-window-disappears-from-window-manager-KDE-window-selection-list
-      export _JAVA_AWT_WM_NONREPARENTING=1
-
     '';
   };
 }

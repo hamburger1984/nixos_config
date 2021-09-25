@@ -86,7 +86,10 @@
   #services.openssh.enable = true;
 
   # Enable battery management
-  services.tlp.enable = true;
+  #services.tlp.enable = true;
+
+  # Replaces tlp
+  services.power-profiles-daemon.enable = true;
 
   # Enable fwupd .. firmware update
   services.fwupd.enable = true;
@@ -172,6 +175,9 @@
     emulateWheel = true;
   };
 
+  # pipewire does not like having pulseaudio enabled?!
+  hardware.pulseaudio.enable = false;
+
   services.xserver = {
     enable = true;
 
@@ -187,11 +193,11 @@
       # Enable the KDE Desktop Environment.
       plasma5 = {
         enable = true;
-        #runUsingSystemd = true;
+        #enable = false;
       };
 
       # Enable the Gnome Desktop Environment.
-      #gnome3.enable = true;
+      #gnome.enable = true;
     };
 
     # AMD driver
@@ -215,7 +221,7 @@
       };
 
       # Gnome3
-      # gdm.enable = true;
+      #gdm.enable = true;
     };
   };
 
@@ -230,8 +236,11 @@
   systemd.services.powertop-autotune.enable = false;
 
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
-  #services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
-  services.udev.packages = [ pkgs.logitech-udev-rules ];
+  services.udev.packages = [
+    #pkgs.gnome3.gnome-settings-daemon
+    pkgs.logitech-udev-rules
+  ];
+  #services.udev.packages = [ pkgs.logitech-udev-rules ];
 
   #services.udev.extraRules = ''
   #  SUBSYSTEMS=="input", ATTRS{name}=="Keychron K8", RUN+="${echo} 0 | ${tee} /sys/module/hid_apple/parameters/fnmode"
@@ -269,14 +278,16 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 60d";
+      options = "--delete-older-than 30d";
     };
 
     extraOptions = ''
+      http2 = true
+      keep-derivations = true
+      keep-outputs = true
+      show-trace = true
       substituters = https://cache.nixos.org https://cache.ngi0.nixos.org/
       trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA=
-      keep-outputs = true
-      keep-derivations = true
     '';
 
     #contentAddressedByDefault = true;
@@ -337,7 +348,8 @@
     #syslinux # installing clonezilla needs this
 
     # monitoring
-    bpytop
+    btop
+    #bpytop
     htop
     iftop
     iotop
@@ -347,6 +359,7 @@
     smartmontools
     strace
     #sysbench
+    usbtop
 
     # logitech
     logitech-udev-rules
