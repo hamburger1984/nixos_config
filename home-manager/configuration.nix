@@ -51,6 +51,7 @@ in
     gitAndTools.git-ignore
     gitAndTools.tig
     gnumake
+    #gnuplot
     httpie
     jetbrains.rider
     python3Packages.pip
@@ -68,12 +69,6 @@ in
         vscodevim.vim
       ];
     })
-    #SDL2
-    #SDL2_gfx
-    #SDL2_image
-    #SDL2_mixer
-    #SDL2_net
-    #SDL2_ttf
 
     #--- micropython ---#
     #adafruit-ampy
@@ -96,6 +91,7 @@ in
     #tdesktop
     #teams
     #trojita
+    #whatsapp-for-linux
     zoom-us
 
     #--- Desktop Programs ---#
@@ -109,6 +105,7 @@ in
     libreoffice
     #lyx
     #marble
+    owncloud-client
     #pwsafe
     qmapshack
     skrooge
@@ -118,7 +115,7 @@ in
     stellarium
 
     #texlive.combined.scheme-basic
-    # > texlive.combined.scheme-medium
+    texlive.combined.scheme-medium
     #texlive.combined.scheme-full
     #texlive.combined.scheme-tetex
 
@@ -126,29 +123,31 @@ in
 
     #--- KDE/Plasma ---#
     ark
-    #calligra
+    breeze-gtk
+    breeze-plymouth
+    breeze-qt5
     colord-kde
-    #dragon
+    dolphin-plugins
     filelight
     gwenview
     kamoso
     kate
     kcalc
     kcharselect
-    #kdeApplications.kdenlive
-    #konversation
-    #ktouch
     kdeApplications.ksystemlog
     kdeApplications.okular
+    kdeconnect-kde
+    kdegraphics-thumbnailers
+    klines
+    kpat
     krita
+    krohnkite
     partition-manager
-    #kdeApplications.partition-manager
     kdeApplications.spectacle
     kdeFrameworks.bluez-qt
     kdeFrameworks.modemmanager-qt
     kdeFrameworks.networkmanager-qt
     kdeFrameworks.syntax-highlighting
-    plasma-browser-integration
     plasma5.bluedevil
     plasma5.breeze-gtk
     plasma5.breeze-qt5
@@ -163,6 +162,12 @@ in
     plasma5.sddm-kcm
     plasma5.xdg-desktop-portal-kde
     redshift-plasma-applet
+    sddm-kcm
+    #calligra
+    #dragon
+    #kdenlive
+    #konversation
+    #ktouch
 
     #--- Gnome ---#
     #gnomeExtensions.appindicator
@@ -186,11 +191,15 @@ in
     #--- Bash ---#
     bash
     bash-completion
-    powerline-go
+    bashate
     broot
     exa # todo: alias/replace ls?!
     fzf
+    powerline-go
     zoxide
+
+    #--- Powershell ---#
+    #powershell
 
     #--- Bat ---#
     bat

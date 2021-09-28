@@ -109,7 +109,7 @@
       fi
 
       function _update_ps1() {
-        PS1="$(powerline-go -error $? -modules time,user,host,perms,cwd,git,hg,jobs,exit)"
+        PS1="$(powerline-go -error $? -hostname-only-if-ssh -modules time,venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,root -jobs $(jobs -p | wc -l))"
       }
 
       if [ "$TERM" != "linux" ] && [ -x "$(command -v powerline-go)" ]; then
@@ -119,9 +119,10 @@
 
       export PATH="$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin"
 
-      alias ls="exa"
-      alias l="exa -l"
-      alias ll="exa -la"
+      alias ls="exa --icons"
+      alias l="exa -l --icons"
+      alias ll="exa -la --icons"
+      alias latest="exa -l -s created --icons"
 
       eval "$(zoxide init bash)"
 
