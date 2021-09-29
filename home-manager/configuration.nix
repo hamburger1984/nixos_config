@@ -44,11 +44,13 @@ in
     #--- Development ---#
     #arduino
     #docker-compose
-    #dotnetPackages.GitVersionTree
-    #gibo
+    gitAndTools.delta
     gitAndTools.gitui
     gitAndTools.git-cliff
     gitAndTools.git-ignore
+    gitAndTools.git-machete
+    gitAndTools.git-standup
+    gitAndTools.git-when-merged
     gitAndTools.tig
     gnumake
     #gnuplot
@@ -113,6 +115,7 @@ in
     solaar
     spotify # nonfree
     stellarium
+    vnote
 
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium

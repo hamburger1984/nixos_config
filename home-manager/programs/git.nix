@@ -12,7 +12,29 @@
       core.editor = "nvim";
       colur.ui = true;
       color.diff = true;
-      pull.rebase = true;
+      fetch.prune = true;
+      #pull.rebase = true;
+      #push.default = simple;
+    };
+
+    delta = {
+      enable = true;
+
+      options = {
+        whitespace-error-style = "22 reverse";
+        line-numbers = true;
+        line-numbers-minus-style = "#666666";
+        line-numbers-zero-style = "#666666";
+        line-numbers-plus-style = "#666666";
+        line-numbers-left-format = "{nm:>4}┊";
+        line-numbers-right-format = "{np:>4}│";
+        line-numbers-left-style = "blue";
+        line-numbers-right-style = "blue";
+        commit-decoration-style = "bold yellow box ul";
+        file-style = "bold yellow ul";
+        file-decoration-style = "none";
+        hunk-header-decoration-style = "yellow box";
+      };
     };
   };
 }
