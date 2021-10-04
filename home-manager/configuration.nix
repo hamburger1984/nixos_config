@@ -30,16 +30,16 @@ in
     lua
     nim
     nodejs
-    platformio
+    #platformio
     python3
     zig
 
     #--- Rust ---
-    cargo
-    clippy
-    rls
-    rustc
-    rustfmt
+    #cargo
+    #clippy
+    #rls
+    #rustc
+    #rustfmt
 
     #--- Development ---#
     #arduino
@@ -61,13 +61,13 @@ in
     python3Packages.flake8
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
-        bbenoist.nix
+        #bbenoist.nix
         #ms-python.python
-        ms-dotnettools.csharp
-        ms-toolsai.jupyter
-        ms-vscode.cpptools
-        nimsaem.nimvscode
-        platformio.platformio-ide
+        #ms-dotnettools.csharp
+        #ms-toolsai.jupyter
+        #ms-vscode.cpptools
+        #nimsaem.nimvscode
+        #platformio.platformio-ide
         vscodevim.vim
       ];
     })
@@ -78,7 +78,7 @@ in
     #micropython
     #mpfshell
     #rshell
-    #thonny
+    thonny
 
     #--- Theming ---#
     adapta-gtk-theme
@@ -90,6 +90,7 @@ in
     #--- Communication ---#
     discord
     signal-desktop
+    #slack
     #tdesktop
     #teams
     #trojita
@@ -98,20 +99,16 @@ in
 
     #--- Desktop Programs ---#
     calibre
-    digikam
+    #digikam # pulls marble
     #droidcam
     #elementary-planner
     exiftool
     #focuswriter
     keepassxc
     libreoffice
-    #lyx
-    #marble
     owncloud-client
-    #pwsafe
-    qmapshack
+    #qmapshack
     skrooge
-    #slack
     solaar
     spotify # nonfree
     stellarium
@@ -123,6 +120,10 @@ in
     #texlive.combined.scheme-tetex
 
     vlc
+    youtube-dl
+
+    #--- WMs ---#
+    #hikari
 
     #--- KDE/Plasma ---#
     ark
@@ -156,7 +157,9 @@ in
     plasma5.breeze-qt5
     plasma5.breeze-plymouth
     plasma5.kdeplasma-addons
-    plasma5.kwayland-integration
+    #kwayland
+    #plasma5.kwayland-integration
+    #plasma5.kwayland-server
     plasma5.plasma-browser-integration
     plasma5.plasma-disks
     plasma5.plasma-nm

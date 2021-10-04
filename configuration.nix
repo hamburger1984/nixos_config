@@ -10,7 +10,6 @@
 {
   imports =
     [
-      # this does not allow to choose my own kernel version
       <nixos-hardware/lenovo/thinkpad/l14/amd>
 
       ./hardware-configuration.nix
@@ -76,6 +75,7 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
+
   #programs.gnupg.agent = {
   #  enable = true;
   #  enableSSHSupport = true;
@@ -84,6 +84,9 @@
 
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
+
+  # if multiple desktops are enabled, use this:
+  #programs.ssh.askPassword = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 
   # Enable battery management
   #services.tlp.enable = true;
@@ -145,6 +148,9 @@
     #];
   };
 
+  # for pipewire
+  hardware.pulseaudio.enable = false;
+
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -190,6 +196,7 @@
 
       # Enable the Gnome Desktop Environment.
       #gnome.enable = true;
+
     };
 
     # AMD driver
@@ -212,7 +219,7 @@
       # KDE
       sddm = {
         enable = true;
-        settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
+        #settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
       };
 
       # Gnome3
@@ -262,7 +269,9 @@
   users.users.andreas = {
     isNormalUser = true;
     # "libvirtd" <- not using libvirt currently
-    extraGroups = [ "audio" "dialout" "networkmanager" "wheel" ]; # Enable audio, networkmanager, sudo
+
+    # Enable audio, serial port access, networkmanager, sudo
+    extraGroups = [ "audio" "dialout" "networkmanager" "wheel" ];
   };
 
   home-manager.useUserPackages = true;
@@ -335,6 +344,7 @@
     vulkan-tools
     wget
     whois
+    wl-clipboard
     xclip
     xz
 

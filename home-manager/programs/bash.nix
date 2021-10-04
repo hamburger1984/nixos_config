@@ -115,7 +115,6 @@
       if [ "$TERM" != "linux" ] && [ -x "$(command -v powerline-go)" ]; then
         PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
       fi
-      export HISTIGNORE="&:[ ]*:exit:ls:l:bg:fg:history:clear"
 
       export PATH="$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin"
 
@@ -123,6 +122,10 @@
       alias l="exa -l --icons"
       alias ll="exa -la --icons"
       alias latest="exa -l -s created --icons"
+
+      # git
+      alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
+      alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --all --prune" \;'
 
       eval "$(zoxide init bash)"
 

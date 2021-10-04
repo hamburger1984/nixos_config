@@ -150,6 +150,12 @@
       inoremap <silent> <C-n> <esc>:nohl<CR>
 
       "-------------------------------------------------------------------------------
+      " filetype plugins
+      "-------------------------------------------------------------------------------
+      filetype plugin on
+      filetype indent on
+
+      "-------------------------------------------------------------------------------
       " Highlight multiple spaces and trailing whitespace
       "-------------------------------------------------------------------------------
       set list
@@ -179,7 +185,7 @@
       set nobackup
       set nowritebackup
       " give more space for displaying messages
-      set cmdheight=2
+      "set cmdheight=2
       " less delays
       set updatetime=300
       " don't pass messages to |ins-completion-menu|
@@ -234,6 +240,14 @@
       EOF
 
       "-------------------------------------------------------------------------------
+      " LUA - file tree
+      "-------------------------------------------------------------------------------
+      " see https://github.com/kyazdani42/nvim-tree.lua
+      lua << EOF
+      require('nvim-tree').setup {}
+      EOF
+
+      "-------------------------------------------------------------------------------
       " LUA - treesitter
       "-------------------------------------------------------------------------------
       " see https://github.com/nvim-treesitter/nvim-treesitter
@@ -269,6 +283,7 @@
       " 3. uncomment treesitter usage for folding
       "set foldmethod=expr
       "set foldexpr=nvim_treesitter#foldexpr()
+
       "-------------------------------------------------------------------------------
       " LUA - telescope
       "-------------------------------------------------------------------------------
