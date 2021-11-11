@@ -4,7 +4,8 @@ let
   libsForQt5 = pkgs.plasma5Packages;
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
-  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_5_0 sdk_3_1 aspnetcore_5_0 aspnetcore_3_1 ];
+  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_5_0 sdk_3_1 aspnetcore_5_0 aspnetcore_3_1 ];
+  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 runtime_6_0 runtime_5_0 aspnetcore_6_0 aspnetcore_5_0 ];
 in
 {
   imports = [
@@ -25,8 +26,9 @@ in
 
     #--- Languages ---#
     dotnetCombined
-    #elixir
+    elixir
     #erlang
+    go
     lua
     nim
     nodejs
@@ -83,15 +85,18 @@ in
     #--- Theming ---#
     adapta-gtk-theme
     adapta-kde-theme
+    arc-kde-theme
+    arc-theme
     bibata-cursors
+    materia-kde-theme
+    materia-theme
     papirus-icon-theme
-    #vanilla-dmz
 
     #--- Communication ---#
     discord
     signal-desktop
     #slack
-    #tdesktop
+    tdesktop
     #teams
     #trojita
     #whatsapp-for-linux
@@ -99,20 +104,20 @@ in
 
     #--- Desktop Programs ---#
     calibre
-    #digikam # pulls marble
     #droidcam
     #elementary-planner
     exiftool
     #focuswriter
     keepassxc
     libreoffice
-    owncloud-client
-    #qmapshack
-    skrooge
+    #lite-xl
+    #owncloud-client
+    qmapshack
+    #skrooge
     solaar
     spotify # nonfree
     stellarium
-    vnote
+    #vnote
 
     #texlive.combined.scheme-basic
     texlive.combined.scheme-medium
@@ -127,46 +132,45 @@ in
 
     #--- KDE/Plasma ---#
     ark
-    breeze-gtk
-    breeze-plymouth
+    #breeze-gtk
+    #breeze-plymouth
     breeze-qt5
     colord-kde
+    #digikam
     dolphin-plugins
     filelight
     gwenview
     kamoso
-    kate
+    #kate
     kcalc
-    kcharselect
-    kdeApplications.ksystemlog
-    kdeApplications.okular
-    kdeconnect-kde
+    #kcharselect
+    ksystemlog
+    okular
+    #kdeconnect-kde
     kdegraphics-thumbnailers
     klines
     kpat
-    krita
-    krohnkite
+    #krita
+    #krohnkite
     partition-manager
-    kdeApplications.spectacle
-    kdeFrameworks.bluez-qt
-    kdeFrameworks.modemmanager-qt
-    kdeFrameworks.networkmanager-qt
-    kdeFrameworks.syntax-highlighting
-    plasma5.bluedevil
-    plasma5.breeze-gtk
-    plasma5.breeze-qt5
-    plasma5.breeze-plymouth
-    plasma5.kdeplasma-addons
-    #kwayland
+    spectacle
+    bluez-qt
+    modemmanager-qt
+    networkmanager-qt
+    syntax-highlighting
+    kwayland
+    #marble
+    bluedevil
+    kdeplasma-addons
     #plasma5.kwayland-integration
     #plasma5.kwayland-server
-    plasma5.plasma-browser-integration
-    plasma5.plasma-disks
-    plasma5.plasma-nm
-    plasma5.plasma-thunderbolt
-    plasma5.powerdevil
-    plasma5.sddm-kcm
-    plasma5.xdg-desktop-portal-kde
+    plasma-browser-integration
+    plasma-disks
+    plasma-nm
+    plasma-thunderbolt
+    powerdevil
+    sddm-kcm
+    xdg-desktop-portal-kde
     redshift-plasma-applet
     sddm-kcm
     #calligra
@@ -203,6 +207,7 @@ in
     fzf
     powerline-go
     zoxide
+    taskwarrior
 
     #--- Powershell ---#
     #powershell

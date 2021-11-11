@@ -376,6 +376,7 @@
       rust-tools-nvim
       rust-vim
       vim-csharp
+      vim-elixir
       vim-go
       vim-json
       vim-lua

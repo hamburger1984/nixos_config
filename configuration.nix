@@ -76,12 +76,6 @@
   # started in user sessions.
   # programs.mtr.enable = true;
 
-  #programs.gnupg.agent = {
-  #  enable = true;
-  #  enableSSHSupport = true;
-  #  pinentryFlavor = "gnome3";
-  #};
-
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 
@@ -98,7 +92,12 @@
   services.fwupd.enable = true;
 
   # Fingerprints?! broken?!
-  services.fprintd.enable = true;
+  services.fprintd = {
+    enable = true;
+    #tod.enable = true;
+    #tod.driver = pkgs.libfprint-tod;
+    #tod.driver = pkgs.libfprint-2-tod1-goodix;
+  };
   security.pam.services.login.fprintAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
 
