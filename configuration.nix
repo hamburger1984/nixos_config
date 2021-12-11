@@ -18,7 +18,6 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
-  #nixpkgs.config.allowBroken = true;
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -56,8 +55,10 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
+    font = "${pkgs.powerline-fonts}/share/consolefonts/ter-powerline-v18n.psf.gz";
+    #font = "Lat2-Terminus16";
     keyMap = "de";
+    earlySetup = true;
   };
 
   # Set your time zone.
@@ -92,12 +93,12 @@
   services.fwupd.enable = true;
 
   # Fingerprints?! broken?!
-  services.fprintd = {
-    enable = true;
-    #tod.enable = true;
-    #tod.driver = pkgs.libfprint-tod;
-    #tod.driver = pkgs.libfprint-2-tod1-goodix;
-  };
+  #services.fprintd = {
+  #  enable = true;
+  #  #tod.enable = true;
+  #  #tod.driver = pkgs.libfprint-tod;
+  #  #tod.driver = pkgs.libfprint-2-tod1-goodix;
+  #};
   security.pam.services.login.fprintAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
 
@@ -178,6 +179,8 @@
     emulateWheel = true;
   };
 
+  services.colord.enable = true;
+
   services.xserver = {
     enable = true;
 
@@ -253,11 +256,12 @@
     enableDefaultFonts = true;
 
     fonts = with pkgs; [
-      fira-code
-      hasklig
-      inconsolata-nerdfont
+      #fira-code
+      #hasklig
+      #inconsolata-nerdfont
       nerdfonts
-      #powerline-fonts
+      unifont
+      powerline-fonts
     ];
   };
 
@@ -337,7 +341,7 @@
     pwgen
     rsync
     silver-searcher
-    tree
+    #tree
     unclutter
     usbutils
     vulkan-tools

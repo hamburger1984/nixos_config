@@ -366,22 +366,23 @@
       gitsigns-nvim
       galaxyline-nvim
       bufferline-nvim
+      lazygit-nvim
 
       nvim-autopairs
       neoscroll-nvim
 
       # languages
       nim-vim
-      python-mode
-      rust-tools-nvim
-      rust-vim
+      #python-mode
+      #rust-tools-nvim
+      #rust-vim
       vim-csharp
-      vim-elixir
-      vim-go
+      #vim-elixir
+      #vim-go
       vim-json
       vim-lua
       vim-nix
-      zig-vim
+      #zig-vim
     ];
 
     #plugins = with pkgs.vimPlugins; [

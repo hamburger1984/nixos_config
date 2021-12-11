@@ -4,8 +4,16 @@ let
   libsForQt5 = pkgs.plasma5Packages;
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
+  # works
   #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_5_0 sdk_3_1 aspnetcore_5_0 aspnetcore_3_1 ];
-  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 runtime_6_0 runtime_5_0 aspnetcore_6_0 aspnetcore_5_0 ];
+
+  # works
+  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 aspnetcore_6_0 ];
+
+  # does not work
+  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 sdk_3_1 runtime_6_0 runtime_5_0 runtime_3_1 aspnetcore_6_0 aspnetcore_5_0 aspnetcore_3_1 ];
+  # also broken
+  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 sdk_3_1 aspnetcore_6_0 aspnetcore_5_0 aspnetcore_3_1 ];
 in
 {
   imports = [
@@ -27,14 +35,14 @@ in
     #--- Languages ---#
     dotnetCombined
     elixir
-    #erlang
+    erlang
     go
     lua
     nim
     nodejs
     #platformio
     python3
-    zig
+    #zig
 
     #--- Rust ---
     #cargo
@@ -46,21 +54,22 @@ in
     #--- Development ---#
     #arduino
     #docker-compose
-    gitAndTools.delta
-    gitAndTools.gitui
-    gitAndTools.git-cliff
+    lazygit
+    #gitAndTools.delta
+    #gitAndTools.gitui
+    #gitAndTools.git-cliff
     gitAndTools.git-ignore
     gitAndTools.git-machete
     gitAndTools.git-standup
     gitAndTools.git-when-merged
-    gitAndTools.tig
-    gnumake
+    #gitAndTools.tig
+    #gnumake
     #gnuplot
-    httpie
+    #httpie
     jetbrains.rider
     python3Packages.pip
-    python3Packages.pylint
-    python3Packages.flake8
+    #python3Packages.pylint
+    #python3Packages.flake8
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         #bbenoist.nix
@@ -109,7 +118,7 @@ in
     exiftool
     #focuswriter
     keepassxc
-    libreoffice
+    #libreoffice
     #lite-xl
     #owncloud-client
     qmapshack
@@ -119,13 +128,10 @@ in
     stellarium
     #vnote
 
-    #texlive.combined.scheme-basic
-    texlive.combined.scheme-medium
-    #texlive.combined.scheme-full
-    #texlive.combined.scheme-tetex
+    #texlive.combined.scheme-medium
 
     vlc
-    youtube-dl
+    #youtube-dl
 
     #--- WMs ---#
     #hikari
@@ -134,7 +140,7 @@ in
     ark
     #breeze-gtk
     #breeze-plymouth
-    breeze-qt5
+    #breeze-qt5
     colord-kde
     #digikam
     dolphin-plugins
