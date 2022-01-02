@@ -37,6 +37,8 @@ in
     elixir
     erlang
     go
+    kotlin
+    kotlin-native
     lua
     nim
     nodejs
@@ -51,6 +53,12 @@ in
     #rustc
     #rustfmt
 
+    #--- development support ---#
+    omnisharp-roslyn
+    python-language-server
+    kotlin-language-server
+    gnuplot
+
     #--- Development ---#
     #arduino
     #docker-compose
@@ -63,9 +71,7 @@ in
     gitAndTools.git-standup
     gitAndTools.git-when-merged
     #gitAndTools.tig
-    #gnumake
-    #gnuplot
-    #httpie
+    #jetbrains.clion
     jetbrains.rider
     python3Packages.pip
     #python3Packages.pylint
@@ -114,7 +120,6 @@ in
     #--- Desktop Programs ---#
     calibre
     #droidcam
-    #elementary-planner
     exiftool
     #focuswriter
     keepassxc
@@ -123,7 +128,7 @@ in
     #owncloud-client
     qmapshack
     #skrooge
-    solaar
+    #solaar
     spotify # nonfree
     stellarium
     #vnote
@@ -184,9 +189,6 @@ in
     #kdenlive
     #konversation
     #ktouch
-
-    #--- Gnome ---#
-    #gnomeExtensions.appindicator
 
     #--- Games ---#
     steam

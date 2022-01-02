@@ -93,14 +93,15 @@
   services.fwupd.enable = true;
 
   # Fingerprints?! broken?!
-  #services.fprintd = {
+  services.fprintd = {
+    enable = false;
   #  enable = true;
   #  #tod.enable = true;
   #  #tod.driver = pkgs.libfprint-tod;
   #  #tod.driver = pkgs.libfprint-2-tod1-goodix;
-  #};
-  security.pam.services.login.fprintAuth = true;
-  security.pam.services.xscreensaver.fprintAuth = true;
+  };
+  #security.pam.services.login.fprintAuth = true;
+  #security.pam.services.xscreensaver.fprintAuth = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -109,9 +110,23 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa.enable = false;
+    alsa.support32Bit = false;
     pulse.enable = true;
+
+    # Crackling issues?
+    config.pipewire = {
+      "context.properties" = {
+        #"default.clock.rate" = 48000;
+        "default.clock.allowed-rates" = [ 44100 48000 96000 ];
+        #"default.clock.min-quantum" = 32;
+        #"default.clock.max-quantum" = 768;
+        #"default.clock.quantum" = 32;
+        #"vm.overrides" = {
+        #  "default.clock.quantum" = 32;
+        #};
+      };
+    };
 
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
@@ -292,6 +307,7 @@
     };
 
     extraOptions = ''
+      experimental-features = nix-command
       http2 = true
       keep-derivations = true
       keep-outputs = true
@@ -375,5 +391,6 @@
     llvm
 
     gparted
+    ntfs3g
   ];
 }

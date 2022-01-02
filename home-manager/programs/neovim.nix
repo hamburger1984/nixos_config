@@ -231,6 +231,42 @@
       "end
       "EOF
 
+
+      "-------------------------------------------------------------------------------
+      " LUA - cmp
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      -- autocomplete config
+      local cmp = require 'cmp'
+      cmp.setup {
+        mapping = {
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+        }
+      }
+      EOF
+
+      "-------------------------------------------------------------------------------
+      " LUA - omnisharp lsp
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      -- omnisharp lsp config
+      require'lspconfig'.omnisharp.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = function(_, bufnr)
+          vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end,
+        cmd = { "/etc/profiles/per-user/andreas/bin/omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
+      }
+      EOF
+
       "-------------------------------------------------------------------------------
       " LUA - indent blank line
       "-------------------------------------------------------------------------------
@@ -335,6 +371,13 @@
       }
       EOF
 
+      "-------------------------------------------------------------------------------
+      " C# - OmniSharp-Vim
+      "-------------------------------------------------------------------------------
+      " see https://github.com/OmniSharp/omnisharp-vim
+      "let g:OmniSharp_server_path = '/etc/profiles/per-user/andreas/bin/omnisharp'
+      "let g:OmniSharp_log_dir = '/tmp/omnisharp-vim/'
+      "let g:OmniSharp_highlighting = 3
     '';
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
 
@@ -348,6 +391,8 @@
 
       nvim-cmp            # completion menu
       cmp-buffer          # buffer completion source
+      cmp-nvim-lsp        # lsp completion source(?)
+
 
       nvim-lspconfig      # configuring lsp servers
       lsp_signature-nvim  # signature hint while typing
@@ -373,45 +418,19 @@
 
       # languages
       nim-vim
-      #python-mode
+      #omnisharp-vim
+      kotlin-vim
+      python-mode
       #rust-tools-nvim
       #rust-vim
       vim-csharp
-      #vim-elixir
-      #vim-go
+      vim-fsharp
+      vim-elixir
+      vim-go
       vim-json
       vim-lua
       vim-nix
       #zig-vim
     ];
-
-    #plugins = with pkgs.vimPlugins; [
-    #  neovim-sensible
-
-    #  gruvbox
-    #  nvim-base16
-
-    #  nvim-web-devicons
-
-    #  vim-airline
-
-    #  bufferline-nvim
-
-    #  indent-blankline-nvim # show indents on blank lines as well
-
-    #  gitsigns-nvim
-
-    #  vim-nix
-    #  nim-vim
-    #  rust-tools-nvim
-
-    #  coc-nvim
-    #  coc-fzf
-    #  coc-json
-    #  coc-python
-    #  coc-rust-analyzer
-    #  coc-vimtex
-    #  coc-yaml
-    #];
   };
 }
