@@ -126,7 +126,9 @@ in
     #libreoffice
     #lite-xl
     #owncloud-client
+    pinta
     qmapshack
+    qownnotes
     #skrooge
     #solaar
     spotify # nonfree
@@ -135,7 +137,7 @@ in
 
     #texlive.combined.scheme-medium
 
-    vlc
+    #vlc
     #youtube-dl
 
     #--- WMs ---#

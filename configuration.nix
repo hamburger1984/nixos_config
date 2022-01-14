@@ -106,10 +106,16 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  #Pipewire
+
+  # Pipewire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+
+    # Wireplumber instead of media-session
+    wireplumber.enable = true;
+    media-session.enable = false;
+
     alsa.enable = false;
     alsa.support32Bit = false;
     pulse.enable = true;
@@ -130,10 +136,6 @@
 
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    media-session.enable = true;
 
     #media-session.config.bluez-monitor.rules = [
     #  {
@@ -169,6 +171,7 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
+    hsphfpd.enable = true;
     settings.general.enable = "Source,Sink,Media,Socket";
     package = pkgs.bluezFull;
   };
@@ -389,6 +392,7 @@
     # compiler
     gcc
     llvm
+    gnumake
 
     gparted
     ntfs3g
