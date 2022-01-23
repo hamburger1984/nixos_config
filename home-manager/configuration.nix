@@ -125,7 +125,7 @@ in
     keepassxc
     #libreoffice
     #lite-xl
-    #owncloud-client
+    nextcloud-client
     pinta
     qmapshack
     qownnotes

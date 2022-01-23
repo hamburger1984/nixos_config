@@ -57,7 +57,10 @@
   console = {
     font = "${pkgs.powerline-fonts}/share/consolefonts/ter-powerline-v18n.psf.gz";
     #font = "Lat2-Terminus16";
-    keyMap = "de";
+
+    useXkbConfig = true;
+    #keyMap = "de"; // <- should not be necessary, we're using XServer values
+
     earlySetup = true;
   };
 
@@ -84,9 +87,9 @@
   #programs.ssh.askPassword = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 
   # Enable battery management
-  #services.tlp.enable = true;
+  services.tlp.enable = false;
 
-  # Replaces tlp
+  # Replaces tlp (disable tlp - might conflict)
   services.power-profiles-daemon.enable = true;
 
   # Enable fwupd .. firmware update
@@ -104,8 +107,7 @@
   #security.pam.services.xscreensaver.fprintAuth = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-
+  services.printing.enable = false;
 
   # Pipewire
   security.rtkit.enable = true;
@@ -216,7 +218,6 @@
 
       # Enable the Gnome Desktop Environment.
       #gnome.enable = true;
-
     };
 
     # AMD driver
@@ -271,15 +272,22 @@
   programs.dconf.enable = true;
 
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultFonts = false;
 
     fonts = with pkgs; [
       #fira-code
       #hasklig
       #inconsolata-nerdfont
+
       nerdfonts
       unifont
       powerline-fonts
+
+      dejavu_fonts
+      freefont_ttf
+      gyre-fonts # TrueType substitutes for standard PostScript fonts
+      liberation_ttf
+      xorg.fontmiscmisc
     ];
   };
 
@@ -363,7 +371,7 @@
     #tree
     unclutter
     usbutils
-    vulkan-tools
+    #vulkan-tools
     wget
     whois
     wl-clipboard

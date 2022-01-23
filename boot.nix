@@ -15,21 +15,21 @@
       kernelModules = [ ];
     };
 
-    # amd graphics, acpi_call makes tlp work for newer thinkpads
-    # amdgpu-pro is currently failing
-    kernelModules = [ "amdgpu" "acpi_call" "kvm-amd" ];
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    # acpi_call makes tlp work for newer thinkpads
+    # "acpi_call" <- conflicts with power profiles(?)
+    kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
+    #extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
     extraModprobeConfig = ''
       options hid_apple fnmode=0
       '';
 
-    kernelParams = [ "acpi_backlight=native" "mitigations=off" ];
+    kernelParams = [ "acpi_backlight=native" "mitigations=off" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
-    #kernelPackages = pkgs.linuxPackages_5_15;
-    kernelPackages = pkgs.linuxPackages_5_16;
+    #kernelPackages = pkgs.linuxPackages_5_16;
+    kernelPackages = pkgs.linuxPackages_xanmod;
     #kernelPackages = pkgs.linuxPackages_testing;
     #kernelPackages = pkgs.linuxPackages_latest;
   };
