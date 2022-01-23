@@ -24,7 +24,7 @@
       options hid_apple fnmode=0
       '';
 
-    kernelParams = [ "acpi_backlight=native" "mitigations=off" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
+    kernelParams = [ "mitigations=off" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
