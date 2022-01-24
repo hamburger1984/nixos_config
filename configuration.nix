@@ -10,8 +10,8 @@
 {
   imports =
     [
-      <nixos-hardware/lenovo/thinkpad/l14/amd>
-
+      #<nixos-hardware/lenovo/thinkpad/l14/amd>
+      ../hardware/lenovo/thinkpad/l14/amd
       ./hardware-configuration.nix
       ./boot.nix
       <home-manager/nixos>
@@ -25,13 +25,15 @@
     enableRedistributableFirmware = true;
   };
 
-  powerManagement.enable = true;
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+    powertop.enable = true;
+  };
 
   networking = {
     hostName = "nix2020-14"; # Define your hostname.
 
-    # wireless.enable = true;     # Enables wireless support via wpa_supplicant.
-    # wicd.enable = true;         # Enable wireless via wicd.
     networkmanager.enable = true; # Enable network manager.
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -40,10 +42,6 @@
     useDHCP = false;
     interfaces.enp2s0f0.useDHCP = false;
     interfaces.wlp3s0.useDHCP = false;
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # Open ports in the firewall.
     # firewall.allowedTCPPorts = [ ... ];
@@ -61,7 +59,7 @@
     useXkbConfig = true;
     #keyMap = "de"; // <- should not be necessary, we're using XServer values
 
-    earlySetup = true;
+    #earlySetup = true;
   };
 
   # Set your time zone.
@@ -86,7 +84,7 @@
   # if multiple desktops are enabled, use this:
   #programs.ssh.askPassword = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 
-  # Enable battery management
+  # Enable battery management <-- nope - use power-profiles-daemon
   services.tlp.enable = false;
 
   # Replaces tlp (disable tlp - might conflict)
@@ -188,7 +186,6 @@
 
     driSupport32Bit = true;
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
-    #extraPackages32 = with pkgs; [ pkgsi686Linux.libva ];
   };
 
   # Trackpoint
@@ -248,16 +245,6 @@
     };
   };
 
-  systemd.services.powertop-autotune = {
-    description = "PowerTop Auto-Tune";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "/run/current-system/sw/bin/powertop --auto-tune";
-    };
-    wantedBy = [ "default.target" ];
-  };
-  systemd.services.powertop-autotune.enable = false;
-
   #services.dbus.packages = [ pkgs.gnome3.dconf ];
   services.udev.packages = [
     #pkgs.gnome3.gnome-settings-daemon
@@ -314,7 +301,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
 
     extraOptions = ''
@@ -347,14 +334,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     bash
-    cpufrequtils
+    #cpufrequtils
     dmidecode
     file
     firmwareLinuxNonfree
     glxinfo
+    gparted
     inotify-tools
-    libcgroup
     libGL_driver
+    libcgroup
     libva
     libxkbcommon
     lsof
@@ -368,18 +356,13 @@
     pwgen
     rsync
     silver-searcher
-    #tree
     unclutter
     usbutils
-    #vulkan-tools
     wget
     whois
-    wl-clipboard
+    #wl-clipboard
     xclip
     xz
-
-    #mtools # installing clonezilla needs this
-    #syslinux # installing clonezilla needs this
 
     # monitoring
     btop
@@ -388,10 +371,8 @@
     iotop
     lm_sensors
     lshw
-    #multitail
     smartmontools
     strace
-    #sysbench
     usbtop
 
     # logitech
@@ -402,7 +383,5 @@
     llvm
     gnumake
 
-    gparted
-    ntfs3g
   ];
 }
