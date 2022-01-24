@@ -28,7 +28,7 @@
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "ondemand";
-    powertop.enable = true;
+    #powertop.enable = true;
   };
 
   networking = {
