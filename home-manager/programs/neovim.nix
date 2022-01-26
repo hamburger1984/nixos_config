@@ -5,6 +5,66 @@
     enable = true;
     vimAlias = true;
 
+    plugins = with pkgs.vimPlugins; [
+      neovim-sensible
+      nvim-base16
+
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+      nvim-treesitter-context
+      #nvim-ts-rainbow
+
+      nvim-cmp            # completion menu
+      cmp-buffer          # buffer completion source
+      cmp-nvim-lsp        # lsp source
+      cmp-path            # path source
+      cmp-treesitter      # treesitter source
+
+      nvim-lspconfig      # configuring lsp servers
+      lsp_signature-nvim  # signature hint while typing
+      lspkind-nvim        # pictograms for lsp completion items
+
+      neoformat           # formatting
+
+      nvim-tree-lua       # file tree
+
+      nvim-web-devicons   # icons
+
+      twilight-nvim       # dim inactive portions of code
+
+      telescope-nvim      # fuzzy find + preview
+
+      indent-blankline-nvim # show indents on blank lines as well
+
+      nvim-cursorline
+
+
+      gitsigns-nvim
+      #galaxyline-nvim
+      lualine-nvim
+      bufferline-nvim
+      lazygit-nvim
+
+
+      nvim-autopairs
+      neoscroll-nvim
+
+      # languages
+      nim-vim
+      #omnisharp-vim
+      kotlin-vim
+      python-mode
+      #rust-tools-nvim
+      #rust-vim
+      vim-csharp
+      vim-fsharp
+      vim-elixir
+      vim-go
+      vim-json
+      vim-lua
+      vim-nix
+      #zig-vim
+    ];
+
     extraConfig = ''
       set pastetoggle=<F2>
       set clipboard+=unnamedplus
@@ -213,24 +273,14 @@
       " see https://github.com/akinsho/bufferline.nvim
       lua << EOF
       require("bufferline").setup{
+        numbers = "buffer_id",
+        number_style = "subscript",
+        diagnostics = "nvim_lsp",
+        separator_style = "thin",
         show_buffer_close_icons = false,
         show_close_icon = false,
-        diagnostics = "nvim_lsp"
       }
       EOF
-
-      "-------------------------------------------------------------------------------
-      " LUA - lspconfig
-      "-------------------------------------------------------------------------------
-      " see https://github.com/neovim/nvim-lspconfig
-      "lua << EOF
-      "local nvim_lsp = require('lspconfig')
-      "local servers = { 'tsserver' }
-      "for _, lsp in ipairs(servers) do
-      "  nvim_lsp[lsp].setup{}
-      "end
-      "EOF
-
 
       "-------------------------------------------------------------------------------
       " LUA - cmp
@@ -249,6 +299,8 @@
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'buffer' }
         }
       }
       EOF
@@ -372,65 +424,22 @@
       EOF
 
       "-------------------------------------------------------------------------------
-      " C# - OmniSharp-Vim
+      " Twilight
       "-------------------------------------------------------------------------------
-      " see https://github.com/OmniSharp/omnisharp-vim
-      "let g:OmniSharp_server_path = '/etc/profiles/per-user/andreas/bin/omnisharp'
-      "let g:OmniSharp_log_dir = '/tmp/omnisharp-vim/'
-      "let g:OmniSharp_highlighting = 3
+      lua << EOF
+        require("twilight").setup { }
+      EOF
+      map <Leader>t :Twilight<CR>
+
+
+      "-------------------------------------------------------------------------------
+      " lualine
+      "-------------------------------------------------------------------------------
+      lua << EOF
+        require("lualine").setup()
+      EOF
+
     '';
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
-
-    plugins = with pkgs.vimPlugins; [
-      neovim-sensible
-      nvim-base16
-
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
-      nvim-treesitter-context
-      nvim-ts-rainbow
-
-      nvim-cmp            # completion menu
-      cmp-buffer          # buffer completion source
-      cmp-nvim-lsp        # lsp completion source(?)
-
-
-      nvim-lspconfig      # configuring lsp servers
-      lsp_signature-nvim  # signature hint while typing
-      lspkind-nvim        # pictograms for lsp completion items
-
-      neoformat           # formatting
-
-      nvim-tree-lua       # file tree
-
-      nvim-web-devicons   # icons
-
-      telescope-nvim      # fuzzy find + preview
-
-      indent-blankline-nvim # show indents on blank lines as well
-
-      gitsigns-nvim
-      galaxyline-nvim
-      bufferline-nvim
-      lazygit-nvim
-
-      nvim-autopairs
-      neoscroll-nvim
-
-      # languages
-      nim-vim
-      #omnisharp-vim
-      kotlin-vim
-      python-mode
-      #rust-tools-nvim
-      #rust-vim
-      vim-csharp
-      vim-fsharp
-      vim-elixir
-      vim-go
-      vim-json
-      vim-lua
-      vim-nix
-      #zig-vim
-    ];
   };
 }

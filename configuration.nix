@@ -366,7 +366,6 @@
 
     # monitoring
     btop
-    htop
     iftop
     iotop
     lm_sensors
