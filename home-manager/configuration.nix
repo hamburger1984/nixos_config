@@ -54,23 +54,24 @@ in
     #rustfmt
 
     #--- development support ---#
+    elixir_ls
+    gnuplot
+    kotlin-language-server
     omnisharp-roslyn
     python-language-server
-    kotlin-language-server
-    gnuplot
 
     #--- Development ---#
     #arduino
     #docker-compose
     lazygit
-    #gitAndTools.delta
+    gitAndTools.delta
     #gitAndTools.gitui
     #gitAndTools.git-cliff
     gitAndTools.git-ignore
     gitAndTools.git-machete
     gitAndTools.git-standup
     gitAndTools.git-when-merged
-    #gitAndTools.tig
+    gitAndTools.tig
     #jetbrains.clion
     jetbrains.rider
     python3Packages.pip
@@ -89,6 +90,22 @@ in
       ];
     })
 
+    #--- serenity ---#
+    ccache
+    cmake
+    curl
+    e2fsprogs
+    gcc_latest
+    gmp # <-- y no gmp.h found?
+    libmpc
+    mpfr
+    ninja
+    qemu
+    qemu_kvm
+    rsync
+    stdenv
+    unzip
+
     #--- micropython ---#
     #adafruit-ampy
     #esptool
@@ -97,34 +114,27 @@ in
     #rshell
     thonny
 
-    #--- Theming ---#
-    adapta-gtk-theme
-    adapta-kde-theme
-    arc-kde-theme
-    arc-theme
-    bibata-cursors
-    materia-kde-theme
-    materia-theme
-    papirus-icon-theme
-
     #--- Communication ---#
     discord
     signal-desktop
     #slack
-    tdesktop
+    #tdesktop
     #teams
     #trojita
     #whatsapp-for-linux
-    zoom-us
+    #zoom-us
 
     #--- Desktop Programs ---#
-    calibre
+    #calibre
     #droidcam
     exiftool
+    falkon
+    flameshot
     #focuswriter
     keepassxc
     #libreoffice
-    #lite-xl
+    lite-xl
+    mupdf
     nextcloud-client
     pinta
     qmapshack
@@ -140,57 +150,39 @@ in
     #vlc
     #youtube-dl
 
-    #--- WMs ---#
-    #hikari
-
     #--- KDE/Plasma ---#
     ark
-    #breeze-gtk
-    #breeze-plymouth
-    #breeze-qt5
+    bismuth
+    bluedevil
+    bluez-qt
     colord-kde
-    #digikam
-    dolphin-plugins
     filelight
-    gwenview
+    #kalendar
     kamoso
-    #kate
     kcalc
-    #kcharselect
-    ksystemlog
-    okular
-    #kdeconnect-kde
-    kdegraphics-thumbnailers
+    kdeplasma-addons
     klines
     kpat
-    #krita
-    #krohnkite
-    partition-manager
-    spectacle
-    bluez-qt
+    krunner-symbols
+    ksystemlog
     modemmanager-qt
     networkmanager-qt
-    syntax-highlighting
-    kwayland
-    #marble
-    bluedevil
-    kdeplasma-addons
-    #plasma5.kwayland-integration
-    #plasma5.kwayland-server
+    partition-manager
+    plasma-applet-virtual-desktop-bar
     plasma-browser-integration
-    plasma-disks
     plasma-nm
-    plasma-thunderbolt
     powerdevil
-    sddm-kcm
-    xdg-desktop-portal-kde
     redshift-plasma-applet
-    sddm-kcm
     #calligra
-    #dragon
+    #digikam
+    #kcharselect
+    #kdeconnect-kde
     #kdenlive
-    #konversation
-    #ktouch
+    #kwayland
+    #marble
+    #plasma-disks
+    #spectacle
+    #xdg-desktop-portal-kde
 
     #--- Games ---#
     steam

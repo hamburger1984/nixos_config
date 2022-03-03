@@ -6,7 +6,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    #plymouth.enable = true;
+    plymouth.enable = true;
 
     tmpOnTmpfs = true;
 
@@ -24,14 +24,11 @@
       options hid_apple fnmode=0
       '';
 
-    kernelParams = [ ];
+    kernelParams = [ "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     # enable amd_pstate -> "amd_pstate.enable=1" "amd_pstate.shared_mem=1"
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
-    #kernelPackages = pkgs.linuxPackages_5_16;
     kernelPackages = pkgs.linuxPackages_xanmod;
-    #kernelPackages = pkgs.linuxPackages_testing;
-    #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

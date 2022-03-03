@@ -1,5 +1,16 @@
-{ pkgs, ...}:
+{ config, pkgs, ...}:
 
+let
+  folding-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "folding-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "pierreglaser";
+      repo = "folding-nvim";
+      rev = "5d2b3d98c47c8c16aade06ebfd411bc74ad6d205";
+      sha256 = "sha256-LitLBBdGGJltivCRE3Rc33KwM7fs1uqB6+gCXGogw3A=";
+    };
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -18,10 +29,13 @@
       cmp-nvim-lsp        # lsp source
       cmp-path            # path source
       cmp-treesitter      # treesitter source
+      cmp-vsnip           # snippets source
+      vim-vsnip
 
       nvim-lspconfig      # configuring lsp servers
       lsp_signature-nvim  # signature hint while typing
       lspkind-nvim        # pictograms for lsp completion items
+      folding-nvim
 
       neoformat           # formatting
 
@@ -37,13 +51,12 @@
 
       nvim-cursorline
 
-
       gitsigns-nvim
-      #galaxyline-nvim
-      lualine-nvim
-      bufferline-nvim
-      lazygit-nvim
 
+      nvim-gps
+      lualine-nvim
+
+      bufferline-nvim
 
       nvim-autopairs
       neoscroll-nvim
@@ -63,6 +76,8 @@
       vim-lua
       vim-nix
       #zig-vim
+
+      lens-vim
     ];
 
     extraConfig = ''
@@ -289,6 +304,11 @@
       -- autocomplete config
       local cmp = require 'cmp'
       cmp.setup {
+        snippet = {
+          expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body)
+          end,
+        },
         mapping = {
           ['<Tab>'] = cmp.mapping.select_next_item(),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
@@ -299,23 +319,74 @@
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'vsnip' },
           { name = 'path' },
           { name = 'buffer' }
-        }
+        },
+        formatting = {
+          format = require('lspkind').cmp_format({
+            with_text = true,
+            menu = {
+              nvim_lsp = '[LSP]'
+            },
+          })
+        },
       }
       EOF
 
       "-------------------------------------------------------------------------------
-      " LUA - omnisharp lsp
+      " LUA - lspconfig - omnisharp + vsnip
       "-------------------------------------------------------------------------------
       lua << EOF
+      local pid = vim.fn.getpid()
+
       -- omnisharp lsp config
-      require'lspconfig'.omnisharp.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      local lspconfig = require('lspconfig')
+
+      -- Neovim doesn't support snippets out of the box, so we need to mutate the
+      -- capabilities we send to the language server to let them know we want snippets.
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      lspconfig.omnisharp.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
         on_attach = function(_, bufnr)
           vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+          -- require('folding').on_attach()
         end,
         cmd = { "/etc/profiles/per-user/andreas/bin/omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
+      }
+      EOF
+
+      "-------------------------------------------------------------------------------
+      " LUA - lspconfig - elixir
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      local lspconfig = require'lspconfig'
+
+      -- Neovim doesn't support snippets out of the box, so we need to mutate the
+      -- capabilities we send to the language server to let them know we want snippets.
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      lspconfig.elixirls.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
+        on_attach = function(_, bufnr)
+          -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end,
+        cmd = { "/etc/profiles/per-user/andreas/bin/elixir-ls" },
+        settings = {
+          elixirLS = {
+            -- I choose to disable dialyzer for personal reasons, but
+            -- I would suggest you also disable it unless you are well
+            -- aquainted with dialzyer and know how to use it.
+            dialyzerEnabled = false,
+            -- I also choose to turn off the auto dep fetching feature.
+            -- It often get's into a weird state that requires deleting
+            -- the .elixir_ls directory and restarting your editor.
+            fetchDeps = false
+          }
+        }
       }
       EOF
 
@@ -427,16 +498,29 @@
       " Twilight
       "-------------------------------------------------------------------------------
       lua << EOF
-        require("twilight").setup { }
+      require("twilight").setup { }
       EOF
       map <Leader>t :Twilight<CR>
 
+      "-------------------------------------------------------------------------------
+      " GPS
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      require("nvim-gps").setup()
+      EOF
 
       "-------------------------------------------------------------------------------
       " lualine
       "-------------------------------------------------------------------------------
       lua << EOF
-        require("lualine").setup()
+      local gps = require("nvim-gps")
+      require("lualine").setup({
+        sections = {
+          lualine_c = {
+            { gps.get_location, cond = gps.is_available }
+          }
+        }
+      })
       EOF
 
     '';

@@ -18,6 +18,8 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  # temporary usage only!
+  #nixpkgs.config.allowBroken= true;
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -103,6 +105,12 @@
   };
   #security.pam.services.login.fprintAuth = true;
   #security.pam.services.xscreensaver.fprintAuth = true;
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "soft";
+    item = "nofile";
+    value = "8192";
+  }];
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
@@ -171,7 +179,7 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    hsphfpd.enable = true;
+    #hsphfpd.enable = true; # <- may interfere with wireplumber
     settings.general.enable = "Source,Sink,Media,Socket";
     package = pkgs.bluezFull;
   };
@@ -182,7 +190,6 @@
 
     driSupport = true;
     extraPackages = with pkgs; [ amdvlk libva ];
-    # rocm-opencl-icd <- breaks steam?!
 
     driSupport32Bit = true;
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk pkgsi686Linux.libva ];
@@ -212,9 +219,6 @@
 
       # Enable the KDE Desktop Environment.
       plasma5.enable = true;
-
-      # Enable the Gnome Desktop Environment.
-      #gnome.enable = true;
     };
 
     # AMD driver
@@ -234,41 +238,28 @@
     };
 
     displayManager = {
-      # KDE
       sddm = {
         enable = true;
-        #settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
-      };
+        enableHidpi = true;
 
-      # Gnome3
-      #gdm.enable = true;
+        #theme = "breeze";
+        theme = "materia-dark";
+      };
     };
   };
 
-  #services.dbus.packages = [ pkgs.gnome3.dconf ];
-  services.udev.packages = [
-    #pkgs.gnome3.gnome-settings-daemon
-    pkgs.logitech-udev-rules
-  ];
-  #services.udev.packages = [ pkgs.logitech-udev-rules ];
+  services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  #services.udev.extraRules = ''
-  #  SUBSYSTEMS=="input", ATTRS{name}=="Keychron K8", RUN+="${echo} 0 | ${tee} /sys/module/hid_apple/parameters/fnmode"
-  #'';
-
-  programs.dconf.enable = true;
+  #programs.dconf.enable = true;
 
   fonts = {
     enableDefaultFonts = false;
 
     fonts = with pkgs; [
-      #fira-code
-      #hasklig
-      #inconsolata-nerdfont
-
       nerdfonts
       unifont
       powerline-fonts
+      julia-mono
 
       dejavu_fonts
       freefont_ttf
@@ -296,8 +287,6 @@
   home-manager.users.andreas = import ./home-manager/configuration.nix;
 
   nix = {
-    autoOptimiseStore = true;
-
     gc = {
       automatic = true;
       dates = "weekly";
@@ -317,7 +306,11 @@
     #contentAddressedByDefault = true;
     #experimental-features = nix-command flakes ca-derivations ca-references
 
-    trustedUsers = [ "root" "andreas" ];
+    settings = {
+      auto-optimise-store = true;
+      max-jobs = 15; # keep one spare core
+      trusted-users = [ "andreas" ];
+    };
   };
 
   #nix.package = pkgs.nixUnstable;
@@ -333,15 +326,26 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    #--- Theming ---#
+    adapta-gtk-theme
+    adapta-kde-theme
+    arc-kde-theme
+    arc-theme
+    bibata-cursors
+    lightly-qt
+    materia-kde-theme
+    materia-theme
+    papirus-icon-theme
+
+
+    # general stuff
     bash
-    #cpufrequtils
     dmidecode
     file
     firmwareLinuxNonfree
     glxinfo
     gparted
     inotify-tools
-    libGL_driver
     libcgroup
     libva
     libxkbcommon
@@ -353,7 +357,6 @@
     parted
     pciutils
     powertop
-    pwgen
     rsync
     silver-searcher
     unclutter
@@ -366,6 +369,7 @@
 
     # monitoring
     btop
+    #hwatch
     iftop
     iotop
     lm_sensors
@@ -378,9 +382,7 @@
     logitech-udev-rules
 
     # compiler
-    gcc
     llvm
     gnumake
-
   ];
 }

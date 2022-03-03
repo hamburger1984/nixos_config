@@ -22,6 +22,4 @@
     };
 
   swapDevices = lib.mkForce [ ];
-
-  nix.maxJobs = lib.mkDefault 15; # keep one spare core
 }
