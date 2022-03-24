@@ -65,7 +65,10 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  ##time.timeZone = "Europe/Berlin";
+  time.timeZone = null;
+
+  services.localtime.enable = true;
 
   # Qemu/libvirtd
   #virtualisation.libvirtd.enable = true;
@@ -337,6 +340,8 @@
     materia-theme
     papirus-icon-theme
 
+    # audio
+    easyeffects
 
     # general stuff
     bash
@@ -353,6 +358,8 @@
     lz4
     mesa
     neofetch
+    ntfs3g
+    nushell
     p7zip
     parted
     pciutils
@@ -369,14 +376,15 @@
 
     # monitoring
     btop
-    #hwatch
     iftop
+    inxi
     iotop
     lm_sensors
     lshw
     smartmontools
     strace
     usbtop
+    #hwatch
 
     # logitech
     logitech-udev-rules

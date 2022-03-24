@@ -5,15 +5,7 @@ let
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
   # works
-  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_5_0 sdk_3_1 aspnetcore_5_0 aspnetcore_3_1 ];
-
-  # works
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 aspnetcore_6_0 ];
-
-  # does not work
-  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 sdk_3_1 runtime_6_0 runtime_5_0 runtime_3_1 aspnetcore_6_0 aspnetcore_5_0 aspnetcore_3_1 ];
-  # also broken
-  #dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 sdk_5_0 sdk_3_1 aspnetcore_6_0 aspnetcore_5_0 aspnetcore_3_1 ];
 in
 {
   imports = [
@@ -65,8 +57,6 @@ in
     #docker-compose
     lazygit
     gitAndTools.delta
-    #gitAndTools.gitui
-    #gitAndTools.git-cliff
     gitAndTools.git-ignore
     gitAndTools.git-machete
     gitAndTools.git-standup
@@ -98,56 +88,55 @@ in
     gcc_latest
     gmp # <-- y no gmp.h found?
     libmpc
+    libvirt
     mpfr
     ninja
     qemu
-    qemu_kvm
     rsync
     stdenv
     unzip
 
     #--- micropython ---#
+    esptool
+    micropython
+    thonny
     #adafruit-ampy
-    #esptool
-    #micropython
     #mpfshell
     #rshell
-    thonny
 
     #--- Communication ---#
     discord
     signal-desktop
     #slack
-    #tdesktop
+    tdesktop
     #teams
     #trojita
     #whatsapp-for-linux
-    #zoom-us
+    zoom-us
 
     #--- Desktop Programs ---#
-    #calibre
-    #droidcam
     exiftool
     falkon
     flameshot
-    #focuswriter
+    freetube
     keepassxc
-    #libreoffice
     lite-xl
     mupdf
     nextcloud-client
     pinta
     qmapshack
     qownnotes
-    #skrooge
-    #solaar
     spotify # nonfree
     stellarium
-    #vnote
-
+    #calibre
+    #droidcam
+    #focuswriter
+    #libreoffice
+    #skrooge
+    #solaar
     #texlive.combined.scheme-medium
-
     #vlc
+    #vnote
     #youtube-dl
 
     #--- KDE/Plasma ---#
@@ -156,8 +145,8 @@ in
     bluedevil
     bluez-qt
     colord-kde
+    digikam
     filelight
-    #kalendar
     kamoso
     kcalc
     kdeplasma-addons
@@ -174,13 +163,8 @@ in
     powerdevil
     redshift-plasma-applet
     #calligra
-    #digikam
     #kcharselect
     #kdeconnect-kde
-    #kdenlive
-    #kwayland
-    #marble
-    #plasma-disks
     #spectacle
     #xdg-desktop-portal-kde
 
