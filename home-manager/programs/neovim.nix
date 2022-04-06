@@ -49,7 +49,7 @@ in
 
       indent-blankline-nvim # show indents on blank lines as well
 
-      nvim-cursorline
+      #nvim-cursorline
 
       gitsigns-nvim
 
@@ -59,19 +59,19 @@ in
       bufferline-nvim
 
       nvim-autopairs
-      neoscroll-nvim
+      #neoscroll-nvim
 
       # languages
       nim-vim
       #omnisharp-vim
-      kotlin-vim
-      python-mode
+      #kotlin-vim
+      #python-mode
       #rust-tools-nvim
       #rust-vim
-      vim-csharp
+      #vim-csharp
       vim-fsharp
       vim-elixir
-      vim-go
+      #vim-go
       vim-json
       vim-lua
       vim-nix
@@ -81,6 +81,7 @@ in
     ];
 
     extraConfig = ''
+      set nocompatible
       set pastetoggle=<F2>
       set clipboard+=unnamedplus
 
@@ -92,7 +93,8 @@ in
       "-------------------------------------------------------------------------------
       " Mouse
       "-------------------------------------------------------------------------------
-      set mouse=a
+      "set mouse=a
+      set mouse=v " paste with 3rd button
 
       "-------------------------------------------------------------------------------
       " <Leader> key
@@ -193,9 +195,11 @@ in
       vnoremap > >gv
 
       "-------------------------------------------------------------------------------
-      " Make search case insensitive
+      " Make search case insensitive and incremental
       "-------------------------------------------------------------------------------
+      set showmatch
       set hlsearch
+      set incsearch
       set ignorecase
       set smartcase
 
@@ -225,10 +229,23 @@ in
       inoremap <silent> <C-n> <esc>:nohl<CR>
 
       "-------------------------------------------------------------------------------
+      " Scrolling
+      "-------------------------------------------------------------------------------
+      "nnoremap <silent> j jzz
+      "nnoremap <silent> k kzz
+      set ttyfast
+      set cursorline
+
+      "-------------------------------------------------------------------------------
       " filetype plugins
       "-------------------------------------------------------------------------------
       filetype plugin on
       filetype indent on
+
+      "-------------------------------------------------------------------------------
+      " syntax
+      "-------------------------------------------------------------------------------
+      syntax on
 
       "-------------------------------------------------------------------------------
       " Highlight multiple spaces and trailing whitespace
@@ -246,6 +263,8 @@ in
       "-------------------------------------------------------------------------------
       if !has('gui_running')
           set t_Co=256
+          let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+          set termguicolors
       endif
       set background=dark
       "colorscheme gruvbox
@@ -255,21 +274,19 @@ in
       " some suggestions from coc
       "-------------------------------------------------------------------------------
       " TextEdit might fail if hidden is not set
-      set hidden
+      "set hidden
       " no backup files
-      set nobackup
-      set nowritebackup
-      " give more space for displaying messages
-      "set cmdheight=2
       " less delays
       set updatetime=300
       " don't pass messages to |ins-completion-menu|
       set shortmess+=c
-      set signcolumn=yes
+      "set signcolumn=yes
 
       "-------------------------------------------------------------------------------
       " other annoyancies
       "-------------------------------------------------------------------------------
+      set nobackup
+      set nowritebackup
       set noswapfile
 
       "-------------------------------------------------------------------------------
@@ -362,7 +379,7 @@ in
       " LUA - lspconfig - elixir
       "-------------------------------------------------------------------------------
       lua << EOF
-      local lspconfig = require'lspconfig'
+      local lspconfig = require('lspconfig')
 
       -- Neovim doesn't support snippets out of the box, so we need to mutate the
       -- capabilities we send to the language server to let them know we want snippets.
@@ -387,6 +404,27 @@ in
             fetchDeps = false
           }
         }
+      }
+      EOF
+
+      "-------------------------------------------------------------------------------
+      " LUA - lspconfig - nim
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      require('lspconfig').nimls.setup {
+          cmd = { '/etc/profiles/per-user/andreas/bin/nimlsp' },
+          --filetypes = { 'nim' },
+          --rootdir = require('lspconfig/util').root_pattern('*.nimble'),
+          --settings = {},
+      }
+      EOF
+
+      "-------------------------------------------------------------------------------
+      " Python - lspconfig - nim
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      require('lspconfig').pylsp.setup {
+          cmd = { '/etc/profiles/per-user/andreas/bin/pylsp' },
       }
       EOF
 

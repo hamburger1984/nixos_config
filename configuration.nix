@@ -27,11 +27,12 @@
     enableRedistributableFirmware = true;
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-    #powertop.enable = true;
-  };
+  powerManagement.enable = true;
+  #powerManagement = {
+  #  enable = true;
+  #  cpuFreqGovernor = "ondemand";
+  #  #powertop.enable = true;
+  #};
 
   networking = {
     hostName = "nix2020-14"; # Define your hostname.
@@ -64,8 +65,7 @@
     #earlySetup = true;
   };
 
-  # Set your time zone.
-  ##time.timeZone = "Europe/Berlin";
+  # Using timedatectl for timeZone setting - which requires null here.
   time.timeZone = null;
 
   services.localtime.enable = true;
@@ -81,7 +81,7 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
+  programs.mtr.enable = true;
 
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
@@ -106,7 +106,9 @@
   #  #tod.driver = pkgs.libfprint-tod;
   #  #tod.driver = pkgs.libfprint-2-tod1-goodix;
   };
-  #security.pam.services.login.fprintAuth = true;
+
+  security.pam.services.login.fprintAuth = true;
+
   #security.pam.services.xscreensaver.fprintAuth = true;
   security.pam.loginLimits = [{
     domain = "*";
@@ -127,8 +129,8 @@
     wireplumber.enable = true;
     media-session.enable = false;
 
-    alsa.enable = false;
-    alsa.support32Bit = false;
+    alsa.enable = true;
+    jack.enable = true;
     pulse.enable = true;
 
     # Crackling issues?
@@ -144,36 +146,6 @@
         #};
       };
     };
-
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    #media-session.config.bluez-monitor.rules = [
-    #  {
-    #    # Matches all cards
-    #    matches = [ { "device.name" = "~bluez_card.*"; } ];
-    #    actions = {
-    #      "update-props" = {
-    #        "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-    #        # mSBC is not expected to work on all headset + adapter combinations.
-    #        "bluez5.msbc-support" = true;
-    #        # SBC-XQ is not expected to work on all headset + adapter combinations.
-    #        "bluez5.sbc-xq-support" = true;
-    #      };
-    #    };
-    #  }
-    #  {
-    #    matches = [
-    #      # Matches all sources
-    #      { "node.name" = "~bluez_input.*"; }
-    #      # Matches all outputs
-    #      { "node.name" = "~bluez_output.*"; }
-    #    ];
-    #    actions = {
-    #      "node.pause-on-idle" = false;
-    #    };
-    #  }
-    #];
   };
 
   # for pipewire
@@ -183,7 +155,7 @@
   hardware.bluetooth = {
     enable = true;
     #hsphfpd.enable = true; # <- may interfere with wireplumber
-    settings.general.enable = "Source,Sink,Media,Socket";
+    #settings.general.enable = "Source,Sink,Media,Socket";
     package = pkgs.bluezFull;
   };
 
@@ -278,10 +250,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
-    # "libvirtd" <- not using libvirt currently
 
     # Enable audio, serial port access, networkmanager, sudo
     extraGroups = [ "audio" "dialout" "networkmanager" "wheel" ];
+    # "libvirtd" <- not using libvirt currently
   };
 
   home-manager.useUserPackages = true;
@@ -293,7 +265,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 3d";
     };
 
     extraOptions = ''
@@ -341,7 +313,7 @@
     papirus-icon-theme
 
     # audio
-    easyeffects
+    #easyeffects
 
     # general stuff
     bash

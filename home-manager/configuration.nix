@@ -30,7 +30,7 @@ in
     erlang
     go
     kotlin
-    kotlin-native
+    #kotlin-native
     lua
     nim
     nodejs
@@ -48,9 +48,13 @@ in
     #--- development support ---#
     elixir_ls
     gnuplot
-    kotlin-language-server
+    #kotlin-language-server
+    nimlsp
     omnisharp-roslyn
     python-language-server
+    python39Packages.python-lsp-server
+    python39Packages.python-lsp-black
+    valgrind
 
     #--- Development ---#
     #arduino
@@ -62,6 +66,7 @@ in
     gitAndTools.git-standup
     gitAndTools.git-when-merged
     gitAndTools.tig
+    helix
     #jetbrains.clion
     jetbrains.rider
     python3Packages.pip
@@ -80,22 +85,6 @@ in
       ];
     })
 
-    #--- serenity ---#
-    ccache
-    cmake
-    curl
-    e2fsprogs
-    gcc_latest
-    gmp # <-- y no gmp.h found?
-    libmpc
-    libvirt
-    mpfr
-    ninja
-    qemu
-    rsync
-    stdenv
-    unzip
-
     #--- micropython ---#
     esptool
     micropython
@@ -109,7 +98,7 @@ in
     signal-desktop
     #slack
     tdesktop
-    #teams
+    teams
     #trojita
     #whatsapp-for-linux
     zoom-us
@@ -120,6 +109,7 @@ in
     flameshot
     freetube
     keepassxc
+    libreoffice
     lite-xl
     mupdf
     nextcloud-client
@@ -131,7 +121,6 @@ in
     #calibre
     #droidcam
     #focuswriter
-    #libreoffice
     #skrooge
     #solaar
     #texlive.combined.scheme-medium

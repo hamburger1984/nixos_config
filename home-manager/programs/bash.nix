@@ -50,14 +50,16 @@
       shopt -s cmdhist
 
       # Record each line as it gets issued
-      PROMPT_COMMAND='history -a'
+      #PROMPT_COMMAND='history -a'
+      #PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+      PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
       # Huge history. Doesn't appear to slow things down, so why not?
-      HISTSIZE=500000
-      HISTFILESIZE=100000
+      HISTSIZE=100000
+      HISTFILESIZE=1000000
 
       # Avoid duplicate entries
-      HISTCONTROL="erasedups:ignoreboth"
+      HISTCONTROL="ignoredups:erasedups"
 
       # Don't record some commands
       export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
@@ -86,7 +88,7 @@
       # This defines where cd looks for targets
       # Add the directories you want to have fast access to, separated by colon
       # Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
-      CDPATH="."
+      CDPATH=".:~:~/Projects:~/Downloads"
 
       # This allows you to bookmark your favorite places across the file system
       # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
@@ -122,10 +124,6 @@
       alias l="exa -l --icons"
       alias ll="exa -la --icons"
       alias latest="exa -l -s created --icons"
-
-      # git
-      alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
-      alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --all --prune" \;'
 
       eval "$(zoxide init bash)"
 
