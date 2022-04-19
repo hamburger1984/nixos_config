@@ -450,8 +450,8 @@ in
       " see https://github.com/nvim-treesitter/nvim-treesitter
       lua << EOF
       require('nvim-treesitter.configs').setup {
-        -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        ensure_installed = "maintained",
+        -- one of "all" or a list of languages
+        ensure_installed = "all",
         -- ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "go",
         --                    "html", "java", "javascript", "json", "kotlin",
         --                    "latex", "lua", "markdown", "nix", "python", "ruby",

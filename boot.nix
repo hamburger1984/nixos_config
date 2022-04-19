@@ -12,23 +12,27 @@
 
     initrd = {
       availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "rtsx_pci_sdmmc" ];
-      kernelModules = [ ];
+      kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
     };
 
     # acpi_call makes tlp work for newer thinkpads
     # "acpi_call" <- conflicts with power profiles(?)
-    kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
+    #kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
     #extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
     extraModprobeConfig = ''
       options hid_apple fnmode=0
       '';
 
-    kernelParams = [ "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
+    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
+
+    #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
+    #kernelParams = [ "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     # enable amd_pstate -> "amd_pstate.enable=1" "amd_pstate.shared_mem=1"
     # turn off spectre mitigations -> "mitigations=off"
     # fix load/restore of backlight -> "acpi_backlight=native"
 
     kernelPackages = pkgs.linuxPackages_xanmod;
+    #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

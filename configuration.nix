@@ -27,13 +27,6 @@
     enableRedistributableFirmware = true;
   };
 
-  powerManagement.enable = true;
-  #powerManagement = {
-  #  enable = true;
-  #  cpuFreqGovernor = "ondemand";
-  #  #powertop.enable = true;
-  #};
-
   networking = {
     hostName = "nix2020-14"; # Define your hostname.
 
@@ -69,6 +62,8 @@
   time.timeZone = null;
 
   services.localtime.enable = true;
+  services.geoclue2.enable = true;
+
 
   # Qemu/libvirtd
   #virtualisation.libvirtd.enable = true;
@@ -89,27 +84,37 @@
   # if multiple desktops are enabled, use this:
   #programs.ssh.askPassword = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 
+  powerManagement = {
+    enable = true;
+    #cpuFreqGovernor = "performance";
+    #cpuFreqGovernor = "ondemand";
+    #powertop.enable = true;
+  };
+  #services.cpufreq.enable = false;
+
   # Enable battery management <-- nope - use power-profiles-daemon
   services.tlp.enable = false;
 
   # Replaces tlp (disable tlp - might conflict)
   services.power-profiles-daemon.enable = true;
 
+
   # Enable fwupd .. firmware update
   services.fwupd.enable = true;
 
   # Fingerprints?! broken?!
-  services.fprintd = {
-    enable = false;
+  #services.fprintd = {
   #  enable = true;
   #  #tod.enable = true;
   #  #tod.driver = pkgs.libfprint-tod;
   #  #tod.driver = pkgs.libfprint-2-tod1-goodix;
-  };
+  #};
 
-  security.pam.services.login.fprintAuth = true;
+  services.avahi.enable = true;
 
+  #security.pam.services.login.fprintAuth = true;
   #security.pam.services.xscreensaver.fprintAuth = true;
+
   security.pam.loginLimits = [{
     domain = "*";
     type = "soft";
@@ -183,6 +188,8 @@
   services.xserver = {
     enable = true;
 
+    updateDbusEnvironment = true;
+
     # link config to /etc/X11/xorg.conf
     #exportConfiguration = true;
 
@@ -193,7 +200,11 @@
       xterm.enable = false;
 
       # Enable the KDE Desktop Environment.
-      plasma5.enable = true;
+      #plasma5 = {
+      #  enable = true;
+      #  useQtScaling = true;
+      #};
+      gnome.enable = true;
     };
 
     # AMD driver
@@ -225,7 +236,7 @@
 
   services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  #programs.dconf.enable = true;
+  programs.dconf.enable = true;
 
   fonts = {
     enableDefaultFonts = false;
@@ -335,7 +346,6 @@
     p7zip
     parted
     pciutils
-    powertop
     rsync
     silver-searcher
     unclutter
@@ -348,14 +358,17 @@
 
     # monitoring
     btop
+    ctop
     iftop
     inxi
     iotop
     lm_sensors
     lshw
+    powertop
     smartmontools
     strace
     usbtop
+    zenstates
     #hwatch
 
     # logitech

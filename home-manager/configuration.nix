@@ -46,6 +46,7 @@ in
     #rustfmt
 
     #--- development support ---#
+    clang
     elixir_ls
     gnuplot
     #kotlin-language-server
@@ -53,7 +54,7 @@ in
     omnisharp-roslyn
     python-language-server
     python39Packages.python-lsp-server
-    python39Packages.python-lsp-black
+    #python39Packages.python-lsp-black
     valgrind
 
     #--- Development ---#
@@ -97,8 +98,8 @@ in
     discord
     signal-desktop
     #slack
-    tdesktop
-    teams
+    #tdesktop
+    #teams
     #trojita
     #whatsapp-for-linux
     zoom-us
@@ -129,28 +130,23 @@ in
     #youtube-dl
 
     #--- KDE/Plasma ---#
-    ark
-    bismuth
-    bluedevil
-    bluez-qt
-    colord-kde
-    digikam
-    filelight
-    kamoso
-    kcalc
-    kdeplasma-addons
-    klines
-    kpat
-    krunner-symbols
-    ksystemlog
-    modemmanager-qt
-    networkmanager-qt
-    partition-manager
-    plasma-applet-virtual-desktop-bar
-    plasma-browser-integration
-    plasma-nm
-    powerdevil
-    redshift-plasma-applet
+    #ark
+    #bismuth
+    #digikam
+    #filelight
+    #kamoso
+    #kcalc
+    #kdeplasma-addons
+    #klines
+    #kpat
+    #krunner-symbols
+    #ksystemlog
+    #modemmanager-qt
+    #networkmanager-qt
+    #plasma-applet-virtual-desktop-bar
+    #plasma-browser-integration
+    #plasma-nm
+    #redshift-plasma-applet
     #calligra
     #kcharselect
     #kdeconnect-kde
