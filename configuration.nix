@@ -3,10 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, ... }:
-#let
-#  echo = "${pkgs.coreutils}/bin/echo";
-#  tee = "${pkgs.coreutils}/bin/tee";
-#in
+
 {
   imports =
     [
@@ -200,11 +197,12 @@
       xterm.enable = false;
 
       # Enable the KDE Desktop Environment.
-      #plasma5 = {
-      #  enable = true;
-      #  useQtScaling = true;
-      #};
-      gnome.enable = true;
+      plasma5 = {
+        enable = true;
+        useQtScaling = true;
+      };
+
+      #gnome.enable = true;
     };
 
     # AMD driver
@@ -227,10 +225,11 @@
       sddm = {
         enable = true;
         enableHidpi = true;
-
         #theme = "breeze";
         theme = "materia-dark";
       };
+
+      #gdm.enable = true;
     };
   };
 
@@ -352,18 +351,19 @@
     usbutils
     wget
     whois
-    #wl-clipboard
     xclip
     xz
 
     # monitoring
     btop
     ctop
+    ddcutil
     iftop
     inxi
     iotop
     lm_sensors
     lshw
+    lsb-release
     powertop
     smartmontools
     strace

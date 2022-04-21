@@ -101,8 +101,7 @@ in
     #tdesktop
     #teams
     #trojita
-    #whatsapp-for-linux
-    zoom-us
+    #zoom-us
 
     #--- Desktop Programs ---#
     exiftool
@@ -130,23 +129,23 @@ in
     #youtube-dl
 
     #--- KDE/Plasma ---#
-    #ark
-    #bismuth
+    ark
+    bismuth
     #digikam
-    #filelight
-    #kamoso
-    #kcalc
-    #kdeplasma-addons
-    #klines
-    #kpat
-    #krunner-symbols
-    #ksystemlog
-    #modemmanager-qt
-    #networkmanager-qt
-    #plasma-applet-virtual-desktop-bar
-    #plasma-browser-integration
-    #plasma-nm
-    #redshift-plasma-applet
+    filelight
+    kamoso
+    kcalc
+    kdeplasma-addons
+    klines
+    kpat
+    krunner-symbols
+    ksystemlog
+    modemmanager-qt
+    networkmanager-qt
+    plasma-applet-virtual-desktop-bar
+    plasma-browser-integration
+    plasma-nm
+    redshift-plasma-applet
     #calligra
     #kcharselect
     #kdeconnect-kde
