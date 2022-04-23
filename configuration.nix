@@ -220,7 +220,6 @@
     mesa
     neofetch
     ntfs3g
-    nushell
     p7zip
     parted
     pciutils

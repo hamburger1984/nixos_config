@@ -17,7 +17,9 @@ in
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix
+    ./programs/lazygit.nix
     ./programs/neovim.nix
+    ./programs/nushell.nix
     ./programs/powerline-go.nix
     ./programs/zoxide.nix
   ];
@@ -66,7 +68,6 @@ in
     #--- Development ---#
     #arduino
     #docker-compose
-    lazygit
     gitAndTools.delta
     gitAndTools.git-ignore
     gitAndTools.git-machete
