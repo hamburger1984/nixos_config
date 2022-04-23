@@ -1,10 +1,8 @@
 { pkgs, ...}:
 
 {
-  programs.direnv = {
+  programs.zoxide = {
     enable = true;
-
-    nix-direnv.enable = true;
 
     enableZshIntegration = false;
     enableFishIntegration = false;

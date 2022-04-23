@@ -5,15 +5,21 @@ let
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
   # works
-  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 aspnetcore_6_0 ];
+  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 runtime_6_0 aspnetcore_6_0 ];
 in
 {
   imports = [
-    ./programs/neovim.nix
     ./programs/bash.nix
-    ./programs/git.nix
+    ./programs/bat.nix
+    ./programs/broot.nix
     ./programs/direnv.nix
+    ./programs/exa.nix
     ./programs/firefox.nix
+    ./programs/fzf.nix
+    ./programs/git.nix
+    ./programs/neovim.nix
+    ./programs/powerline-go.nix
+    ./programs/zoxide.nix
   ];
 
   home.sessionVariables = {
@@ -126,17 +132,12 @@ in
     #texlive.combined.scheme-medium
     #vlc
     #vnote
-    #youtube-dl
 
     #--- KDE/Plasma ---#
-    ark
     bismuth
-    #digikam
     filelight
-    kamoso
     kcalc
     kdeplasma-addons
-    klines
     kpat
     krunner-symbols
     ksystemlog
@@ -146,11 +147,15 @@ in
     plasma-browser-integration
     plasma-nm
     redshift-plasma-applet
+    xdg-desktop-portal-kde
+    #ark
     #calligra
+    #digikam
+    #kamoso
     #kcharselect
     #kdeconnect-kde
+    #klines
     #spectacle
-    #xdg-desktop-portal-kde
 
     #--- Games ---#
     steam
@@ -171,19 +176,15 @@ in
     #--- Bash ---#
     bash
     bash-completion
-    bashate
-    broot
-    exa # todo: alias/replace ls?!
-    fzf
-    powerline-go
-    zoxide
+    fd
+    navi
+    sysz
     taskwarrior
 
     #--- Powershell ---#
     #powershell
 
     #--- Bat ---#
-    bat
     bat-extras.batdiff
     bat-extras.batgrep
     bat-extras.batman

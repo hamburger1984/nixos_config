@@ -54,6 +54,10 @@
 
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+  };
 
   services.fwupd.enable = true;
 
@@ -187,7 +191,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    adapta-gtk-theme
+    #adapta-gtk-theme
     adapta-kde-theme
     arc-kde-theme
     arc-theme
