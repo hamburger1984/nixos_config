@@ -11,6 +11,7 @@
       <nixos-hardware/lenovo/thinkpad/l14/amd>
       # $ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
       <home-manager/nixos>
+      #../home-manager/nixos
       ./hardware-configuration.nix
       ./boot.nix
     ];
@@ -52,10 +53,13 @@
   services.localtime.enable = true;
   services.geoclue2.enable = true;
 
-  services.tlp.enable = false;
-  services.power-profiles-daemon.enable = true;
+  services.acpid.enable = true;
+  services.tlp.enable = true;
+  #services.power-profiles-daemon.enable = true;
   powerManagement = {
     enable = true;
+    #cpuFreqGovernor = "schedutil";
+    #cpuFreqGovernor = "performance";
     cpuFreqGovernor = "ondemand";
   };
 
@@ -67,11 +71,11 @@
   services.udev.packages = [ pkgs.logitech-udev-rules ];
   programs.dconf.enable = true;
 
-  services.fprintd.enable = true;
+  #services.fprintd.enable = true;
 
   security.pam = {
-    services.login.fprintAuth = true;
-    services.xscreensaver.fprintAuth = true;
+    #services.login.fprintAuth = true;
+    #services.xscreensaver.fprintAuth = true;
 
     loginLimits = [{
       domain = "*";
@@ -106,7 +110,7 @@
   };
 
   hardware.opengl = {
-    extraPackages = with pkgs; [ amdvlk libva ];
+    extraPackages = with pkgs; [ libva ];
   };
 
   hardware.trackpoint = {
@@ -206,7 +210,9 @@
 
     # general stuff
     bash
+    bash-completion
     dmidecode
+    fd
     file
     firmwareLinuxNonfree
     glxinfo
@@ -225,6 +231,7 @@
     pciutils
     rsync
     silver-searcher
+    tldr
     unclutter
     usbutils
     wget
@@ -232,10 +239,19 @@
     xclip
     xz
 
+    #--- Bat ---#
+    bat-extras.batdiff
+    bat-extras.batgrep
+    bat-extras.batman
+    bat-extras.batwatch
+    bat-extras.prettybat
+
     # monitoring
     btop
     ctop
     ddcutil
+    duf
+    dust
     iftop
     inxi
     iotop
@@ -245,6 +261,7 @@
     powertop
     smartmontools
     strace
+    sysz
     usbtop
     zenstates
     #hwatch

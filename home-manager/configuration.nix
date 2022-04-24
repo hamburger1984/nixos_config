@@ -56,25 +56,32 @@ in
     #--- development support ---#
     clang
     elixir_ls
+    fx
     gnuplot
+    htmlq
+    jq
+    jo
     #kotlin-language-server
+    miller
     nimlsp
     omnisharp-roslyn
     python-language-server
     python39Packages.python-lsp-server
     #python39Packages.python-lsp-black
     valgrind
+    visidata
+    yq
 
     #--- Development ---#
     #arduino
     #docker-compose
+    difftastic
     gitAndTools.delta
     gitAndTools.git-ignore
     gitAndTools.git-machete
     gitAndTools.git-standup
     gitAndTools.git-when-merged
     gitAndTools.tig
-    helix
     #jetbrains.clion
     jetbrains.rider
     python3Packages.pip
@@ -92,6 +99,10 @@ in
         vscodevim.vim
       ];
     })
+
+    #--- editors/viewers ---#
+    helix
+    glow
 
     #--- micropython ---#
     esptool
@@ -137,6 +148,7 @@ in
     #--- KDE/Plasma ---#
     bismuth
     filelight
+    kate
     kcalc
     kdeplasma-addons
     kpat
@@ -164,7 +176,7 @@ in
     #zeroad # <- requires broken spidermonkey_38
 
     #--- nix development ---#
-    #nixpkgs-review
+    nixpkgs-review
     #nix-review
 
     #--- VMs ---#
@@ -174,23 +186,8 @@ in
     #virtmanager
     #virtualbox
 
-    #--- Bash ---#
-    bash
-    bash-completion
-    fd
-    navi
-    sysz
-    taskwarrior
-
     #--- Powershell ---#
     #powershell
-
-    #--- Bat ---#
-    bat-extras.batdiff
-    bat-extras.batgrep
-    bat-extras.batman
-    bat-extras.batwatch
-    bat-extras.prettybat
   ];
 
   # home.file.".config/kwinrc" = {};

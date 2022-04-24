@@ -9,13 +9,17 @@
     ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/fea8c372-ac29-4a64-9c8f-d4758a7464f6";
+    {
+      #device = "/dev/disk/by-uuid/fea8c372-ac29-4a64-9c8f-d4758a7464f6";
+      device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
       options = [ "noatime" "discard" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A57A-64D0";
+    {
+      #device = "/dev/disk/by-uuid/A57A-64D0";
+      device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "noatime" "discard" ];
     };

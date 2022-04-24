@@ -15,7 +15,7 @@
       kernelModules = [ ];
     };
 
-    kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
+    kernelModules = [ "amd_pstate" "kvm-amd" ];
     # acpi_call makes tlp work for newer thinkpads
     # "acpi_call" <- conflicts with power profiles(?)
     #kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
@@ -24,7 +24,7 @@
 
     extraModprobeConfig = ''
       options hid_apple fnmode=0
-      '';
+    '';
 
     kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
 
