@@ -29,9 +29,9 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = lib.mkDefault false;
-  networking.interfaces.enp2s0f0.useDHCP = lib.mkDefault true;
-  networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = false;
+  networking.interfaces.enp2s0f0.useDHCP = false;
+  networking.interfaces.wlp3s0.useDHCP = false;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

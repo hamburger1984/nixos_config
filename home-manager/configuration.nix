@@ -18,9 +18,11 @@ in
     ./programs/fzf.nix
     ./programs/git.nix
     ./programs/lazygit.nix
+    ./programs/navi.nix
     ./programs/neovim.nix
     ./programs/nushell.nix
     ./programs/powerline-go.nix
+    ./programs/vscode.nix
     ./programs/zoxide.nix
   ];
 
@@ -64,10 +66,11 @@ in
     #kotlin-language-server
     miller
     nimlsp
-    omnisharp-roslyn
+    #omnisharp-roslyn
     python-language-server
     python39Packages.python-lsp-server
     #python39Packages.python-lsp-black
+    quickemu
     valgrind
     visidata
     yq
@@ -87,18 +90,6 @@ in
     python3Packages.pip
     #python3Packages.pylint
     #python3Packages.flake8
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        #bbenoist.nix
-        #ms-python.python
-        #ms-dotnettools.csharp
-        #ms-toolsai.jupyter
-        #ms-vscode.cpptools
-        #nimsaem.nimvscode
-        #platformio.platformio-ide
-        vscodevim.vim
-      ];
-    })
 
     #--- editors/viewers ---#
     helix
@@ -127,10 +118,9 @@ in
     flameshot
     freetube
     keepassxc
-    libreoffice
     lite-xl
     mupdf
-    nextcloud-client
+    #nextcloud-client
     pinta
     qmapshack
     qownnotes
@@ -139,6 +129,7 @@ in
     #calibre
     #droidcam
     #focuswriter
+    #libreoffice
     #skrooge
     #solaar
     #texlive.combined.scheme-medium
@@ -168,6 +159,7 @@ in
     #kcharselect
     #kdeconnect-kde
     #klines
+    #krita
     #spectacle
 
     #--- Games ---#

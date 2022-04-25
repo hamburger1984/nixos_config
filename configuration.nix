@@ -105,7 +105,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    hsphfpd.enable = true;
+    #hsphfpd.enable = true; # <-- is this causing random bluetooth crashes?!
     package = pkgs.bluezFull;
   };
 
@@ -195,18 +195,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    #adapta-gtk-theme
-    adapta-kde-theme
-    arc-kde-theme
-    arc-theme
-    bibata-cursors
-    lightly-qt
-    materia-kde-theme
-    materia-theme
+    bibata-cursors    # cursor
+    phinger-cursors
+    lightly-qt        # window borders/title
+    kde-rounded-corners # modding window borders
+    materia-kde-theme # kde style
+    materia-theme     # gtk style (?)
     papirus-icon-theme
-
-    # audio
-    #easyeffects
+    graphite-gtk-theme
+    graphite-kde-theme
 
     # general stuff
     bash
@@ -231,7 +228,6 @@
     pciutils
     rsync
     silver-searcher
-    tldr
     unclutter
     usbutils
     wget
@@ -251,7 +247,6 @@
     ctop
     ddcutil
     duf
-    dust
     iftop
     inxi
     iotop
