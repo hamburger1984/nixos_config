@@ -6,42 +6,42 @@
     #package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       # Nix
-      #bbenoist.nix
+      bbenoist.nix
 
       # Python
-      #ms-python.python
-      #ms-python.vscode-pylance
+      ms-python.python
+      ms-python.vscode-pylance
 
       # dotnet/C#
-      #ms-dotnettools.csharp
+      ms-dotnettools.csharp
 
       # Vue.js
-      #octref.vetur
+      octref.vetur
 
       # Go
-      #golang.go
+      golang.go
 
       # Markdown
-      #yzhang.markdown-all-in-one
+      yzhang.markdown-all-in-one
 
       # Vim
       vscodevim.vim
 
       # Jupyter Notebooks
-      #ms-toolsai.jupyter
-      #ms-toolsai.jupyter-renderers
+      ms-toolsai.jupyter
+      ms-toolsai.jupyter-renderers
 
       # TODOs
-      #gruntfuggly.todo-tree
+      gruntfuggly.todo-tree
 
       # Formatting
-      #esbenp.prettier-vscode
+      esbenp.prettier-vscode
 
       # Indents
-      #oderwat.indent-rainbow
+      oderwat.indent-rainbow
 
       # Theme
-      #zhuangtongfa.material-theme
+      zhuangtongfa.material-theme
 
       #ms-vscode.cpptools
       #nimsaem.nimvscode

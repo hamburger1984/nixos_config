@@ -4,7 +4,6 @@ let
   libsForQt5 = pkgs.plasma5Packages;
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
-  # works
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 runtime_6_0 aspnetcore_6_0 ];
 in
 {
@@ -18,8 +17,8 @@ in
     ./programs/fzf.nix
     ./programs/git.nix
     ./programs/lazygit.nix
-    ./programs/navi.nix
     ./programs/neovim.nix
+    ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/powerline-go.nix
     ./programs/vscode.nix
@@ -39,6 +38,7 @@ in
     elixir
     erlang
     go
+    gopls
     kotlin
     #kotlin-native
     lua
@@ -66,11 +66,12 @@ in
     #kotlin-language-server
     miller
     nimlsp
-    #omnisharp-roslyn
+    omnisharp-roslyn
     python-language-server
     python39Packages.python-lsp-server
     #python39Packages.python-lsp-black
     quickemu
+    spice-gtk
     valgrind
     visidata
     yq
@@ -118,6 +119,7 @@ in
     flameshot
     freetube
     keepassxc
+    libreoffice
     lite-xl
     mupdf
     #nextcloud-client
@@ -129,7 +131,6 @@ in
     #calibre
     #droidcam
     #focuswriter
-    #libreoffice
     #skrooge
     #solaar
     #texlive.combined.scheme-medium
