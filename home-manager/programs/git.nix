@@ -9,6 +9,7 @@
        lg = "!f() { git log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%ar %Cgreen%an %Creset%s %C(yellow)%d%Creset' --date=relative $@; }; f";
     };
     extraConfig = {
+      advice.skippedCherryPicks = false;
       core.editor = "nvim";
       colur.ui = true;
       color.diff = true;

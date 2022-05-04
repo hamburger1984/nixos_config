@@ -23,7 +23,12 @@ in
     ./programs/powerline-go.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
+
+    ./services/flameshot.nix
+    ./services/unclutter.nix
   ];
+
+  manual.html.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -61,6 +66,7 @@ in
     fx
     gnuplot
     htmlq
+    hurl
     jq
     jo
     #kotlin-language-server
@@ -116,7 +122,6 @@ in
     #--- Desktop Programs ---#
     exiftool
     falkon
-    flameshot
     freetube
     keepassxc
     libreoffice
@@ -139,9 +144,11 @@ in
 
     #--- KDE/Plasma ---#
     bismuth
+    digikam
     filelight
     kate
     kcalc
+    kdeconnect-kde
     kdeplasma-addons
     kpat
     krunner-symbols
@@ -155,7 +162,6 @@ in
     xdg-desktop-portal-kde
     #ark
     #calligra
-    #digikam
     #kamoso
     #kcharselect
     #kdeconnect-kde

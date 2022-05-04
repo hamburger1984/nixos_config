@@ -228,7 +228,6 @@
     pciutils
     rsync
     silver-searcher
-    unclutter
     usbutils
     wget
     whois
