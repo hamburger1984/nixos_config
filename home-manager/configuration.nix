@@ -4,7 +4,14 @@ let
   libsForQt5 = pkgs.plasma5Packages;
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
-  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [ sdk_6_0 runtime_6_0 aspnetcore_6_0 ];
+  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
+    sdk_6_0
+    sdk_7_0
+    aspnetcore_6_0
+    runtime_6_0
+    aspnetcore_7_0
+    runtime_7_0
+  ];
 in
 {
   imports = [
@@ -40,6 +47,7 @@ in
 
     #--- Languages ---#
     dotnetCombined
+    #dotnetCorePackages.sdk_6_0
     elixir
     erlang
     go
@@ -61,6 +69,7 @@ in
     #rustfmt
 
     #--- development support ---#
+    android-tools
     clang
     elixir_ls
     fx
@@ -69,13 +78,14 @@ in
     hurl
     jq
     jo
+    k6
     #kotlin-language-server
     miller
     nimlsp
     omnisharp-roslyn
     python-language-server
     python39Packages.python-lsp-server
-    #python39Packages.python-lsp-black
+    python39Packages.python-lsp-black
     quickemu
     spice-gtk
     valgrind
@@ -93,7 +103,7 @@ in
     gitAndTools.git-when-merged
     gitAndTools.tig
     #jetbrains.clion
-    jetbrains.rider
+    #jetbrains.rider
     python3Packages.pip
     #python3Packages.pylint
     #python3Packages.flake8
@@ -162,9 +172,9 @@ in
     xdg-desktop-portal-kde
     #ark
     #calligra
+    #kalendar
     #kamoso
     #kcharselect
-    #kdeconnect-kde
     #klines
     #krita
     #spectacle
@@ -175,7 +185,7 @@ in
     #zeroad # <- requires broken spidermonkey_38
 
     #--- nix development ---#
-    nixpkgs-review
+    #nixpkgs-review
     #nix-review
 
     #--- VMs ---#

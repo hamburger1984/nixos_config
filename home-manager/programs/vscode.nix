@@ -35,6 +35,7 @@
 
       "[csharp]" = {
         "editor.defaultFormatter" = "csharpier.csharpier-vscode";
+        "editor.formatOnSave" = true;
       };
     };
 
@@ -79,6 +80,10 @@
       # Theme
       zhuangtongfa.material-theme
       monokai.theme-monokai-pro-vscode
+
+      # Stats
+      uctakeoff.vscode-counter
+      vizzuhq.code-viz-stat
 
       #ms-vscode.cpptools
       #nimsaem.nimvscode

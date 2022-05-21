@@ -77,7 +77,7 @@ in
       vim-nix
       #zig-vim
 
-      lens-vim
+      #lens-vim
     ];
 
     extraConfig = ''

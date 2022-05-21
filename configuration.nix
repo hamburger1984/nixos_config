@@ -144,6 +144,11 @@
         enable = true;
         enableHidpi = true;
         theme = "materia-dark";
+        settings = {
+          Theme = {
+            CursorTheme = "phinger-cursors-light";
+          };
+        };
       };
     };
 
@@ -198,7 +203,7 @@
     bibata-cursors    # cursor
     phinger-cursors
     lightly-qt        # window borders/title
-    kde-rounded-corners # modding window borders
+    #kde-rounded-corners # modding window borders
     materia-kde-theme # kde style
     materia-theme     # gtk style (?)
     papirus-icon-theme
@@ -222,6 +227,7 @@
     lz4
     mesa
     neofetch
+    nix-prefetch-git
     ntfs3g
     p7zip
     parted
@@ -252,6 +258,7 @@
     lm_sensors
     lshw
     lsb-release
+    ncdu
     powertop
     smartmontools
     strace
