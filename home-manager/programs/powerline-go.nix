@@ -2,7 +2,7 @@
 
 {
   programs.powerline-go = {
-    enable = true;
+    enable = false;
 
     modules = [ "time" "nix-shell" "direnv" "dotenv" "venv" "user" "ssh" "cwd"
                 "perms" "git" "jobs" "root" ];

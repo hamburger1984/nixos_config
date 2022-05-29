@@ -27,7 +27,7 @@ in
     ./programs/neovim.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
-    ./programs/powerline-go.nix
+    #./programs/powerline-go.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
 
@@ -44,6 +44,8 @@ in
   home.packages = with pkgs;
     with libsForQt5;
     with plasma5; with kdeApplications; with kdeFrameworks; [
+
+      oh-my-posh
 
     #--- Languages ---#
     dotnetCombined
@@ -163,6 +165,7 @@ in
     kpat
     krunner-symbols
     ksystemlog
+    libkscreen
     modemmanager-qt
     networkmanager-qt
     plasma-applet-virtual-desktop-bar
