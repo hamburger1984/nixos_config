@@ -50,7 +50,7 @@
   # Set your time zone.
   time.timeZone = null;
 
-  services.localtime.enable = true;
+  services.localtimed.enable = true;
   services.geoclue2.enable = true;
 
   services.acpid.enable = true;
@@ -200,15 +200,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    bibata-cursors    # cursor
     phinger-cursors
-    lightly-qt        # window borders/title
-    #kde-rounded-corners # modding window borders
-    materia-kde-theme # kde style
-    materia-theme     # gtk style (?)
-    papirus-icon-theme
-    graphite-gtk-theme
-    graphite-kde-theme
+    materia-kde-theme
 
     # general stuff
     bash
@@ -239,13 +232,6 @@
     whois
     xclip
     xz
-
-    #--- Bat ---#
-    bat-extras.batdiff
-    bat-extras.batgrep
-    bat-extras.batman
-    bat-extras.batwatch
-    bat-extras.prettybat
 
     # monitoring
     btop

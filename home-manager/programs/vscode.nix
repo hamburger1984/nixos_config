@@ -52,6 +52,10 @@
       ms-dotnettools.csharp
       csharpier.csharpier-vscode
 
+      # Rust
+      rust-lang.rust-analyzer
+      #vadimcn.vscode-lldb
+
       # Vue.js
       octref.vetur
 

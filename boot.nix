@@ -26,8 +26,7 @@
       options hid_apple fnmode=0
     '';
 
-    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
-
+    #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
     #kernelParams = [ "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
     # enable amd_pstate -> "amd_pstate.enable=1" "amd_pstate.shared_mem=1"

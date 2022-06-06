@@ -27,7 +27,6 @@ in
     ./programs/neovim.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
-    #./programs/powerline-go.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
 
@@ -45,84 +44,91 @@ in
     with libsForQt5;
     with plasma5; with kdeApplications; with kdeFrameworks; [
 
-      oh-my-posh
+    oh-my-posh
 
-    #--- Languages ---#
+    #=== Development ===#
+
+    ## android
+    android-tools
+
+    ## rust
+    cargo
+    clippy
+    rls
+    rustc
+    rustfmt
+
+    ## micro*
+    esptool
+    micropython
+    thonny
+    #arduino
+    #adafruit-ampy
+    #mpfshell
+    #rshell
+    #platformio
+
+    ## git
+    gitAndTools.git-ignore
+    gitAndTools.git-standup
+    gitAndTools.git-when-merged
+    #gitAndTools.delta
+    #gitAndTools.git-machete
+    #gitAndTools.tig
+
+    ## dotnet
     dotnetCombined
-    #dotnetCorePackages.sdk_6_0
+    omnisharp-roslyn
+
+    ## python
+    python3
+    python3Packages.flake8
+    python3Packages.pip
+    python3Packages.pylint
+    python3Packages.python-lsp-black
+    python3Packages.python-lsp-server
+
+    ## languate servers
+    elixir_ls
+    kotlin-language-server
+    nimlsp
+    python-language-server
+
+    ## ..the rest :^)
+    clang
+    difftastic
     elixir
     erlang
-    go
-    gopls
-    kotlin
-    #kotlin-native
-    lua
-    nim
-    nodejs
-    #platformio
-    python3
-    #zig
-
-    #--- Rust ---
-    #cargo
-    #clippy
-    #rls
-    #rustc
-    #rustfmt
-
-    #--- development support ---#
-    android-tools
-    clang
-    elixir_ls
     fx
     gnuplot
+    go
+    gopls
     htmlq
     hurl
-    jq
     jo
+    jq
     k6
-    #kotlin-language-server
+    kotlin
+    kotlin-native
+    lua
     miller
-    nimlsp
-    omnisharp-roslyn
-    python-language-server
-    python39Packages.python-lsp-server
-    python39Packages.python-lsp-black
+    nim
+    nodejs
     quickemu
     spice-gtk
     valgrind
     visidata
     yq
-
-    #--- Development ---#
-    #arduino
     #docker-compose
-    difftastic
-    gitAndTools.delta
-    gitAndTools.git-ignore
-    gitAndTools.git-machete
-    gitAndTools.git-standup
-    gitAndTools.git-when-merged
-    gitAndTools.tig
     #jetbrains.clion
     #jetbrains.rider
-    python3Packages.pip
-    #python3Packages.pylint
-    #python3Packages.flake8
+    #zig
 
-    #--- editors/viewers ---#
+    #=== editors/viewers ===#
     helix
     glow
 
-    #--- micropython ---#
-    esptool
-    micropython
-    thonny
-    #adafruit-ampy
-    #mpfshell
-    #rshell
-
-    #--- Communication ---#
+    #=== Communication ===#
     discord
     signal-desktop
     #slack
@@ -131,75 +137,87 @@ in
     #trojita
     #zoom-us
 
-    #--- Desktop Programs ---#
+    #=== Desktop Programs ===#
+    ark
+    bismuth
+    calligra
+    digikam
     exiftool
     falkon
-    freetube
-    keepassxc
-    libreoffice
-    lite-xl
-    mupdf
-    #nextcloud-client
-    pinta
-    qmapshack
-    qownnotes
-    spotify # nonfree
-    stellarium
-    #calibre
-    #droidcam
-    #focuswriter
-    #skrooge
-    #solaar
-    #texlive.combined.scheme-medium
-    #vlc
-    #vnote
-
-    #--- KDE/Plasma ---#
-    bismuth
-    digikam
     filelight
+    freetube
+    kalendar
     kate
     kcalc
     kdeconnect-kde
     kdeplasma-addons
+    keepassxc
+    kolourpaint
     kpat
     krunner-symbols
+    krusader
     ksystemlog
     libkscreen
+    libreoffice
+    lite-xl
     modemmanager-qt
+    mupdf
     networkmanager-qt
+    pinta
     plasma-applet-virtual-desktop-bar
     plasma-browser-integration
     plasma-nm
+    qmapshack
+    qownnotes
     redshift-plasma-applet
+    skrooge
+    spotify # nonfree
+    stellarium
     xdg-desktop-portal-kde
-    #ark
-    #calligra
-    #kalendar
+    #calibre
+    #droidcam
+    #focuswriter
     #kamoso
     #kcharselect
     #klines
     #krita
+    #nextcloud-client
+    #solaar
     #spectacle
+    #texlive.combined.scheme-medium
+    #vlc
+    #vnote
 
-    #--- Games ---#
+    #=== Theme ===#
+    lightly-qt
+    graphite-gtk-theme
+    graphite-kde-theme
+
+    #=== Bat ===#
+    bat-extras.batdiff
+    bat-extras.batgrep
+    bat-extras.batman
+    bat-extras.batwatch
+    bat-extras.prettybat
+
+    #=== Games ===#
     steam
     #openra
     #zeroad # <- requires broken spidermonkey_38
 
-    #--- nix development ---#
+    #=== nix development ===#
     #nixpkgs-review
     #nix-review
 
-    #--- VMs ---#
+    #=== VMs ===#
     #libvirt
     #qemu
     #qemu_kvm
     #virtmanager
     #virtualbox
 
-    #--- Powershell ---#
-    #powershell
+    #=== Shells ---#
+    powershell
   ];
 
   # home.file.".config/kwinrc" = {};
