@@ -107,6 +107,7 @@
     enable = true;
     #hsphfpd.enable = true; # <-- is this causing random bluetooth crashes?!
     package = pkgs.bluezFull;
+    disabledPlugins = [ "sap" ];
   };
 
   hardware.opengl = {
@@ -157,7 +158,7 @@
     libinput.touchpad = {
       accelSpeed = "0.9";
       disableWhileTyping = true;
-      naturalScrolling = false;
+      naturalScrolling = true;
       tapping = true;
     };
 
@@ -207,6 +208,7 @@
     bash
     bash-completion
     dmidecode
+    exfat
     fd
     file
     firmwareLinuxNonfree
@@ -221,6 +223,7 @@
     mesa
     neofetch
     nix-prefetch-git
+    nix-prefetch-github
     ntfs3g
     p7zip
     parted
@@ -238,6 +241,7 @@
     ctop
     ddcutil
     duf
+    hwatch
     iftop
     inxi
     iotop
@@ -250,13 +254,14 @@
     strace
     sysz
     usbtop
+    viddy
     zenstates
-    #hwatch
 
     # logitech
     logitech-udev-rules
 
     # compiler
+    ccache
     llvm
     gnumake
   ];
@@ -289,8 +294,9 @@
       options = "--delete-older-than 3d";
     };
 
-    #extraOptions = ''
-    #  experimental-features = nix-command
+    extraOptions = ''
+      experimental-features = nix-command
+    '';
     #  http2 = true
     #  keep-derivations = true
     #  keep-outputs = true

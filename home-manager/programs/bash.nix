@@ -93,7 +93,8 @@
       bind '"\e[D": backward-char'
 
       # Init oh my posh
-      eval "$(oh-my-posh init bash --config ${pkgs.oh-my-posh}/themes/mojada.omp.json)"
+      eval "$(oh-my-posh init bash --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/mojada.omp.json)"
     '';
   };
+
 }

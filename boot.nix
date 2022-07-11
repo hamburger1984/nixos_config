@@ -26,12 +26,20 @@
       options hid_apple fnmode=0
     '';
 
-    #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
+    kernelParams = [
+      "iommu=soft"
+
+      # enable amd_pstate
+      "amd_pstate.enable=1"
+      "amd_pstate.shared_mem=1"
+
+      # turn off spectre mitigations
+      "mitigations=off"
+
+      # fix load/restore of backlight
+      "acpi_backlight=native"
+    ];
     #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
-    #kernelParams = [ "amd_pstate.enable=1" "amd_pstate.shared_mem=1" ];
-    # enable amd_pstate -> "amd_pstate.enable=1" "amd_pstate.shared_mem=1"
-    # turn off spectre mitigations -> "mitigations=off"
-    # fix load/restore of backlight -> "acpi_backlight=native"
 
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     #kernelPackages = pkgs.linuxPackages_latest;

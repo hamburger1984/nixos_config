@@ -6,9 +6,9 @@ let
 
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_6_0
-    sdk_7_0
     aspnetcore_6_0
     runtime_6_0
+    sdk_7_0
     aspnetcore_7_0
     runtime_7_0
   ];
@@ -54,14 +54,14 @@ in
     ## rust
     cargo
     clippy
-    rls
     rustc
     rustfmt
+    rust-analyzer
 
     ## micro*
-    esptool
-    micropython
-    thonny
+    #esptool
+    #micropython
+    #thonny
     #arduino
     #adafruit-ampy
     #mpfshell
@@ -72,9 +72,7 @@ in
     gitAndTools.git-ignore
     gitAndTools.git-standup
     gitAndTools.git-when-merged
-    #gitAndTools.delta
     #gitAndTools.git-machete
-    #gitAndTools.tig
 
     ## dotnet
     dotnetCombined
@@ -103,6 +101,7 @@ in
     gnuplot
     go
     gopls
+    heaptrack
     htmlq
     hurl
     jo
@@ -119,10 +118,10 @@ in
     valgrind
     visidata
     yq
+    zig
     #docker-compose
     #jetbrains.clion
     #jetbrains.rider
-    #zig
 
     #=== editors/viewers ===#
     helix
@@ -173,7 +172,9 @@ in
     skrooge
     spotify # nonfree
     stellarium
+    vlc
     xdg-desktop-portal-kde
+    #applet-window-appmenu
     #calibre
     #droidcam
     #focuswriter
@@ -185,7 +186,6 @@ in
     #solaar
     #spectacle
     #texlive.combined.scheme-medium
-    #vlc
     #vnote
 
     #=== Theme ===#

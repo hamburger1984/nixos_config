@@ -36,6 +36,10 @@ in
       lsp_signature-nvim  # signature hint while typing
       lspkind-nvim        # pictograms for lsp completion items
       folding-nvim
+      aerial-nvim         # Code outline window
+      #tagbar              #   .. another outline
+      FixCursorHold-nvim  # recommended for lightbulb
+      nvim-lightbulb      # Lightbulb for neovim's built-in LSP
 
       neoformat           # formatting
 
@@ -53,7 +57,6 @@ in
 
       gitsigns-nvim
 
-      nvim-gps
       lualine-nvim
 
       bufferline-nvim
@@ -66,7 +69,7 @@ in
       #omnisharp-vim
       #kotlin-vim
       #python-mode
-      #rust-tools-nvim
+      rust-tools-nvim
       #rust-vim
       #vim-csharp
       vim-fsharp
@@ -250,7 +253,7 @@ in
       "-------------------------------------------------------------------------------
       " Highlight multiple spaces and trailing whitespace
       "-------------------------------------------------------------------------------
-      set list
+      "set list
       highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
       au ColorScheme * highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
       " highlight multiple spaces
@@ -300,11 +303,25 @@ in
       augroup END
 
       "-------------------------------------------------------------------------------
+      " some lsp mappings
+      "-------------------------------------------------------------------------------
+      "nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+      nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+      nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+      nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+      "nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+      nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+      "nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+      nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+      nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+      nnoremap <silent> ga  <cmd>lua vim.lsp.buf.code_action()<CR>
+
+      "-------------------------------------------------------------------------------
       " LUA - bufferline
       "-------------------------------------------------------------------------------
       " see https://github.com/akinsho/bufferline.nvim
       lua << EOF
-      require("bufferline").setup{
+      require('bufferline').setup{
         numbers = "buffer_id",
         number_style = "subscript",
         diagnostics = "nvim_lsp",
@@ -318,8 +335,8 @@ in
       " LUA - cmp
       "-------------------------------------------------------------------------------
       lua << EOF
+      local cmp = require('cmp')
       -- autocomplete config
-      local cmp = require 'cmp'
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -357,17 +374,14 @@ in
       lua << EOF
       local pid = vim.fn.getpid()
 
-      -- omnisharp lsp config
-      local lspconfig = require('lspconfig')
-
       -- Neovim doesn't support snippets out of the box, so we need to mutate the
       -- capabilities we send to the language server to let them know we want snippets.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      lspconfig.omnisharp.setup {
+      require('lspconfig').omnisharp.setup {
         capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
           vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
           -- require('folding').on_attach()
         end,
@@ -379,18 +393,7 @@ in
       " LUA - lspconfig - elixir
       "-------------------------------------------------------------------------------
       lua << EOF
-      local lspconfig = require('lspconfig')
-
-      -- Neovim doesn't support snippets out of the box, so we need to mutate the
-      -- capabilities we send to the language server to let them know we want snippets.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      lspconfig.elixirls.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
-        on_attach = function(_, bufnr)
-          -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        end,
+      require('lspconfig').elixirls.setup {
         cmd = { "/etc/profiles/per-user/andreas/bin/elixir-ls" },
         settings = {
           elixirLS = {
@@ -403,7 +406,7 @@ in
             -- the .elixir_ls directory and restarting your editor.
             fetchDeps = false
           }
-        }
+        },
       }
       EOF
 
@@ -412,15 +415,59 @@ in
       "-------------------------------------------------------------------------------
       lua << EOF
       require('lspconfig').nimls.setup {
-          cmd = { '/etc/profiles/per-user/andreas/bin/nimlsp' },
-          --filetypes = { 'nim' },
-          --rootdir = require('lspconfig/util').root_pattern('*.nimble'),
-          --settings = {},
+        cmd = { '/etc/profiles/per-user/andreas/bin/nimlsp' },
+        --filetypes = { 'nim' },
+        --rootdir = require('lspconfig/util').root_pattern('*.nimble'),
+        --settings = {},
       }
       EOF
 
       "-------------------------------------------------------------------------------
-      " Python - lspconfig - nim
+      " LUA - rust tools
+      "-------------------------------------------------------------------------------
+      " see https://sharksforarms.dev/posts/neovim-rust/
+      " Configure LSP through rust-tools.nvim plugin.
+      " rust-tools will configure and enable certain LSP features for us.
+      " See https://github.com/simrat39/rust-tools.nvim#configuration
+      lua <<EOF
+      local nvim_lsp = require'lspconfig'
+
+      local opts = {
+        tools = { -- rust-tools options
+          autoSetHints = true,
+          hover_with_actions = true,
+          inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+          },
+        },
+
+        -- all the opts to send to nvim-lspconfig
+        -- these override the defaults set by rust-tools.nvim
+        -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+        server = {
+          -- on_attach is a callback called when the language server attachs to the buffer
+          --on_attach = function(client, bufnr) .. end,
+          settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+              -- enable clippy on save
+              checkOnSave = {
+                command = "clippy"
+              },
+            }
+          }
+        },
+      }
+
+      require('rust-tools').setup(opts)
+      EOF
+
+
+      "-------------------------------------------------------------------------------
+      " LUA - lspconfig - python
       "-------------------------------------------------------------------------------
       lua << EOF
       require('lspconfig').pylsp.setup {
@@ -433,7 +480,31 @@ in
       "-------------------------------------------------------------------------------
       " see https://github.com/lukas-reineke/indent-blankline.nvim
       lua << EOF
-      require("indent_blankline").setup {}
+
+      vim.opt.list = true
+      vim.opt.listchars:append("space:⋅")
+      vim.opt.listchars:append("eol:↴")
+
+      --vim.opt.termguicolors = true
+      --vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]]
+      --vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]]
+
+      require("indent_blankline").setup {
+        --char = "",
+        --char_highlight_list = {
+        --    "IndentBlanklineIndent1",
+        --    "IndentBlanklineIndent2",
+        --},
+        space_char_blankline = " ",
+        --space_char_highlight_list = {
+        --    "IndentBlanklineIndent1",
+        --    "IndentBlanklineIndent2",
+        --},
+        show_trailing_blankline_indent = false,
+        show_current_context = true,
+        show_current_context_start = true,
+        show_end_of_line = true
+      }
       EOF
 
       "-------------------------------------------------------------------------------
@@ -483,6 +554,27 @@ in
       "set foldexpr=nvim_treesitter#foldexpr()
 
       "-------------------------------------------------------------------------------
+      " Aerial
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      require("aerial").setup({})
+      EOF
+
+      "-------------------------------------------------------------------------------
+      " Lightbulb
+      "-------------------------------------------------------------------------------
+      lua << EOF
+      require("nvim-lightbulb").setup({
+        autocmd = {enabled = true},
+        sign = {enabled = true},
+        --float = {enabled = true, text = ""},
+        --virtual_text = {enabled = false, text = ""},
+        --status_text = {enabled = false, text = "", text_unavailable = ""}
+      })
+
+      EOF
+
+      "-------------------------------------------------------------------------------
       " LUA - telescope
       "-------------------------------------------------------------------------------
       " see https://github.com/nvim-telescope/telescope.nvim
@@ -513,9 +605,9 @@ in
               mirror = false,
             },
           },
-          file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+          file_sorter = require'telescope.sorters'.get_fuzzy_file,
           file_ignore_patterns = {},
-          generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+          generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
           winblend = 0,
           border = {},
           borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
@@ -541,27 +633,29 @@ in
       EOF
       map <Leader>t :Twilight<CR>
 
-      "-------------------------------------------------------------------------------
-      " GPS
-      "-------------------------------------------------------------------------------
-      lua << EOF
-      require("nvim-gps").setup()
-      EOF
+      ""-------------------------------------------------------------------------------
+      "" GPS
+      ""-------------------------------------------------------------------------------
+      "lua << EOF
+      "require("nvim-gps").setup()
+      "EOF
 
       "-------------------------------------------------------------------------------
       " lualine
       "-------------------------------------------------------------------------------
       lua << EOF
-      local gps = require("nvim-gps")
+      --local gps = require("nvim-gps")
       require("lualine").setup({
         sections = {
-          lualine_c = {
-            { gps.get_location, cond = gps.is_available }
-          }
+          --lualine_c = {
+          --  { gps.get_location, cond = gps.is_available }
+          --},
+
+          lualine_c = { "aerial" }
+
         }
       })
       EOF
-
     '';
     #extraConfig = builtins.readfile /tmp/testing/extra.vim;
   };

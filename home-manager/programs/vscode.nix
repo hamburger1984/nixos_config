@@ -54,7 +54,7 @@
 
       # Rust
       rust-lang.rust-analyzer
-      #vadimcn.vscode-lldb
+      vadimcn.vscode-lldb
 
       # Vue.js
       octref.vetur
@@ -82,7 +82,7 @@
       oderwat.indent-rainbow
 
       # Theme
-      zhuangtongfa.material-theme
+      #zhuangtongfa.material-theme
       monokai.theme-monokai-pro-vscode
 
       # Stats
