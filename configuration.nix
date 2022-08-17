@@ -54,8 +54,9 @@
   services.geoclue2.enable = true;
 
   services.acpid.enable = true;
-  services.tlp.enable = true;
-  #services.power-profiles-daemon.enable = true;
+  services.tlp.enable = false;
+  services.power-profiles-daemon.enable = true;
+
   powerManagement = {
     enable = true;
     #cpuFreqGovernor = "schedutil";
@@ -237,6 +238,7 @@
     xz
 
     # monitoring
+    bottom
     btop
     ctop
     ddcutil
