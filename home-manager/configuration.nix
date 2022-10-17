@@ -27,6 +27,7 @@ in
     ./programs/neovim.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
+    ./programs/starship.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
 
@@ -36,6 +37,8 @@ in
 
   manual.html.enable = true;
 
+  home.stateVersion = "22.05"; # Did you read the comment?
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -44,12 +47,11 @@ in
     with libsForQt5;
     with plasma5; with kdeApplications; with kdeFrameworks; [
 
-    oh-my-posh
-
     #=== Development ===#
 
     ## android
     android-tools
+    scrcpy
 
     ## rust
     cargo
@@ -72,7 +74,6 @@ in
     gitAndTools.git-ignore
     gitAndTools.git-standup
     gitAndTools.git-when-merged
-    #gitAndTools.git-machete
 
     ## dotnet
     dotnetCombined
@@ -112,6 +113,7 @@ in
     lua
     miller
     nim
+    nix-du
     nodejs
     quickemu
     spice-gtk
@@ -126,6 +128,7 @@ in
     #=== editors/viewers ===#
     helix
     glow
+    lite-xl
 
     #=== Communication ===#
     discord
@@ -158,7 +161,6 @@ in
     ksystemlog
     libkscreen
     libreoffice
-    lite-xl
     modemmanager-qt
     mupdf
     networkmanager-qt

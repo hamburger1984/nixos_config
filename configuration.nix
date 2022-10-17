@@ -107,7 +107,7 @@
   hardware.bluetooth = {
     enable = true;
     #hsphfpd.enable = true; # <-- is this causing random bluetooth crashes?!
-    package = pkgs.bluezFull;
+    package = pkgs.bluez;
     disabledPlugins = [ "sap" ];
   };
 
@@ -164,8 +164,6 @@
     };
 
     videoDrivers = [ "amdgpu" ];
-
-    useGlamor = true;
   };
 
   fonts = {
@@ -202,6 +200,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
+    bibata-cursors
     phinger-cursors
     materia-kde-theme
 

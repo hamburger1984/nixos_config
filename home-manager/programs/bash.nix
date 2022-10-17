@@ -91,9 +91,6 @@
       bind '"\e[B": history-search-forward'
       bind '"\e[C": forward-char'
       bind '"\e[D": backward-char'
-
-      # Init oh my posh
-      eval "$(oh-my-posh init bash --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/mojada.omp.json)"
     '';
   };
 
