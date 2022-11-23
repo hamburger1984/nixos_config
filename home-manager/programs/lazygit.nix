@@ -5,6 +5,11 @@
     enable = true;
 
     settings = {
+      keybinding.universal = {
+        nextTab = ")";
+        prevTab = "(";
+      };
+
       gui.theme = {
         selectedLineBgColor = [ "underline" ];
         selectedRangeBgColor = [ "underline" ];
