@@ -25,6 +25,7 @@
 
   networking = {
     hostName = "nix2020-14"; # Define your hostname.
+
     # Pick only one of the below networking options.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -32,6 +33,7 @@
     # Open ports in the firewall.
     # firewall.allowedTCPPorts = [ ... ];
     # firewall.allowedUDPPorts = [ ... ];
+
     # Or disable the firewall altogether.
     # firewall.enable = false;
 
@@ -108,7 +110,7 @@
     enable = true;
     #hsphfpd.enable = true; # <-- is this causing random bluetooth crashes?!
     package = pkgs.bluez;
-    disabledPlugins = [ "sap" ];
+    #disabledPlugins = [ "sap" ];
   };
 
   hardware.opengl = {
@@ -150,6 +152,12 @@
           Theme = {
             CursorTheme = "phinger-cursors-light";
           };
+          Wayland = {
+            SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
+          };
+          X11 = {
+            EnableHidpi = true;
+          };
         };
       };
     };
@@ -189,12 +197,33 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
-    extraGroups = [ "audio" "dialout" "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "dialout" "input" "networkmanager" "wheel" ];
   };
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.andreas = import ./home-manager/configuration.nix;
+
+  environment.etc."libinput-gestures.conf" = {
+    text = ''
+      device all
+      gesture swipe up 4 xdotool key Super_L+Tab
+      gesture swipe left 3 xdotool key Super_L+control+left
+      gesture swipe right 3 xdotool key Super_L+control+right
+      gesture swipe left 4 xdotool key Super_L+control+shift+left
+      gesture swipe right 4 xdotool key Super_L+control+shift+right
+    '';
+    mode = "444";
+  };
+
+  systemd.user.services."libinput-gestures" = {
+    description = "Add multitouch gestures using libinput-gestures";
+    wantedBy = [ "default.target" ];
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = 2;
+    serviceConfig.ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+    environment = { DISPLAY = ":0"; };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -216,6 +245,7 @@
     gparted
     inotify-tools
     libcgroup
+    libinput-gestures
     libva
     libxkbcommon
     lsof
@@ -234,6 +264,7 @@
     wget
     whois
     xclip
+    xdotool
     xz
 
     # monitoring

@@ -5,9 +5,6 @@ let
   inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
-    sdk_6_0
-    aspnetcore_6_0
-    runtime_6_0
     sdk_7_0
     aspnetcore_7_0
     runtime_7_0
@@ -50,7 +47,7 @@ in
     #=== Development ===#
 
     ## android
-    android-tools
+    #android-tools
     scrcpy
 
     ## rust
@@ -80,18 +77,18 @@ in
     omnisharp-roslyn
 
     ## python
-    python3
-    python3Packages.flake8
-    python3Packages.pip
-    python3Packages.pylint
-    python3Packages.python-lsp-black
-    python3Packages.python-lsp-server
+    #python3
+    #python3Packages.flake8
+    #python3Packages.pip
+    #python3Packages.pylint
+    #python3Packages.python-lsp-black
+    #python3Packages.python-lsp-server
 
     ## languate servers
     elixir_ls
     kotlin-language-server
     nimlsp
-    python-language-server
+    #python-language-server
 
     ## ..the rest :^)
     clang
@@ -105,6 +102,8 @@ in
     heaptrack
     htmlq
     hurl
+    jetbrains.clion
+    jetbrains.rider
     jo
     jq
     k6
@@ -122,8 +121,6 @@ in
     yq
     zig
     #docker-compose
-    #jetbrains.clion
-    #jetbrains.rider
 
     #=== editors/viewers ===#
     helix
@@ -133,8 +130,8 @@ in
     #=== Communication ===#
     discord
     signal-desktop
+    tdesktop
     #slack
-    #tdesktop
     #teams
     #trojita
     #zoom-us
@@ -142,7 +139,7 @@ in
     #=== Desktop Programs ===#
     ark
     bismuth
-    calligra
+    #calligra
     digikam
     exiftool
     falkon
