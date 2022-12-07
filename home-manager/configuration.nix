@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 
 let
-  libsForQt5 = pkgs.plasma5Packages;
-  inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
+  #libsForQt5 = pkgs.plasma5Packages;
+  #inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_7_0
@@ -28,7 +28,6 @@ in
     ./programs/vscode.nix
     ./programs/zoxide.nix
 
-    ./services/flameshot.nix
     ./services/unclutter.nix
   ];
 
@@ -41,8 +40,9 @@ in
   };
 
   home.packages = with pkgs;
-    with libsForQt5;
-    with plasma5; with kdeApplications; with kdeFrameworks; [
+    #with libsForQt5;
+    #with plasma5; with kdeApplications; with kdeFrameworks;
+    [
 
     #=== Development ===#
 
@@ -85,47 +85,45 @@ in
     #python3Packages.python-lsp-server
 
     ## languate servers
-    elixir_ls
-    kotlin-language-server
-    nimlsp
+    #elixir_ls
+    #kotlin-language-server
+    #nimlsp
     #python-language-server
 
     ## ..the rest :^)
     clang
     difftastic
-    elixir
-    erlang
+    #elixir
+    #erlang
     fx
     gnuplot
-    go
-    gopls
+    #go
+    #gopls
     heaptrack
-    htmlq
-    hurl
+    #htmlq
+    #hurl
     jetbrains.clion
     jetbrains.rider
-    jo
-    jq
-    k6
-    kotlin
-    kotlin-native
+    #jo
+    #jq
+    #k6
+    #kotlin
+    #kotlin-native
     lua
-    miller
+    #miller
     nim
     nix-du
-    nodejs
+    #nodejs
     quickemu
     spice-gtk
     valgrind
     visidata
-    yq
-    zig
+    #yq
+    #zig
     #docker-compose
 
     #=== editors/viewers ===#
     helix
-    glow
-    lite-xl
 
     #=== Communication ===#
     discord
@@ -137,42 +135,79 @@ in
     #zoom-us
 
     #=== Desktop Programs ===#
-    ark
-    bismuth
-    #calligra
-    digikam
-    exiftool
-    falkon
-    filelight
-    freetube
-    kalendar
-    kate
-    kcalc
-    kdeconnect-kde
-    kdeplasma-addons
-    keepassxc
-    kolourpaint
-    kpat
-    krunner-symbols
-    krusader
-    ksystemlog
-    libkscreen
-    libreoffice
-    modemmanager-qt
-    mupdf
-    networkmanager-qt
-    pinta
-    plasma-applet-virtual-desktop-bar
-    plasma-browser-integration
-    plasma-nm
-    qmapshack
-    qownnotes
-    redshift-plasma-applet
-    skrooge
+    # >> KDE
+    #ark
+    #bismuth
+    #digikam
+    #kalendar
+    #kate
+    #kcalc
+    #kdeconnect-kde
+    #kdeplasma-addons
+    #keepassxc
+    #kolourpaint
+    #kpat
+    #krunner-symbols
+    #krusader
+    #ksystemlog
+    #libkscreen
+    #plasma-applet-virtual-desktop-bar
+    #plasma-browser-integration
+    #plasma-nm
+    #xdg-desktop-portal-kde
+    #modemmanager-qt
+    #networkmanager-qt
+    #redshift-plasma-applet
+    #skrooge
+    # KDE <<
+
+    # >> Qt
+    #filelight
+    #qownnotes
+    # QT <<
+
+    #exiftool
+    #falkon
+    #freetube
+    #libreoffice
+    #mupdf
+    #pinta
+    #qmapshack
     spotify # nonfree
-    stellarium
-    vlc
-    xdg-desktop-portal-kde
+    #stellarium
+    #vlc
+
+    #xdg-desktop-portal-gnome
+
+    # >> GNOME
+    deja-dup
+    drawing
+    apostrophe
+    shotwell
+    gnome-secrets
+    gnome.gnome-tweaks
+    gnome.gnome-shell-extensions
+
+    gnomeExtensions.extension-list
+    gnomeExtensions.just-perfection
+    gnomeExtensions.gsconnect
+
+    #gnomeExtensions.battery-threshold
+    gnomeExtensions.thinkpad-battery-threshold
+
+    gnomeExtensions.bluetooth-battery
+    gnomeExtensions.bluetooth-quick-connect
+
+    gnomeExtensions.tophat
+    gnomeExtensions.system-monitor
+    #gnomeExtensions.system-monitor-next
+
+    #gnomeExtensions.topiconsfix
+    gnomeExtensions.appindicator
+
+    # GNOME <<
+
+
     #applet-window-appmenu
     #calibre
     #droidcam
@@ -188,9 +223,9 @@ in
     #vnote
 
     #=== Theme ===#
-    lightly-qt
+    #lightly-qt
     graphite-gtk-theme
-    graphite-kde-theme
+    #graphite-kde-theme
 
     #=== Bat ===#
     bat-extras.batdiff
@@ -216,7 +251,7 @@ in
     #virtualbox
 
     #=== Shells ---#
-    powershell
+    #powershell
   ];
 
   # home.file.".config/kwinrc" = {};

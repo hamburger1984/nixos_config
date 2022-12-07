@@ -71,7 +71,6 @@
   services.colord.enable = true;
 
   services.avahi.enable = true;
-  services.udev.packages = [ pkgs.logitech-udev-rules ];
   programs.dconf.enable = true;
 
   #services.fprintd.enable = true;
@@ -137,29 +136,33 @@
     desktopManager = {
       xterm.enable = false;
 
-      plasma5 = {
-        enable = true;
-        useQtScaling = true;
-      };
+      #plasma5 = {
+      #  enable = true;
+      #  useQtScaling = true;
+      #};
+
+      gnome.enable = true;
     };
 
     displayManager = {
-      sddm = {
-        enable = true;
-        enableHidpi = true;
-        theme = "materia-dark";
-        settings = {
-          Theme = {
-            CursorTheme = "phinger-cursors-light";
-          };
-          Wayland = {
-            SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
-          };
-          X11 = {
-            EnableHidpi = true;
-          };
-        };
-      };
+      gdm.enable = true;
+
+      #sddm = {
+      #  enable = true;
+      #  enableHidpi = true;
+      #  theme = "materia-dark";
+      #  settings = {
+      #    Theme = {
+      #      CursorTheme = "phinger-cursors-light";
+      #    };
+      #    Wayland = {
+      #      SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
+      #    };
+      #    X11 = {
+      #      EnableHidpi = true;
+      #    };
+      #  };
+      #};
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
@@ -173,6 +176,23 @@
 
     videoDrivers = [ "amdgpu" ];
   };
+
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese
+    gnome-music
+    gedit
+    epiphany
+    geary
+    totem
+  ]);
+
+  services.udev.packages = with pkgs; [
+    logitech-udev-rules
+    gnome.gnome-settings-daemon
+  ];
 
   fonts = {
     enableDefaultFonts = false;
@@ -189,10 +209,6 @@
       victor-mono
     ];
   };
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
@@ -231,7 +247,7 @@
     #--- Theming ---#
     bibata-cursors
     phinger-cursors
-    materia-kde-theme
+    #materia-kde-theme
 
     # general stuff
     bash

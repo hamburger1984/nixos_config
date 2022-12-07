@@ -24,13 +24,13 @@ in
       nvim-treesitter-context
       #nvim-ts-rainbow
 
-      nvim-cmp            # completion menu
-      cmp-buffer          # buffer completion source
-      cmp-nvim-lsp        # lsp source
-      cmp-path            # path source
-      cmp-treesitter      # treesitter source
-      cmp-vsnip           # snippets source
-      vim-vsnip
+      #nvim-cmp            # completion menu
+      #cmp-buffer          # buffer completion source
+      #cmp-nvim-lsp        # lsp source
+      #cmp-path            # path source
+      #cmp-treesitter      # treesitter source
+      #cmp-vsnip           # snippets source
+      #vim-vsnip
 
       nvim-lspconfig      # configuring lsp servers
       lsp_signature-nvim  # signature hint while typing
@@ -334,39 +334,39 @@ in
       "-------------------------------------------------------------------------------
       " LUA - cmp
       "-------------------------------------------------------------------------------
-      lua << EOF
-      local cmp = require('cmp')
-      -- autocomplete config
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            vim.fn['vsnip#anonymous'](args.body)
-          end,
-        },
-        mapping = {
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          })
-        },
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'vsnip' },
-          { name = 'path' },
-          { name = 'buffer' }
-        },
-        formatting = {
-          format = require('lspkind').cmp_format({
-            with_text = true,
-            menu = {
-              nvim_lsp = '[LSP]'
-            },
-          })
-        },
-      }
-      EOF
+      "lua << EOF
+      "local cmp = require('cmp')
+      "-- autocomplete config
+      "cmp.setup {
+      "  snippet = {
+      "    expand = function(args)
+      "      vim.fn['vsnip#anonymous'](args.body)
+      "    end,
+      "  },
+      "  mapping = {
+      "    ['<Tab>'] = cmp.mapping.select_next_item(),
+      "    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+      "    ['<CR>'] = cmp.mapping.confirm({
+      "      behavior = cmp.ConfirmBehavior.Replace,
+      "      select = true,
+      "    })
+      "  },
+      "  sources = {
+      "    { name = 'nvim_lsp' },
+      "    { name = 'vsnip' },
+      "    { name = 'path' },
+      "    { name = 'buffer' }
+      "  },
+      "  formatting = {
+      "    format = require('lspkind').cmp_format({
+      "      with_text = true,
+      "      menu = {
+      "        nvim_lsp = '[LSP]'
+      "      },
+      "    })
+      "  },
+      "}
+      "EOF
 
       "-------------------------------------------------------------------------------
       " LUA - lspconfig - omnisharp + vsnip
@@ -376,11 +376,11 @@ in
 
       -- Neovim doesn't support snippets out of the box, so we need to mutate the
       -- capabilities we send to the language server to let them know we want snippets.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      --local capabilities = vim.lsp.protocol.make_client_capabilities()
+      --capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       require('lspconfig').omnisharp.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
+        -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
         on_attach = function(client, bufnr)
           vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
           -- require('folding').on_attach()
@@ -389,26 +389,6 @@ in
       }
       EOF
 
-      "-------------------------------------------------------------------------------
-      " LUA - lspconfig - elixir
-      "-------------------------------------------------------------------------------
-      lua << EOF
-      require('lspconfig').elixirls.setup {
-        cmd = { "/etc/profiles/per-user/andreas/bin/elixir-ls" },
-        settings = {
-          elixirLS = {
-            -- I choose to disable dialyzer for personal reasons, but
-            -- I would suggest you also disable it unless you are well
-            -- aquainted with dialzyer and know how to use it.
-            dialyzerEnabled = false,
-            -- I also choose to turn off the auto dep fetching feature.
-            -- It often get's into a weird state that requires deleting
-            -- the .elixir_ls directory and restarting your editor.
-            fetchDeps = false
-          }
-        },
-      }
-      EOF
 
       "-------------------------------------------------------------------------------
       " LUA - lspconfig - nim
