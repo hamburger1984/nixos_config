@@ -55,31 +55,32 @@
       # Rust
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
+      #conradludgate.rust-playground
 
       # Vue.js
-      octref.vetur
+      #octref.vetur
 
       # Go
-      golang.go
+      #golang.go
 
       # Markdown
-      yzhang.markdown-all-in-one
+      #yzhang.markdown-all-in-one
 
       # Vim
       vscodevim.vim
 
       # Jupyter Notebooks
-      ms-toolsai.jupyter
-      ms-toolsai.jupyter-renderers
+      #ms-toolsai.jupyter
+      #ms-toolsai.jupyter-renderers
 
       # TODOs
       gruntfuggly.todo-tree
 
       # Formatting
-      esbenp.prettier-vscode
+      #esbenp.prettier-vscode
 
       # Indents
-      oderwat.indent-rainbow
+      #oderwat.indent-rainbow
 
       # Theme
       #zhuangtongfa.material-theme

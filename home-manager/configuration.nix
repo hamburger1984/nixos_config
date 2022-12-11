@@ -28,7 +28,7 @@ in
     ./programs/vscode.nix
     ./programs/zoxide.nix
 
-    ./services/unclutter.nix
+    #./services/unclutter.nix
   ];
 
   manual.html.enable = true;
@@ -188,23 +188,15 @@ in
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
 
-    gnomeExtensions.extension-list
-    gnomeExtensions.just-perfection
-    gnomeExtensions.gsconnect
-
-    #gnomeExtensions.battery-threshold
-    gnomeExtensions.thinkpad-battery-threshold
-
-    gnomeExtensions.bluetooth-battery
-    gnomeExtensions.bluetooth-quick-connect
-
-    gnomeExtensions.tophat
-    gnomeExtensions.system-monitor
-    #gnomeExtensions.system-monitor-next
-
-    #gnomeExtensions.topiconsfix
     gnomeExtensions.appindicator
+    gnomeExtensions.impatience
+    gnomeExtensions.extension-list
+    gnomeExtensions.thinkpad-battery-threshold
+    #gnomeExtensions.bluetooth-battery
+    gnomeExtensions.bluetooth-quick-connect
+    gnomeExtensions.vitals
 
+    gnomeExtensions.sound-output-device-chooser
     # GNOME <<
 
 

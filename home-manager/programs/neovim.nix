@@ -35,7 +35,7 @@ in
       nvim-lspconfig      # configuring lsp servers
       lsp_signature-nvim  # signature hint while typing
       lspkind-nvim        # pictograms for lsp completion items
-      folding-nvim
+      #folding-nvim
       aerial-nvim         # Code outline window
       #tagbar              #   .. another outline
       FixCursorHold-nvim  # recommended for lightbulb
@@ -65,17 +65,17 @@ in
       #neoscroll-nvim
 
       # languages
-      nim-vim
+      #nim-vim
       #omnisharp-vim
       #kotlin-vim
       #python-mode
       rust-tools-nvim
       #rust-vim
       #vim-csharp
-      vim-fsharp
-      vim-elixir
+      #vim-fsharp
+      #vim-elixir
       #vim-go
-      vim-json
+      #vim-json
       vim-lua
       vim-nix
       #zig-vim
@@ -334,59 +334,59 @@ in
       "-------------------------------------------------------------------------------
       " LUA - cmp
       "-------------------------------------------------------------------------------
-      "lua << EOF
-      "local cmp = require('cmp')
-      "-- autocomplete config
-      "cmp.setup {
-      "  snippet = {
-      "    expand = function(args)
-      "      vim.fn['vsnip#anonymous'](args.body)
-      "    end,
-      "  },
-      "  mapping = {
-      "    ['<Tab>'] = cmp.mapping.select_next_item(),
-      "    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-      "    ['<CR>'] = cmp.mapping.confirm({
-      "      behavior = cmp.ConfirmBehavior.Replace,
-      "      select = true,
-      "    })
-      "  },
-      "  sources = {
-      "    { name = 'nvim_lsp' },
-      "    { name = 'vsnip' },
-      "    { name = 'path' },
-      "    { name = 'buffer' }
-      "  },
-      "  formatting = {
-      "    format = require('lspkind').cmp_format({
-      "      with_text = true,
-      "      menu = {
-      "        nvim_lsp = '[LSP]'
-      "      },
-      "    })
-      "  },
-      "}
-      "EOF
+      lua << EOF
+      -- local cmp = require('cmp')
+      -- -- autocomplete config
+      -- cmp.setup {
+      --   snippet = {
+      --     expand = function(args)
+      --       vim.fn['vsnip#anonymous'](args.body)
+      --     end,
+      --   },
+      --   mapping = {
+      --     ['<Tab>'] = cmp.mapping.select_next_item(),
+      --     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+      --     ['<CR>'] = cmp.mapping.confirm({
+      --       behavior = cmp.ConfirmBehavior.Replace,
+      --       select = true,
+      --     })
+      --   },
+      --   sources = {
+      --     { name = 'nvim_lsp' },
+      --     { name = 'vsnip' },
+      --     { name = 'path' },
+      --     { name = 'buffer' }
+      --   },
+      --   formatting = {
+      --     format = require('lspkind').cmp_format({
+      --       with_text = true,
+      --       menu = {
+      --         nvim_lsp = '[LSP]'
+      --       },
+      --     })
+      --   },
+      -- }
+      EOF
 
       "-------------------------------------------------------------------------------
       " LUA - lspconfig - omnisharp + vsnip
       "-------------------------------------------------------------------------------
       lua << EOF
-      local pid = vim.fn.getpid()
+      -- local pid = vim.fn.getpid()
 
-      -- Neovim doesn't support snippets out of the box, so we need to mutate the
-      -- capabilities we send to the language server to let them know we want snippets.
-      --local capabilities = vim.lsp.protocol.make_client_capabilities()
-      --capabilities.textDocument.completion.completionItem.snippetSupport = true
+      --  Neovim doesn't support snippets out of the box, so we need to mutate the
+      --  capabilities we send to the language server to let them know we want snippets.
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      require('lspconfig').omnisharp.setup {
-        -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
-        on_attach = function(client, bufnr)
-          vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-          -- require('folding').on_attach()
-        end,
-        cmd = { "/etc/profiles/per-user/andreas/bin/omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
-      }
+      -- require('lspconfig').omnisharp.setup {
+      --   -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities),
+      --   on_attach = function(client, bufnr)
+      --     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      --     -- require('folding').on_attach()
+      --   end,
+      --   cmd = { "/etc/profiles/per-user/andreas/bin/omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
+      -- }
       EOF
 
 
@@ -394,12 +394,12 @@ in
       " LUA - lspconfig - nim
       "-------------------------------------------------------------------------------
       lua << EOF
-      require('lspconfig').nimls.setup {
-        cmd = { '/etc/profiles/per-user/andreas/bin/nimlsp' },
-        --filetypes = { 'nim' },
-        --rootdir = require('lspconfig/util').root_pattern('*.nimble'),
-        --settings = {},
-      }
+      -- require('lspconfig').nimls.setup {
+      --   cmd = { '/etc/profiles/per-user/andreas/bin/nimlsp' },
+      --   --filetypes = { 'nim' },
+      --   --rootdir = require('lspconfig/util').root_pattern('*.nimble'),
+      --   --settings = {},
+      -- }
       EOF
 
       "-------------------------------------------------------------------------------
@@ -410,39 +410,41 @@ in
       " rust-tools will configure and enable certain LSP features for us.
       " See https://github.com/simrat39/rust-tools.nvim#configuration
       lua <<EOF
-      local nvim_lsp = require'lspconfig'
+      -- local nvim_lsp = require'lspconfig'
 
-      local opts = {
-        tools = { -- rust-tools options
-          autoSetHints = true,
-          hover_with_actions = true,
-          inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-          },
-        },
+      -- local opts = {
+      --   tools = { -- rust-tools options
+      --     autoSetHints = true,
+      --     hover_with_actions = true,
+      --     inlay_hints = {
+      --       show_parameter_hints = false,
+      --       parameter_hints_prefix = "",
+      --       other_hints_prefix = "",
+      --     },
+      --   },
 
-        -- all the opts to send to nvim-lspconfig
-        -- these override the defaults set by rust-tools.nvim
-        -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-        server = {
-          -- on_attach is a callback called when the language server attachs to the buffer
-          --on_attach = function(client, bufnr) .. end,
-          settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-              -- enable clippy on save
-              checkOnSave = {
-                command = "clippy"
-              },
-            }
-          }
-        },
-      }
+      --   -- all the opts to send to nvim-lspconfig
+      --   -- these override the defaults set by rust-tools.nvim
+      --   -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+      --   server = {
+      --     -- on_attach is a callback called when the language server attachs to the buffer
+      --     --on_attach = function(client, bufnr) .. end,
+      --     settings = {
+      --       -- to enable rust-analyzer settings visit:
+      --       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+      --       ["rust-analyzer"] = {
+      --         -- enable clippy on save
+      --         checkOnSave = {
+      --           command = "clippy"
+      --         },
+      --       }
+      --     }
+      --   },
+      -- }
 
-      require('rust-tools').setup(opts)
+      -- require('rust-tools').setup(opts)
+
+      require('rust-tools').setup()
       EOF
 
 
@@ -450,9 +452,9 @@ in
       " LUA - lspconfig - python
       "-------------------------------------------------------------------------------
       lua << EOF
-      require('lspconfig').pylsp.setup {
-          cmd = { '/etc/profiles/per-user/andreas/bin/pylsp' },
-      }
+      -- require('lspconfig').pylsp.setup {
+      --     cmd = { '/etc/profiles/per-user/andreas/bin/pylsp' },
+      -- }
       EOF
 
       "-------------------------------------------------------------------------------
