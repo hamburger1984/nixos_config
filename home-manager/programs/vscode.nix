@@ -3,35 +3,54 @@
 {
   programs.vscode = {
     enable = true;
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
 
     userSettings = {
-      "editor.fontFamily" = "'Victor Mono','Droid Sans Mono','monospace'";
+      "editor.fontFamily" = "'VictorMono Nerd Font Mono','Victor Mono','Droid Sans Mono','monospace'";
       "editor.fontLigatures" = true;
       "editor.fontWeight" = "550";
 
       "editor.formatOnPaste" = false;
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
+      "editor.renderLineHightlight" = "none";
+      "editor.stickyScroll.enabled" = true;
+      "editor.minimap.scale" = 2;
 
       "extensions.autoUpdate" = false;
 
       "update.mode" = "none";
 
-      "workbench.colorTheme" = "Monokai Pro (Filter Spectrum)";
+      "window.titleBarStyle" = "custom";
+      "window.menuBarVisibility" = "compact";
+      "window.commandCenter" = true;
+      "window.autoDetectColorScheme" = true;
+      "window.zoomLevel" = 0.75;
+
+      "search.showLineNumbers" = true;
+      "search.smartCase" = true;
+
+      #"workbench.colorTheme" = "Monokai Pro (Filter Spectrum)";
       "workbench.editor.tabCloseButton" = "off";
+      "workbench.iconTheme" = "Monokai Pro (Filter Spectrum)";
+      "workbench.preferredDarkColorTheme" = "Adwaita Dark";
+      "workbench.preferredLightColorTheme" = "Adwaita Light";
+      "workbench.productIconThem" = "adwaita";
+      "workbench.tree.indent" = 12;
 
       "omnisharp.enableAsyncCompletion" = true;
       "omnisharp.enableDecompilationSupport" = true;
       "omnisharp.enableImportCompletion" = true;
       "omnisharp.enableMsBuildLoadProjectsOnDemand" = true;
       "omnisharp.enableRoslynAnalyzers" = true;
-      "omnisharp.useGlobalMono" = "never";
+      #"omnisharp.useGlobalMono" = "never";
+
+      "rust-analyzer.updates.askBeforeDownload" = false;
 
       "telemetry.telemetryLevel" = "off";
 
       "terminal.integrated.fontFamily" = "'VictorMono Nerd Font Mono'";
-
-      "window.zoomLevel" = 0.75;
 
       "[csharp]" = {
         "editor.defaultFormatter" = "csharpier.csharpier-vscode";
@@ -42,7 +61,8 @@
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       # Nix
-      bbenoist.nix
+      #bbenoist.nix
+      jnoortheen.nix-ide
 
       # Python
       ms-python.python
@@ -57,21 +77,11 @@
       vadimcn.vscode-lldb
       #conradludgate.rust-playground
 
-      # Vue.js
-      #octref.vetur
-
-      # Go
-      #golang.go
-
       # Markdown
-      #yzhang.markdown-all-in-one
+      yzhang.markdown-all-in-one
 
       # Vim
       vscodevim.vim
-
-      # Jupyter Notebooks
-      #ms-toolsai.jupyter
-      #ms-toolsai.jupyter-renderers
 
       # TODOs
       gruntfuggly.todo-tree
@@ -79,12 +89,9 @@
       # Formatting
       #esbenp.prettier-vscode
 
-      # Indents
-      #oderwat.indent-rainbow
-
       # Theme
-      #zhuangtongfa.material-theme
       monokai.theme-monokai-pro-vscode
+      piousdeer.adwaita-theme
 
       # Stats
       uctakeoff.vscode-counter

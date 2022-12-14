@@ -20,6 +20,7 @@ in
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix
+    ./programs/helix.nix
     ./programs/lazygit.nix
     ./programs/neovim.nix
     ./programs/nnn.nix
@@ -27,11 +28,10 @@ in
     ./programs/starship.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
-
     #./services/unclutter.nix
   ];
 
-  manual.html.enable = true;
+  #manual.html.enable = true;
 
   home.stateVersion = "22.05"; # Did you read the comment?
 
@@ -51,10 +51,11 @@ in
     scrcpy
 
     ## rust
-    cargo
-    clippy
-    rustc
-    rustfmt
+    #cargo
+    #clippy
+    #rustc
+    #rustfmt
+    rustup
     rust-analyzer
 
     ## micro*
@@ -77,7 +78,7 @@ in
     omnisharp-roslyn
 
     ## python
-    #python3
+    python3
     #python3Packages.flake8
     #python3Packages.pip
     #python3Packages.pylint
@@ -121,9 +122,6 @@ in
     #yq
     #zig
     #docker-compose
-
-    #=== editors/viewers ===#
-    helix
 
     #=== Communication ===#
     discord
@@ -180,23 +178,23 @@ in
     #xdg-desktop-portal-gnome
 
     # >> GNOME
+    apostrophe
     deja-dup
     drawing
-    apostrophe
-    shotwell
     gnome-secrets
-    gnome.gnome-tweaks
     gnome.gnome-shell-extensions
+    gnome.gnome-tweaks
+    shotwell
+    ulauncher
 
     gnomeExtensions.appindicator
-    gnomeExtensions.impatience
-    gnomeExtensions.extension-list
-    gnomeExtensions.thinkpad-battery-threshold
-    #gnomeExtensions.bluetooth-battery
     gnomeExtensions.bluetooth-quick-connect
-    gnomeExtensions.vitals
-
+    gnomeExtensions.extension-list
+    gnomeExtensions.impatience
     gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.thinkpad-battery-threshold
+    gnomeExtensions.vitals
+    #gnomeExtensions.bluetooth-battery
     # GNOME <<
 
 
@@ -216,8 +214,12 @@ in
 
     #=== Theme ===#
     #lightly-qt
-    graphite-gtk-theme
+    #graphite-gtk-theme
     #graphite-kde-theme
+    gnome.adwaita-icon-theme
+    gnome-themes-extra
+    adwaita-qt
+    adw-gtk3
 
     #=== Bat ===#
     bat-extras.batdiff

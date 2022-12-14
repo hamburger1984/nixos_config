@@ -14,7 +14,12 @@ in
 {
   programs.neovim = {
     enable = true;
+
     vimAlias = true;
+    vimdiffAlias = true;
+
+    withNodeJs = true;
+    withPython3 = true;
 
     plugins = with pkgs.vimPlugins; [
       neovim-sensible
@@ -82,6 +87,11 @@ in
 
       #lens-vim
     ];
+
+    #generatedConfigs = {
+    #  viml = '' '';
+    #  lua = '' '';
+    #};
 
     extraConfig = ''
       set nocompatible
