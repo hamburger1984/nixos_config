@@ -191,6 +191,7 @@ in
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
+    gnomeExtensions.focus-window
     gnomeExtensions.impatience
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.thinkpad-battery-threshold
