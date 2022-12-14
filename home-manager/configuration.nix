@@ -186,7 +186,7 @@ in
     gnome.gnome-shell-extensions
     gnome.gnome-tweaks
     shotwell
-    ulauncher
+    #ulauncher
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-quick-connect
@@ -219,7 +219,7 @@ in
     #graphite-kde-theme
     gnome.adwaita-icon-theme
     gnome-themes-extra
-    adwaita-qt
+    #adwaita-qt
     adw-gtk3
 
     #=== Bat ===#
