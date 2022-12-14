@@ -62,6 +62,8 @@
       l = "${pkgs.exa}/bin/exa -l --icons";
       ll = "${pkgs.exa}/bin/exa -la --icons";
       latest = "${pkgs.exa}/bin/exa -l -s created --icons";
+
+      gs = "git status";
     };
 
     initExtra = ''

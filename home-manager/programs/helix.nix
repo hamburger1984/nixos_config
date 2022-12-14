@@ -19,6 +19,7 @@
         space.e = "file_picker";
         space.m = ":buffer-next";
         space.n = ":buffer-previous";
+        space.x = ":buffer-close";
       };
     };
   };

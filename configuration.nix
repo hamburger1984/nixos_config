@@ -178,6 +178,7 @@
   };
 
   environment.gnome.excludePackages = (with pkgs; [
+    gnome-console
     gnome-photos
     gnome-tour
   ]) ++ (with pkgs.gnome; [

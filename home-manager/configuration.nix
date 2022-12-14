@@ -182,6 +182,7 @@ in
     deja-dup
     drawing
     gnome-secrets
+    gnome.gnome-terminal
     gnome.gnome-shell-extensions
     gnome.gnome-tweaks
     shotwell
