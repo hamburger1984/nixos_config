@@ -41,6 +41,7 @@ in
       lsp_signature-nvim  # signature hint while typing
       lspkind-nvim        # pictograms for lsp completion items
       #folding-nvim
+      nvim-navic          # Show current code context
       aerial-nvim         # Code outline window
       #tagbar              #   .. another outline
       FixCursorHold-nvim  # recommended for lightbulb
@@ -332,12 +333,21 @@ in
       " see https://github.com/akinsho/bufferline.nvim
       lua << EOF
       require('bufferline').setup{
-        numbers = "buffer_id",
-        number_style = "subscript",
-        diagnostics = "nvim_lsp",
-        separator_style = "thin",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
+        options = {
+          numbers = "buffer_id",
+          number_style = "subscript",
+          diagnostics = "nvim_lsp",
+          separator_style = "thin",
+          show_buffer_icons = true,
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+          always_show_bufferline = true,
+          hover = {
+            enabled = true,
+            delay = 200,
+            reveal = {'close'}
+          }
+        }
       }
       EOF
 
@@ -518,26 +528,26 @@ in
 
       require('nvim-treesitter.configs').setup {
         -- ...
-        parser_install_dir = parser_install_dir
-
+        parser_install_dir = parser_install_dir,
         -- one of "all" or a list of languages
-        ensure_installed = "all",
-        -- ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "go",
-        --                    "html", "java", "javascript", "json", "kotlin",
-        --                    "latex", "lua", "markdown", "nix", "python", "ruby",
-        --                    "rust", "toml", "typescript", "yaml", "zig" },
+        --ensure_installed = "all",
+        ensure_installed = {
+                            "bash", "c", "c_sharp", "css", "go", "javascript",
+                            "json", "kotlin", "lua", "markdown", "nix",
+                            "python", "rust", "toml", "typescript"
+                            },
         -- List of parsers to ignore installing
-        -- ignore_install = { },
+        ignore_install = { "bash", "markdown", "python" },
         highlight = {
           -- false will disable the whole extension
           enable = true,
           -- list of language that will be disabled
-          disable = { "nix", "verilog" },
+          -- disable = { "nix", "verilog" },
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
           -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = true,
         },
         indent = {
           -- experimental feature
@@ -555,8 +565,10 @@ in
       "-------------------------------------------------------------------------------
       " Aerial
       "-------------------------------------------------------------------------------
+      " see https://github.com/stevearc/aerial.nvim
       lua << EOF
       require("aerial").setup({})
+      vim.keymap.set('n', '<Leader><Leader>', '<cmd>AerialToggle!<CR>')
       EOF
 
       "-------------------------------------------------------------------------------
@@ -632,26 +644,27 @@ in
       EOF
       map <Leader>t :Twilight<CR>
 
-      ""-------------------------------------------------------------------------------
-      "" GPS
-      ""-------------------------------------------------------------------------------
-      "lua << EOF
-      "require("nvim-gps").setup()
-      "EOF
+      "-------------------------------------------------------------------------------
+      " navic
+      "-------------------------------------------------------------------------------
+      " see https://github.com/SmiteshP/nvim-navic
+      lua << EOF
+      require("nvim-navic").setup()
+      EOF
 
       "-------------------------------------------------------------------------------
       " lualine
       "-------------------------------------------------------------------------------
+      " see https://github.com/nvim-lualine/lualine.nvim
       lua << EOF
-      --local gps = require("nvim-gps")
-      require("lualine").setup({
+      local navic = require('nvim-navic')
+      require('lualine').setup({
         sections = {
-          --lualine_c = {
-          --  { gps.get_location, cond = gps.is_available }
-          --},
-
-          lualine_c = { "aerial" }
-
+          lualine_c = {
+            { navic.get_location, cond = navic.is_available },
+            'aerial'
+          },
+          --lualine_c = { 'aerial' }
         }
       })
       EOF
