@@ -275,6 +275,7 @@
     p7zip
     parted
     pciutils
+    ripgrep
     rsync
     silver-searcher
     usbutils
@@ -283,6 +284,7 @@
     xclip
     xdotool
     xz
+    zsh
 
     # monitoring
     bottom

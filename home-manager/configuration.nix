@@ -178,7 +178,7 @@ in
     #xdg-desktop-portal-gnome
 
     # >> GNOME
-    apostrophe
+    #apostrophe
     deja-dup
     drawing
     gnome-secrets
