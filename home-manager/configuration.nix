@@ -40,8 +40,6 @@ in
   };
 
   home.packages = with pkgs;
-    #with libsForQt5;
-    #with plasma5; with kdeApplications; with kdeFrameworks;
     [
 
     #=== Development ===#
@@ -133,42 +131,12 @@ in
     #zoom-us
 
     #=== Desktop Programs ===#
-    # >> KDE
-    #ark
-    #bismuth
-    #digikam
-    #kalendar
-    #kate
-    #kcalc
-    #kdeconnect-kde
-    #kdeplasma-addons
-    #keepassxc
-    #kolourpaint
-    #kpat
-    #krunner-symbols
-    #krusader
-    #ksystemlog
-    #libkscreen
-    #plasma-applet-virtual-desktop-bar
-    #plasma-browser-integration
-    #plasma-nm
-    #xdg-desktop-portal-kde
-    #modemmanager-qt
-    #networkmanager-qt
-    #redshift-plasma-applet
-    #skrooge
-    # KDE <<
-
-    # >> Qt
-    #filelight
-    #qownnotes
-    # QT <<
 
     #exiftool
     #falkon
     #freetube
     #libreoffice
-    #mupdf
+    mupdf
     #pinta
     #qmapshack
     spotify # nonfree
@@ -178,7 +146,7 @@ in
     #xdg-desktop-portal-gnome
 
     # >> GNOME
-    #apostrophe
+    apostrophe
     deja-dup
     drawing
     gnome-secrets
@@ -186,12 +154,11 @@ in
     gnome.gnome-shell-extensions
     gnome.gnome-tweaks
     shotwell
-    #ulauncher
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
-    gnomeExtensions.focus-window
+    #gnomeExtensions.focus-window
     gnomeExtensions.impatience
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.thinkpad-battery-threshold
@@ -199,15 +166,9 @@ in
     #gnomeExtensions.bluetooth-battery
     # GNOME <<
 
-
-    #applet-window-appmenu
     #calibre
     #droidcam
     #focuswriter
-    #kamoso
-    #kcharselect
-    #klines
-    #krita
     #nextcloud-client
     #solaar
     #spectacle

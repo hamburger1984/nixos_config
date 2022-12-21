@@ -26,12 +26,32 @@
 
   swapDevices = [ ];
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = false;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault t
   networking.interfaces.enp2s0f0.useDHCP = false;
   networking.interfaces.wlp3s0.useDHCP = false;
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.trackpoint = {
+    enable = true;
+    speed = 98; # default: 97 too slow .. 100 is too fast
+    emulateWheel = true;
+  };
+  
+  services.xserver = {
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+    libinput.touchpad = {
+      accelSpeed = "0.9";
+      disableWhileTyping = true;
+      naturalScrolling = true;
+      tapping = true;
+    };
+  };
 }

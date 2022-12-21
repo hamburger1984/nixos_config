@@ -70,7 +70,7 @@
 
       # dotnet/C#
       ms-dotnettools.csharp
-      csharpier.csharpier-vscode
+      #csharpier.csharpier-vscode
 
       # Rust
       rust-lang.rust-analyzer
@@ -90,12 +90,12 @@
       #esbenp.prettier-vscode
 
       # Theme
-      monokai.theme-monokai-pro-vscode
+      #monokai.theme-monokai-pro-vscode
       piousdeer.adwaita-theme
 
       # Stats
-      uctakeoff.vscode-counter
-      vizzuhq.code-viz-stat
+      #uctakeoff.vscode-counter
+      #vizzuhq.code-viz-stat
 
       #ms-vscode.cpptools
       #nimsaem.nimvscode
