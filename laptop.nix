@@ -13,8 +13,8 @@
       <home-manager/nixos>
       #../home-manager/nixos
       ./common-configuration.nix
-      ./hardware-configuration.nix
-      ./boot.nix
+      ./laptop-hardware-configuration.nix
+      ./laptop-boot.nix
     ];
 
   networking = {
