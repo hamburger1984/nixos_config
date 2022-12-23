@@ -143,10 +143,10 @@ in
     #stellarium
     #vlc
 
-    #xdg-desktop-portal-gnome
+    xdg-desktop-portal-gnome
 
     # >> GNOME
-    apostrophe
+    #apostrophe
     deja-dup
     drawing
     gnome-secrets
@@ -155,7 +155,22 @@ in
     gnome.gnome-tweaks
     shotwell
 
+    gnomeExtensions.caffeine
+    gnomeExtensions.drop-down-terminal
+    gnome-browser-connector
+    gnomeExtensions.improved-workspace-indicator
+    gnomeExtensions.internet-speed-meter
+    gnomeExtensions.material-shell
+    gnomeExtensions.network-stats
+    gnomeExtensions.night-theme-switcher
+    gnomeExtensions.power-profile-switcher
+    gnomeExtensions.random-wallpaper
+    gnomeExtensions.spotify-controller
+    gnomeExtensions.taskwhisperer
+    gnomeExtensions.user-themes
+
     gnomeExtensions.appindicator
+    gnomeExtensions.bluetooth-battery
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
     #gnomeExtensions.focus-window
@@ -163,7 +178,6 @@ in
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.thinkpad-battery-threshold
     gnomeExtensions.vitals
-    #gnomeExtensions.bluetooth-battery
     # GNOME <<
 
     #calibre

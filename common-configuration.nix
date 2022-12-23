@@ -266,13 +266,13 @@
     lsb-release
     ncdu
     powertop
+    procs
     smartmontools
     strace
     sysz
     usbtop
     viddy
     zenstates
-    zsh
 
     # logitech
     logitech-udev-rules
