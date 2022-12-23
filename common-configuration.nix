@@ -139,9 +139,14 @@
   environment.gnome.excludePackages = (with pkgs; [
     gnome-console
     gnome-photos
+    gnome-text-editor
     gnome-tour
   ]) ++ (with pkgs.gnome; [
     cheese
+    gnome-calculator
+    gnome-contacts
+    gnome-initial-setup
+    gnome-maps
     gnome-music
     gedit
     epiphany
