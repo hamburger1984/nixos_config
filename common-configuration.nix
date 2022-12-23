@@ -203,7 +203,6 @@
     file
     firmwareLinuxNonfree
     glxinfo
-    gparted
     inotify-tools
     libcgroup
     libinput-gestures
