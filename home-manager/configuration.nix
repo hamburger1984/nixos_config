@@ -28,7 +28,6 @@ in
     ./programs/starship.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
-    #./services/unclutter.nix
   ];
 
   #manual.html.enable = true;
@@ -54,7 +53,7 @@ in
     #rustc
     #rustfmt
     rustup
-    rust-analyzer
+    #rust-analyzer
 
     ## micro*
     #esptool
@@ -146,7 +145,7 @@ in
     xdg-desktop-portal-gnome
 
     # >> GNOME
-    #apostrophe
+    apostrophe
     deja-dup
     drawing
     gnome-secrets

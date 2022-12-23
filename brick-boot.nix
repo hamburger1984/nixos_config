@@ -42,12 +42,12 @@
     #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
 
     # -- works
-    #kernelPackages = pkgs.linuxPackages_5_15;
+    kernelPackages = pkgs.linuxPackages_5_15;
 
     # -- broken
     #kernelPackages = pkgs.linuxPackages_6_0;
     #kernelPackages = pkgs.linuxPackages_6_1;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    #kernelPackages = pkgs.linuxPackages_xanmod_latest;
     #kernelPackages = pkgs.linuxPackages_latest;
   };
 }
