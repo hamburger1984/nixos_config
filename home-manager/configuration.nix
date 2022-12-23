@@ -167,7 +167,6 @@ in
     gnomeExtensions.random-wallpaper
     gnomeExtensions.spotify-controller
     gnomeExtensions.taskwhisperer
-    gnomeExtensions.user-themes
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery
