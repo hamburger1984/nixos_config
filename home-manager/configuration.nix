@@ -155,7 +155,6 @@ in
     shotwell
 
     gnomeExtensions.caffeine
-    gnomeExtensions.drop-down-terminal
     gnome-browser-connector
     gnomeExtensions.improved-workspace-indicator
     gnomeExtensions.network-stats
