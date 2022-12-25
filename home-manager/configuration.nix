@@ -161,7 +161,6 @@ in
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.power-profile-switcher
     gnomeExtensions.spotify-controller
-    gnomeExtensions.taskwhisperer
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery
