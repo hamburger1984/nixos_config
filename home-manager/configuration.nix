@@ -158,12 +158,9 @@ in
     gnomeExtensions.drop-down-terminal
     gnome-browser-connector
     gnomeExtensions.improved-workspace-indicator
-    gnomeExtensions.internet-speed-meter
-    gnomeExtensions.material-shell
     gnomeExtensions.network-stats
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.power-profile-switcher
-    gnomeExtensions.random-wallpaper
     gnomeExtensions.spotify-controller
     gnomeExtensions.taskwhisperer
 
@@ -171,7 +168,6 @@ in
     gnomeExtensions.bluetooth-battery
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
-    #gnomeExtensions.focus-window
     gnomeExtensions.impatience
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.thinkpad-battery-threshold
