@@ -229,6 +229,10 @@
     xz
     zsh
 
+    # iso to usb-stick
+    #ventoy-bin
+    #woeusb-ng
+
     # monitoring
     bottom
     btop
