@@ -190,7 +190,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    bibata-cursors
+    #bibata-cursors
     phinger-cursors
     #materia-kde-theme
 

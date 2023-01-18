@@ -65,8 +65,8 @@
       jnoortheen.nix-ide
 
       # Python
-      ms-python.python
-      ms-python.vscode-pylance
+      #ms-python.python
+      #ms-python.vscode-pylance
 
       # dotnet/C#
       ms-dotnettools.csharp

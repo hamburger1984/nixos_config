@@ -157,7 +157,6 @@ in
     gnomeExtensions.caffeine
     gnome-browser-connector
     gnomeExtensions.improved-workspace-indicator
-    gnomeExtensions.network-stats
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.power-profile-switcher
     gnomeExtensions.spotify-controller
