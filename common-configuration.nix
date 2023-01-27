@@ -219,8 +219,8 @@
     parted
     pciutils
     ripgrep
+    ripgrep-all
     rsync
-    silver-searcher
     usbutils
     wget
     whois

@@ -10,7 +10,7 @@
     };
     extraConfig = {
       advice.skippedCherryPicks = false;
-      core.editor = "nvim";
+      core.editor = "hx";
       colur.ui = true;
       color.diff = true;
       fetch.prune = true;

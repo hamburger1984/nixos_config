@@ -19,6 +19,13 @@
         colorArg = "never";
         pager = "delta --dark --paging=never";
       };
+
+      gui.showIcons = true;
+
+      os = {
+        editCommand = "hx";
+        editCommandTemplate = "{{editor}} {{filename}}:{{line}}";
+      };
     };
   };
 }

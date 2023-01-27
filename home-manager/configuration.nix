@@ -148,25 +148,25 @@ in
     apostrophe
     deja-dup
     drawing
+    gnome-browser-connector
     gnome-secrets
-    gnome.gnome-terminal
     gnome.gnome-shell-extensions
+    gnome.gnome-terminal
     gnome.gnome-tweaks
     shotwell
-
-    gnomeExtensions.caffeine
-    gnome-browser-connector
-    gnomeExtensions.improved-workspace-indicator
-    gnomeExtensions.night-theme-switcher
-    gnomeExtensions.power-profile-switcher
-    gnomeExtensions.spotify-controller
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
     gnomeExtensions.impatience
+    #gnomeExtensions.improved-workspace-indicator
+    gnomeExtensions.night-theme-switcher
+    gnomeExtensions.pop-shell
+    gnomeExtensions.power-profile-switcher
     gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.space-bar
+    gnomeExtensions.spotify-controller
     gnomeExtensions.thinkpad-battery-threshold
     gnomeExtensions.vitals
     # GNOME <<
