@@ -49,9 +49,15 @@
       keys.normal = {
         space.a = ":new";
         space.e = "file_picker";
-        space.m = ":buffer-next";
-        space.n = ":buffer-previous";
+        space.l = ":buffer-next";
+        space.h = ":buffer-previous";
         space.x = ":buffer-close";
+
+        "0" = "goto_line_start";
+        "$" = "goto_line_end";
+        "G" = "goto_last_line";
+
+        "esc" = [ "keep_primary_selection" "collapse_selection" ];
       };
     };
   };

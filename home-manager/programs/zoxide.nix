@@ -4,7 +4,8 @@
   programs.zoxide = {
     enable = true;
 
-    enableZshIntegration = false;
+    enableBashIntegration = false;
+    enableZshIntegration = true;
     enableFishIntegration = false;
   };
 }

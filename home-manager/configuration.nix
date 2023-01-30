@@ -12,7 +12,8 @@ let
 in
 {
   imports = [
-    ./programs/bash.nix
+    #./programs/bash.nix
+    ./programs/zsh.nix
     ./programs/bat.nix
     ./programs/broot.nix
     ./programs/direnv.nix
@@ -35,7 +36,7 @@ in
   home.stateVersion = "22.05"; # Did you read the comment?
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
   };
 
   home.packages = with pkgs;

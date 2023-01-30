@@ -175,6 +175,9 @@
     ];
   };
 
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andreas = {
     isNormalUser = true;
@@ -190,13 +193,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    #bibata-cursors
+    bibata-cursors
     phinger-cursors
     #materia-kde-theme
 
     # general stuff
     bash
-    bash-completion
+    #bash-completion
     dmidecode
     exfat
     fd
