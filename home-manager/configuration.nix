@@ -23,7 +23,7 @@ in
     ./programs/git.nix
     ./programs/helix.nix
     ./programs/lazygit.nix
-    ./programs/neovim.nix
+    #./programs/neovim.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/starship.nix
@@ -155,6 +155,7 @@ in
     gnome.gnome-terminal
     gnome.gnome-tweaks
     shotwell
+    ulauncher
 
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery
