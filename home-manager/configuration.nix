@@ -129,6 +129,7 @@ in
     #slack
     #teams
     #trojita
+    whatsapp-for-linux
     #zoom-us
 
     #=== Desktop Programs ===#
