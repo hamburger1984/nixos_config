@@ -16,6 +16,9 @@
       fetch.prune = true;
       #pull.rebase = true;
       #push.default = simple;
+      rebase.autoStash = true;
+      pull.rebase = true;
+      rerere.enabled = true;
     };
 
     delta = {
