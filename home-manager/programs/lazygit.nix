@@ -20,7 +20,7 @@
         pager = "delta --dark --paging=never";
       };
 
-      gui.showIcons = true;
+      #gui.showIcons = true;
 
       os = {
         editCommand = "hx";
