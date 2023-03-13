@@ -118,6 +118,7 @@ in
     valgrind
     visidata
     #yq
+    xh
     #zig
     #docker-compose
 
@@ -132,6 +133,7 @@ in
 
     #=== Desktop Programs ===#
 
+    bitwarden
     #exiftool
     #falkon
     #freetube
@@ -141,7 +143,7 @@ in
     #qmapshack
     spotify # nonfree
     #stellarium
-    #vlc
+    vlc
 
     xdg-desktop-portal-gnome
 
@@ -158,13 +160,13 @@ in
     ulauncher
 
     gnomeExtensions.appindicator
-    gnomeExtensions.bluetooth-battery
+    #gnomeExtensions.bluetooth-battery
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.extension-list
     gnomeExtensions.impatience
     #gnomeExtensions.improved-workspace-indicator
     gnomeExtensions.night-theme-switcher
-    gnomeExtensions.pop-shell
+    #gnomeExtensions.pop-shell
     gnomeExtensions.power-profile-switcher
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.space-bar
