@@ -5,9 +5,9 @@ let
   #inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
 
   dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
-    sdk_7_0
-    aspnetcore_7_0
-    runtime_7_0
+    sdk_8_0
+    aspnetcore_8_0
+    runtime_8_0
   ];
 in
 {
@@ -129,7 +129,7 @@ in
     #slack
     #teams
     #trojita
-    whatsapp-for-linux
+    #whatsapp-for-linux
     #zoom-us
 
     #=== Desktop Programs ===#
@@ -153,7 +153,7 @@ in
     deja-dup
     drawing
     gnome-browser-connector
-    gnome-secrets
+    #gnome-secrets
     gnome.gnome-shell-extensions
     gnome.gnome-terminal
     gnome.gnome-tweaks

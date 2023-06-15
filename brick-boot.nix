@@ -9,7 +9,7 @@
   
     plymouth.enable = true;
 
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
 
     initrd = {
       #availableKernelModules = [ "nvme" ];

@@ -66,6 +66,8 @@
   services.avahi.enable = true;
   programs.dconf.enable = true;
 
+  programs.zsh.enable = true;
+
   #services.fprintd.enable = true;
   security.pam = {
     #services.login.fprintAuth = true;
@@ -96,9 +98,7 @@
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
     wireplumber.enable = true;
-    media-session.enable = false;
 
   };
 
@@ -206,6 +206,7 @@
     file
     firmwareLinuxNonfree
     glxinfo
+    gparted
     inotify-tools
     libcgroup
     libinput-gestures

@@ -8,7 +8,7 @@
 
     plymouth.enable = true;
 
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
 
     initrd = {
       availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
