@@ -70,6 +70,7 @@ in
     gitAndTools.git-ignore
     gitAndTools.git-standup
     gitAndTools.git-when-merged
+    gitui
 
     ## dotnet
     dotnetCombined
@@ -125,11 +126,11 @@ in
     #=== Communication ===#
     discord
     signal-desktop
-    tdesktop
+    #tdesktop
     #slack
     #teams
     #trojita
-    #whatsapp-for-linux
+    whatsapp-for-linux
     #zoom-us
 
     #=== Desktop Programs ===#
