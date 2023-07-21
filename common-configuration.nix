@@ -126,33 +126,36 @@
     # Enable the GNOME Desktop Environment.
     desktopManager = {
       xterm.enable = false;
-      gnome.enable = true;
+      gnome.enable = false; #true;
+      plasma5.enable = true;
     };
 
     displayManager = {
-      gdm.enable = true;
+      gdm.enable = false; #true;
+      sddm.enable = true;
+      defaultSession = "plasmawayland";
     };
 
     videoDrivers = [ "amdgpu" ];
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-console
-    gnome-photos
-    gnome-text-editor
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese
-    gnome-calculator
-    gnome-contacts
-    gnome-initial-setup
-    gnome-maps
-    gnome-music
-    gedit
-    epiphany
-    geary
-    totem
-  ]);
+#  environment.gnome.excludePackages = (with pkgs; [
+#    gnome-console
+#    gnome-photos
+#    gnome-text-editor
+#    gnome-tour
+#  ]) ++ (with pkgs.gnome; [
+#    cheese
+#    gnome-calculator
+#    gnome-contacts
+#    gnome-initial-setup
+#    gnome-maps
+#    gnome-music
+#    gedit
+#    epiphany
+#    geary
+#    totem
+#  ]);
 
   services.udev.packages = with pkgs; [
     logitech-udev-rules
