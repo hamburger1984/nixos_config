@@ -137,44 +137,55 @@ in
 
     bitwarden
     #exiftool
-    #falkon
     #freetube
     #libreoffice
     mupdf
+    nextcloud-client
     #pinta
     #qmapshack
     spotify # nonfree
     #stellarium
     vlc
 
-    xdg-desktop-portal-gnome
+    # >> KDE
+    ark
+    digikam
+    exiftool
+    #falkon
+    filelight
+    kalendar
+    kolourpaint
+    krunner-symbols
+    mupdf
+    plasma-applet-virtual-desktop-bar
+    plasma-browser-integration
+    plasma-nm
+    qownnotes
+    xdg-desktop-portal-kde
 
     # >> GNOME
-    apostrophe
-    deja-dup
-    drawing
-    gnome-browser-connector
-    #gnome-secrets
-    gnome.gnome-shell-extensions
-    gnome.gnome-terminal
-    gnome.gnome-tweaks
-    shotwell
-    ulauncher
+    #xdg-desktop-portal-gnome
+    #apostrophe
+    #deja-dup
+    #drawing
+    #gnome-browser-connector
+    #gnome.gnome-shell-extensions
+    #gnome.gnome-terminal
+    #gnome.gnome-tweaks
+    #shotwell
+    #ulauncher
 
-    gnomeExtensions.appindicator
-    #gnomeExtensions.bluetooth-battery
-    gnomeExtensions.bluetooth-quick-connect
-    gnomeExtensions.extension-list
-    gnomeExtensions.impatience
-    #gnomeExtensions.improved-workspace-indicator
-    gnomeExtensions.night-theme-switcher
-    #gnomeExtensions.pop-shell
-    gnomeExtensions.power-profile-switcher
-    gnomeExtensions.sound-output-device-chooser
-    gnomeExtensions.space-bar
-    gnomeExtensions.spotify-controller
-    gnomeExtensions.thinkpad-battery-threshold
-    gnomeExtensions.vitals
+    #gnomeExtensions.appindicator
+    #gnomeExtensions.bluetooth-quick-connect
+    #gnomeExtensions.extension-list
+    #gnomeExtensions.impatience
+    #gnomeExtensions.night-theme-switcher
+    #gnomeExtensions.power-profile-switcher
+    #gnomeExtensions.sound-output-device-chooser
+    #gnomeExtensions.space-bar
+    #gnomeExtensions.spotify-controller
+    #gnomeExtensions.thinkpad-battery-threshold
+    #gnomeExtensions.vitals
     # GNOME <<
 
     #calibre
@@ -188,12 +199,12 @@ in
 
     #=== Theme ===#
     #lightly-qt
-    #graphite-gtk-theme
-    #graphite-kde-theme
-    gnome.adwaita-icon-theme
-    gnome-themes-extra
+    graphite-gtk-theme
+    graphite-kde-theme
+    #gnome.adwaita-icon-theme
+    #gnome-themes-extra
     #adwaita-qt
-    adw-gtk3
+    #adw-gtk3
 
     #=== Bat ===#
     bat-extras.batdiff
@@ -212,10 +223,10 @@ in
     #nix-review
 
     #=== VMs ===#
-    #libvirt
-    #qemu
-    #qemu_kvm
-    #virtmanager
+    libvirt
+    qemu
+    qemu_kvm
+    virt-manager
     #virtualbox
 
     #=== Shells ---#

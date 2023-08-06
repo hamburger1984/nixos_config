@@ -2,6 +2,8 @@
 
 {
   programs.vscode = {
+    package = pkgs.vscodium;
+
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
