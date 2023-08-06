@@ -132,7 +132,10 @@
 
     displayManager = {
       gdm.enable = false; #true;
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        enableHidpi = true;
+      };
       defaultSession = "plasmawayland";
     };
 
@@ -163,8 +166,8 @@
   ];
 
   fonts = {
-    enableDefaultFonts = false;
-    fonts = with pkgs; [
+    enableDefaultPackages = false;
+    packages = with pkgs; [
       nerdfonts
       unifont
       powerline-fonts
@@ -201,10 +204,12 @@
     #materia-kde-theme
 
     # general stuff
-    bash
+    #bash
+    bfs
     #bash-completion
     dmidecode
-    exfat
+    #exfat
+    exfatprogs
     fd
     file
     firmwareLinuxNonfree
