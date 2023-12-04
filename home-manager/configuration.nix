@@ -56,6 +56,7 @@ in
     #rustfmt
     rustup
     #rust-analyzer
+    just
 
     ## micro*
     #esptool

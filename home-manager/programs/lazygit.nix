@@ -23,7 +23,7 @@
       #gui.showIcons = true;
 
       os = {
-        editCommand = "hx";
+        edit = "hx";
         editCommandTemplate = "{{editor}} {{filename}}:{{line}}";
       };
     };

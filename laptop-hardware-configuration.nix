@@ -52,6 +52,7 @@
       disableWhileTyping = true;
       naturalScrolling = true;
       tapping = true;
+      tappingButtonMap = "lrm";
     };
   };
 
