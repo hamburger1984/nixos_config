@@ -5,10 +5,10 @@
     enable = true;
 
     shellAliases = {
-      ls = "${pkgs.exa}/bin/exa --icons";
-      l = "${pkgs.exa}/bin/exa -l --icons";
-      ll = "${pkgs.exa}/bin/exa -la --icons";
-      latest = "${pkgs.exa}/bin/exa -l -s created --icons";
+      ls = "${pkgs.eza}/bin/eza --icons";
+      l = "${pkgs.eza}/bin/eza -l --icons";
+      ll = "${pkgs.eza}/bin/eza -la --icons";
+      latest = "${pkgs.eza}/bin/eza -l -s created --icons";
       ".." = "cd ..";
 
       gs = "git status";

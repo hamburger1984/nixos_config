@@ -14,15 +14,19 @@
       "editor.fontWeight" = "550";
 
       "editor.formatOnPaste" = false;
-      "editor.formatOnSave" = true;
-      "editor.formatOnType" = true;
-      "editor.renderLineHightlight" = "none";
+      "editor.formatOnSave" = false;
+      "editor.formatOnType" = false;
+      "editor.lineNumbers" = "relative";
+      "editor.renderWhitespace" = "boundary";
       "editor.stickyScroll.enabled" = true;
-      "editor.minimap.scale" = 2;
+      "editor.minimap.scale" = 1; # 2-wider, 3-huge
 
       "extensions.autoUpdate" = false;
 
-      "update.mode" = "none";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
+
+      "vim.smartRelativeLine" = true;
 
       "window.titleBarStyle" = "custom";
       "window.menuBarVisibility" = "compact";
@@ -61,6 +65,7 @@
     };
 
     mutableExtensionsDir = false;
+    
     extensions = with pkgs.vscode-extensions; [
       # Nix
       #bbenoist.nix
@@ -86,13 +91,13 @@
       vscodevim.vim
 
       # TODOs
-      gruntfuggly.todo-tree
+      #gruntfuggly.todo-tree
 
       # Formatting
       #esbenp.prettier-vscode
 
       # Theme
-      #monokai.theme-monokai-pro-vscode
+      monokai.theme-monokai-pro-vscode
       piousdeer.adwaita-theme
 
       # Stats

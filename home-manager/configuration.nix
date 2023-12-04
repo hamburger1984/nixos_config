@@ -17,7 +17,7 @@ in
     ./programs/bat.nix
     ./programs/broot.nix
     ./programs/direnv.nix
-    ./programs/exa.nix
+    ./programs/eza.nix
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix
@@ -27,6 +27,7 @@ in
     ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/starship.nix
+    #./programs/thunderbird.nix
     ./programs/vscode.nix
     ./programs/zoxide.nix
   ];
@@ -85,6 +86,7 @@ in
     #python3Packages.python-lsp-server
 
     ## languate servers
+    nixd
     #elixir_ls
     #kotlin-language-server
     #nimlsp
@@ -102,8 +104,9 @@ in
     heaptrack
     #htmlq
     #hurl
-    jetbrains.clion
-    jetbrains.rider
+    #jetbrains.clion
+    #jetbrains.rider
+    jetbrains-toolbox
     #jo
     #jq
     #k6
@@ -117,7 +120,7 @@ in
     quickemu
     spice-gtk
     valgrind
-    visidata
+    #visidata
     #yq
     xh
     #zig
@@ -127,6 +130,7 @@ in
     discord
     signal-desktop
     #tdesktop
+    skypeforlinux
     #slack
     #teams
     #trojita
@@ -145,6 +149,7 @@ in
     #qmapshack
     spotify # nonfree
     #stellarium
+    thunderbird
     vlc
 
     # >> KDE

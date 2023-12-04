@@ -231,11 +231,12 @@
     parted
     pciutils
     ripgrep
-    ripgrep-all
+    #ripgrep-all
     rsync
     usbutils
     wget
     whois
+    wmctrl
     xclip
     xdotool
     xz
