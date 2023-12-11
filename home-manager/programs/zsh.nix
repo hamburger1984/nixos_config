@@ -29,7 +29,7 @@
     defaultKeymap = "viins";
 
     sessionVariables = {
-      PATH = "$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin";
+      PATH = "$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin:/home/andreas/.local/share/JetBrains/Toolbox/scripts";
     };
 
     #shellOptions = [
