@@ -5,7 +5,7 @@
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    loader.efi.efiSysMountPoint = "/boot/efi";
+    #loader.efi.efiSysMountPoint = "/boot/efi";
   
     plymouth.enable = true;
 
@@ -19,7 +19,10 @@
     };
 
     #kernelModules = [ ];
-    kernelModules = [ "amd_pstate" "kvm-amd" ];
+
+    kernelModules = [ "kvm-amd" ];
+    #kernelModules = [ "amd_pstate" "kvm-amd" ];
+
     #kernelModules = [ "amd_pstate" "amdgpu" "kvm-amd" ];
 
     extraModulePackages = [ ];
@@ -41,13 +44,7 @@
     #];
     #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
 
-    # -- works
-    kernelPackages = pkgs.linuxPackages_5_15;
-
-    # -- broken
-    #kernelPackages = pkgs.linuxPackages_6_0;
-    #kernelPackages = pkgs.linuxPackages_6_1;
-    #kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

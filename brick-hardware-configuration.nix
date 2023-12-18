@@ -9,12 +9,12 @@
     ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/dbe982f6-7f47-4307-a78a-f0c300178939";
+    { device = "/dev/disk/by-uuid/5797001a-6cf7-433b-bc7e-d5a81055e35c";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/B64C-CDA3";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/EC93-E524";
       fsType = "vfat";
     };
 
@@ -24,9 +24,11 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = false;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  
+  networking.useDHCP = false; #lib.mkDefault true;
+  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp230s0f3u1u1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

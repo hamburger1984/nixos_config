@@ -141,7 +141,7 @@ in
     #=== Desktop Programs ===#
 
     bitwarden
-    #exiftool
+    exiftool
     #freetube
     #libreoffice
     mupdf
@@ -167,7 +167,7 @@ in
     plasma-browser-integration
     plasma-nm
     qownnotes
-    xdg-desktop-portal-kde
+    #xdg-desktop-portal-kde
 
     # >> GNOME
     #xdg-desktop-portal-gnome
@@ -205,6 +205,7 @@ in
 
     #=== Theme ===#
     #lightly-qt
+    flat-remix-icon-theme
     graphite-gtk-theme
     graphite-kde-theme
     #gnome.adwaita-icon-theme
@@ -221,6 +222,7 @@ in
 
     #=== Games ===#
     steam
+    xorg.libxcb
     #openra
     #zeroad # <- requires broken spidermonkey_38
 
