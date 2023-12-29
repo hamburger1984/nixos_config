@@ -51,19 +51,24 @@
   };
 
   services.acpid.enable = true;
-  services.tlp.enable = false;
+  #services.tlp.enable = false; # false is the default
   services.power-profiles-daemon.enable = true;
 
-  powerManagement = {
-    enable = true;
-    #cpuFreqGovernor = "schedutil";
-    #cpuFreqGovernor = "performance";
-    #cpuFreqGovernor = "ondemand";
-  };
+  #powerManagement = {
+  #  #enable = true; # true is the default
+  #  #cpuFreqGovernor = "schedutil";
+  #  #cpuFreqGovernor = "performance";
+  #  #cpuFreqGovernor = "ondemand";
+  #};
+
+  services.fstrim.enable = true;
 
   services.fwupd.enable = true;
+
   services.colord.enable = true;
+
   services.avahi.enable = true;
+
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
@@ -99,7 +104,6 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     wireplumber.enable = true;
-
   };
 
   hardware.bluetooth = {
@@ -124,15 +128,17 @@
     layout = "de";
     xkbOptions = "eurosign:e,caps:escape"; # map caps to escape.
 
-    # Enable the GNOME Desktop Environment.
     desktopManager = {
       xterm.enable = false;
-      gnome.enable = false; #true;
-      plasma5.enable = true;
+      gnome.enable = false;
+      plasma5 = {
+        enable = true;
+        useQtScaling = true;
+      };
     };
 
     displayManager = {
-      gdm.enable = false; #true;
+      gdm.enable = false;
       sddm = {
         enable = true;
         enableHidpi = true;
@@ -163,7 +169,7 @@
 
   services.udev.packages = with pkgs; [
     logitech-udev-rules
-    gnome.gnome-settings-daemon
+    #gnome.gnome-settings-daemon
   ];
 
   fonts = {

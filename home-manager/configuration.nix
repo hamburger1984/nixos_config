@@ -23,18 +23,19 @@ in
     ./programs/git.nix
     ./programs/helix.nix
     ./programs/lazygit.nix
-    #./programs/neovim.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/starship.nix
-    #./programs/thunderbird.nix
-    ./programs/vscode.nix
+    #./programs/vscode.nix
     ./programs/zoxide.nix
+
+    #./programs/neovim.nix
+    #./programs/thunderbird.nix
   ];
 
   #manual.html.enable = true;
 
-  home.stateVersion = "22.05"; # Did you read the comment?
+  home.stateVersion = "23.05"; # Did you read the comment?
 
   home.sessionVariables = {
     EDITOR = "hx";
@@ -131,7 +132,7 @@ in
     discord
     signal-desktop
     #tdesktop
-    skypeforlinux
+    #skypeforlinux
     #slack
     #teams
     #trojita
