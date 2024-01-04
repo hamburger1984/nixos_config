@@ -10,7 +10,7 @@
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5797001a-6cf7-433b-bc7e-d5a81055e35c";
-      options = [ "defaults" "noatime" "ssd" ];
+      options = [ "defaults" "noatime" ];
       fsType = "ext4";
     };
 
