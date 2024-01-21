@@ -144,6 +144,7 @@ in
     bitwarden
     exiftool
     #freetube
+    gpu-viewer
     #libreoffice
     mupdf
     nextcloud-client
@@ -153,6 +154,7 @@ in
     #stellarium
     thunderbird
     vlc
+    wayland-utils
 
     # >> KDE
     ark
@@ -167,8 +169,9 @@ in
     plasma-applet-virtual-desktop-bar
     plasma-browser-integration
     plasma-nm
-    qownnotes
-    #xdg-desktop-portal-kde
+    qpwgraph
+    xdg-desktop-portal-kde
+    #qownnotes
 
     # >> GNOME
     #xdg-desktop-portal-gnome

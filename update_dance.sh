@@ -1,7 +1,7 @@
 
 pushd config; git pull; popd
 
-pushd nixpkgs; git checkout master; git pull; git checkout -; git rebase master; popd
+pushd nixpkgs; git checkout master; git pull; git push my-origin; git checkout -; git rebase master; git push -uf; popd
 
 pushd plasma-manager; git pull; popd
 
