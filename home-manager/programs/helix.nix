@@ -57,6 +57,9 @@
         "$" = "goto_line_end";
         "G" = "goto_last_line";
 
+        "tab" = ":buffer-next";
+        "S-tab" = ":buffer-previous";
+
         "esc" = [ "keep_primary_selection" "collapse_selection" ];
       };
     };
