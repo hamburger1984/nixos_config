@@ -124,9 +124,10 @@
 
     updateDbusEnvironment = true;
 
-    # Configure keymap in X11
-    layout = "de";
-    xkbOptions = "eurosign:e,caps:escape"; # map caps to escape.
+    xkb = {
+      layout = "de";
+      options = "eurosign:e,caps:escape"; # map caps to escape.
+    };
 
     desktopManager = {
       xterm.enable = false;
