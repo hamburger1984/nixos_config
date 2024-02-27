@@ -56,6 +56,7 @@ in
     #rustc
     #rustfmt
     rustup
+    openssl
     #rust-analyzer
     just
 
@@ -68,6 +69,7 @@ in
     #mpfshell
     #rshell
     #platformio
+    arduino
 
     ## git
     gitAndTools.git-ignore
@@ -88,7 +90,7 @@ in
     #python3Packages.python-lsp-server
 
     ## languate servers
-    nixd
+    #nixd
     #elixir_ls
     #kotlin-language-server
     #nimlsp
@@ -166,6 +168,7 @@ in
     kolourpaint
     krunner-symbols
     mupdf
+    plasma-pa
     plasma-applet-virtual-desktop-bar
     plasma-browser-integration
     plasma-nm
