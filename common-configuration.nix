@@ -253,7 +253,7 @@
     gparted
     inotify-tools
     libcgroup
-    libinput-gestures
+    #libinput-gestures
     libva
     libxkbcommon
     lsof

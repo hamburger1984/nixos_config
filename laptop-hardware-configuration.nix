@@ -45,35 +45,35 @@
   };
 
   services.xserver = {
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-    libinput.touchpad = {
-      accelSpeed = "0.9";
-      disableWhileTyping = true;
-      naturalScrolling = true;
-      tapping = true;
-      tappingButtonMap = "lrm";
-    };
+    ## Enable touchpad support (enabled default in most desktopManager).
+    #libinput.enable = true;
+    #libinput.touchpad = {
+    #  accelSpeed = "0.9";
+    #  disableWhileTyping = true;
+    #  naturalScrolling = true;
+    #  tapping = true;
+    #  tappingButtonMap = "lrm";
+    #};
   };
 
-  environment.etc."libinput-gestures.conf" = {
-    text = ''
-      device all
-      gesture swipe up 4 xdotool key Super_L+Tab
-      gesture swipe left 3 xdotool key Super_L+control+left
-      gesture swipe right 3 xdotool key Super_L+control+right
-      gesture swipe left 4 xdotool key Super_L+control+shift+left
-      gesture swipe right 4 xdotool key Super_L+control+shift+right
-    '';
-    mode = "444";
-  };
+  #environment.etc."libinput-gestures.conf" = {
+  #  text = ''
+  #    device all
+  #    gesture swipe up 4 xdotool key Super_L+Tab
+  #    gesture swipe left 3 xdotool key Super_L+control+left
+  #    gesture swipe right 3 xdotool key Super_L+control+right
+  #    gesture swipe left 4 xdotool key Super_L+control+shift+left
+  #    gesture swipe right 4 xdotool key Super_L+control+shift+right
+  #  '';
+  #  mode = "444";
+  #};
 
-  systemd.user.services."libinput-gestures" = {
-    description = "Add multitouch gestures using libinput-gestures";
-    wantedBy = [ "default.target" ];
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = 2;
-    serviceConfig.ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
-    environment = { DISPLAY = ":0"; };
-  };
+  #systemd.user.services."libinput-gestures" = {
+  #  description = "Add multitouch gestures using libinput-gestures";
+  #  wantedBy = [ "default.target" ];
+  #  serviceConfig.Restart = "always";
+  #  serviceConfig.RestartSec = 2;
+  #  serviceConfig.ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+  #  environment = { DISPLAY = ":0"; };
+  #};
 }
