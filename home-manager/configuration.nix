@@ -155,7 +155,7 @@ in
     spotify # nonfree
     #stellarium
     thunderbird
-    vlc
+    #vlc
     wayland-utils
 
     # >> KDE

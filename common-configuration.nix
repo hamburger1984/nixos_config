@@ -169,8 +169,6 @@
         enable = true;
         enableHidpi = true;
       };
-      #defaultSession = "plasmawayland";
-      #defaultSession = "plasma";
     };
 
     videoDrivers = [ "amdgpu" ];
