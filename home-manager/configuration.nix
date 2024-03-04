@@ -176,49 +176,18 @@ in
     xdg-desktop-portal-kde
     #qownnotes
 
-    # >> GNOME
-    #xdg-desktop-portal-gnome
-    #apostrophe
-    #deja-dup
-    #drawing
-    #gnome-browser-connector
-    #gnome.gnome-shell-extensions
-    #gnome.gnome-terminal
-    #gnome.gnome-tweaks
-    #shotwell
-    #ulauncher
-
-    #gnomeExtensions.appindicator
-    #gnomeExtensions.bluetooth-quick-connect
-    #gnomeExtensions.extension-list
-    #gnomeExtensions.impatience
-    #gnomeExtensions.night-theme-switcher
-    #gnomeExtensions.power-profile-switcher
-    #gnomeExtensions.sound-output-device-chooser
-    #gnomeExtensions.space-bar
-    #gnomeExtensions.spotify-controller
-    #gnomeExtensions.thinkpad-battery-threshold
-    #gnomeExtensions.vitals
-    # GNOME <<
-
     #calibre
     #droidcam
     #focuswriter
-    #nextcloud-client
     #solaar
     #spectacle
     #texlive.combined.scheme-medium
     #vnote
 
     #=== Theme ===#
-    #lightly-qt
     flat-remix-icon-theme
     graphite-gtk-theme
     graphite-kde-theme
-    #gnome.adwaita-icon-theme
-    #gnome-themes-extra
-    #adwaita-qt
-    #adw-gtk3
 
     #=== Bat ===#
     bat-extras.batdiff

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   hardware = {
@@ -52,7 +52,7 @@
 
   services.acpid.enable = true;
   #services.tlp.enable = false; # false is the default
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = lib.mkDefault true;
 
   #powerManagement = {
   #  #enable = true; # true is the default
@@ -106,27 +106,27 @@
     wireplumber.enable = true;
   };
 
-  environment.etc = {
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-        ["bluez5.enable-sbc-xq"] = true,
-        ["bluez5.enable-msbc"] = true,
-        ["bluez5.enable-hw-volume"] = true,
-        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-      }
-    '';
-  };
+  #environment.etc = {
+  #  "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+  #    bluez_monitor.properties = {
+  #      ["bluez5.enable-sbc-xq"] = true,
+  #      ["bluez5.enable-msbc"] = true,
+  #      ["bluez5.enable-hw-volume"] = true,
+  #      ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+  #    }
+  #  '';
+  #};
 
-  environment.etc = {
-    "pipewire/pipewire.conf.d/92-low-latency.conf".text = ''
-      context.properties = {
-        default.clock.rate = 48000
-        default.clock.quantum = 32
-        default.clock.min-quantum = 32
-        default.clock.max-quantum = 32
-      }
-    '';
-  };
+  #environment.etc = {
+  #  "pipewire/pipewire.conf.d/92-low-latency.conf".text = ''
+  #    context.properties = {
+  #      default.clock.rate = 48000
+  #      default.clock.quantum = 32
+  #      default.clock.min-quantum = 32
+  #      default.clock.max-quantum = 32
+  #    }
+  #  '';
+  #};
 
   hardware.bluetooth = {
     enable = true;
@@ -154,9 +154,12 @@
     desktopManager = {
       xterm.enable = false;
       gnome.enable = false;
-      plasma5 = {
+      #plasma5 = {
+      #  enable = true;
+      #  useQtScaling = true;
+      #};
+      plasma6 = {
         enable = true;
-        useQtScaling = true;
       };
     };
 
@@ -166,11 +169,14 @@
         enable = true;
         enableHidpi = true;
       };
-      defaultSession = "plasmawayland";
+      #defaultSession = "plasmawayland";
+      #defaultSession = "plasma";
     };
 
     videoDrivers = [ "amdgpu" ];
   };
+
+  environment.plasma6.excludePackages = [ pkgs.kdePackages.elisa ];
 
 #  environment.gnome.excludePackages = (with pkgs; [
 #    gnome-console
@@ -191,6 +197,8 @@
 #  ]);
 
   services.udev.packages = with pkgs; [
+    libmtp.out
+    media-player-info
     logitech-udev-rules
     #gnome.gnome-settings-daemon
   ];
@@ -354,4 +362,3 @@
 
   #nix.package = pkgs.nixUnstable;
 }
-
