@@ -143,7 +143,8 @@ in
 
     #=== Desktop Programs ===#
 
-    bitwarden
+    #bitwarden # <-- pulls electron :-/
+    bitwarden-cli
     exiftool
     #freetube
     gpu-viewer
@@ -165,14 +166,15 @@ in
     #falkon
     filelight
     kalendar
+    kmix
     kolourpaint
     krunner-symbols
     mupdf
-    plasma-pa
-    plasma-applet-virtual-desktop-bar
-    plasma-browser-integration
-    plasma-nm
-    qpwgraph
+    #plasma-pa
+    #plasma-applet-virtual-desktop-bar
+    #plasma-browser-integration
+    #plasma-nm
+    #qpwgraph
     xdg-desktop-portal-kde
     #qownnotes
 
@@ -185,9 +187,9 @@ in
     #vnote
 
     #=== Theme ===#
-    flat-remix-icon-theme
-    graphite-gtk-theme
-    graphite-kde-theme
+    #flat-remix-icon-theme
+    #graphite-gtk-theme
+    #graphite-kde-theme
 
     #=== Bat ===#
     bat-extras.batdiff
@@ -207,10 +209,10 @@ in
     #nix-review
 
     #=== VMs ===#
-    libvirt
-    qemu
-    qemu_kvm
-    virt-manager
+    #libvirt
+    #qemu
+    #qemu_kvm
+    #virt-manager
     #virtualbox
 
     #=== Shells ---#

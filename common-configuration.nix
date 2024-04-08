@@ -140,6 +140,13 @@
     driSupport32Bit = true;
   };
 
+  services.desktopManager = {
+    plasma6 = {
+      enable = true;
+      enableQt5Integration = true;
+    };
+  };
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -158,9 +165,6 @@
       #  enable = true;
       #  useQtScaling = true;
       #};
-      plasma6 = {
-        enable = true;
-      };
     };
 
     displayManager = {
@@ -235,8 +239,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #--- Theming ---#
-    bibata-cursors
-    phinger-cursors
+    #bibata-cursors
+    #phinger-cursors
     #materia-kde-theme
 
     # general stuff
