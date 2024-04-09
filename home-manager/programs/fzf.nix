@@ -10,7 +10,7 @@
     fileWidgetOptions = [ "--preview 'bat {}'" ];
 
     enableBashIntegration = false;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     enableFishIntegration = false;
   };
 }
