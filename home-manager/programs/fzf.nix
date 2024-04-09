@@ -9,8 +9,6 @@
     fileWidgetCommand = "fd --type f";
     fileWidgetOptions = [ "--preview 'bat {}'" ];
 
-    enableBashIntegration = false;
     enableZshIntegration = false;
-    enableFishIntegration = false;
   };
 }

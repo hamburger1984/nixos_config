@@ -4,9 +4,6 @@
   programs.zsh = {
     enable = true;
 
-    enableFzfCompletion = true;
-    enableFzfGit = true;
-
     shellAliases = {
       #ls = "${pkgs.eza}/bin/eza --icons";
       #l = "${pkgs.eza}/bin/eza -l --icons";
@@ -20,7 +17,6 @@
 
     autosuggestion = {
       enable = true;
-      #strategy = [ "history" "completion"];
     };
     syntaxHighlighting.enable = true;
 
@@ -100,4 +96,10 @@
     #'';
   };
 
+  programs.mcfly = {
+    enable = true;
+    enableZshIntegration = true;
+    fzf.enable = true;
+    
+  };
 }
