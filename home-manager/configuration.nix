@@ -143,8 +143,8 @@ in
 
     #=== Desktop Programs ===#
 
-    #bitwarden # <-- pulls electron :-/
-    bitwarden-cli
+    bitwarden # <-- pulls electron :-/
+    #bitwarden-cli
     exiftool
     #freetube
     gpu-viewer
@@ -166,7 +166,7 @@ in
     #falkon
     filelight
     kalendar
-    kmix
+    #kmix
     kolourpaint
     krunner-symbols
     mupdf
