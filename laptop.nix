@@ -13,6 +13,9 @@
       <home-manager/nixos>
       #../home-manager/nixos
       ./common-configuration.nix
+      ./nix.nix
+      ./plasma-desktop.nix
+      ./plasma-homemanager.nix
       ./laptop-hardware-configuration.nix
       ./laptop-boot.nix
     ];

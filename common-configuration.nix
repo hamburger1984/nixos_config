@@ -86,9 +86,6 @@
     }];
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable pipewire.
   #sound.enable = true;
   #hardware.pulseaudio.enable = false;
@@ -140,13 +137,6 @@
     driSupport32Bit = true;
   };
 
-  services.desktopManager = {
-    plasma6 = {
-      enable = true;
-      enableQt5Integration = true;
-    };
-  };
-
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -167,18 +157,9 @@
       #};
     };
 
-    displayManager = {
-      gdm.enable = false;
-      sddm = {
-        enable = true;
-        enableHidpi = true;
-      };
-    };
-
     videoDrivers = [ "amdgpu" ];
   };
 
-  environment.plasma6.excludePackages = [ pkgs.kdePackages.elisa ];
 
 #  environment.gnome.excludePackages = (with pkgs; [
 #    gnome-console
@@ -233,7 +214,6 @@
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  home-manager.users.andreas = import ./home-manager/configuration.nix;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -300,6 +280,8 @@
     lshw
     lsb-release
     ncdu
+    nix-output-monitor
+    nvd
     powertop
     procs
     smartmontools
@@ -318,49 +300,4 @@
     gnumake
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 3d";
-    };
-
-    extraOptions = ''
-      experimental-features = nix-command
-    '';
-    #  http2 = true
-    #  keep-derivations = true
-    #  keep-outputs = true
-    #  show-trace = true
-    #  substituters = https://cache.nixos.org https://cache.ngi0.nixos.org/
-    #  trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA=
-    #'';
-
-    #contentAddressedByDefault = true;
-    #experimental-features = nix-command flakes ca-derivations ca-references
-
-    settings = {
-      auto-optimise-store = true;
-      max-jobs = 15; # keep one spare core
-      trusted-users = [ "andreas" ];
-    };
-  };
-
-  #nix.package = pkgs.nixUnstable;
 }
