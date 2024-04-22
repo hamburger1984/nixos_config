@@ -11,7 +11,6 @@
       <nixos-hardware/lenovo/thinkpad/l14/amd>
       # $ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
       <home-manager/nixos>
-      #../home-manager/nixos
       ./common-configuration.nix
       ./nix.nix
       ./plasma-desktop.nix

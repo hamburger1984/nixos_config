@@ -7,11 +7,12 @@
 {
   imports =
     [
-      # $ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-      #<nixos-hardware/lenovo/thinkpad/l14/amd>
       # $ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
       <home-manager/nixos>
       ./common-configuration.nix
+      ./nix.nix
+      ./plasma-desktop.nix
+      ./plasma-homemanager.nix
       ./brick-hardware-configuration.nix
       ./brick-boot.nix
     ];
