@@ -9,7 +9,7 @@ pushd home-manager; git pull; popd
 
 pushd hardware; git pull; popd
 
-#sudo nix-channel --update
+sudo nix-channel --update
 #sudo nixos-rebuild -I nixpkgs=/home/andreas/Projects/nixos-related/nixpkgs switch --upgrade
 
 sudo unbuffer nixos-rebuild -I nixpkgs=/home/andreas/Projects/nixos-related/nixpkgs switch --upgrade --log-format internal-json --verbose | nom --json
