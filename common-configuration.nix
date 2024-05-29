@@ -272,6 +272,7 @@
     ctop
     ddcutil
     duf
+    expect
     hwatch
     iftop
     inxi
@@ -280,6 +281,7 @@
     lshw
     lsb-release
     ncdu
+    nh
     nix-output-monitor
     nvd
     powertop
