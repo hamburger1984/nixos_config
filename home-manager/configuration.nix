@@ -217,6 +217,7 @@ in
 
     #=== Shells ---#
     #powershell
+    zellij
   ];
 
   # home.file.".config/kwinrc" = {};
