@@ -3,6 +3,8 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   nix = {
     gc = {
       automatic = true;
@@ -10,9 +12,9 @@
       options = "--delete-older-than 3d";
     };
 
-    extraOptions = ''
-      experimental-features = nix-command
-    '';
+    #extraOptions = ''
+    #  experimental-features = nix-command
+    #'';
     #  http2 = true
     #  keep-derivations = true
     #  keep-outputs = true

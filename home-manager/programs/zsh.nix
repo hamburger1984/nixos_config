@@ -5,12 +5,7 @@
     enable = true;
 
     shellAliases = {
-      #ls = "${pkgs.eza}/bin/eza --icons";
-      #l = "${pkgs.eza}/bin/eza -l --icons";
-      #ll = "${pkgs.eza}/bin/eza -la --icons";
-      #latest = "${pkgs.eza}/bin/eza -l -s created --icons";
       ".." = "cd ..";
-
       st = "git status";
       rst = "find . -name .git -type d -execdir git status \; -prune";
     };
