@@ -26,7 +26,7 @@ in
     ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/starship.nix
-    #./programs/vscode.nix
+    ./programs/vscode.nix
     ./programs/zoxide.nix
 
     #./programs/neovim.nix
