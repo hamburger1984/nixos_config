@@ -3,8 +3,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   nix = {
     gc = {
       automatic = true;
@@ -30,6 +28,7 @@
       auto-optimise-store = true;
       max-jobs = 15; # keep one spare core
       trusted-users = [ "andreas" ];
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
 
