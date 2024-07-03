@@ -108,9 +108,9 @@ in
     heaptrack
     #htmlq
     #hurl
-    #jetbrains.clion
-    #jetbrains.rider
-    jetbrains-toolbox
+    jetbrains.clion
+    jetbrains.rider
+    #jetbrains-toolbox
     #jo
     #jq
     #k6

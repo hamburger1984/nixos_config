@@ -45,7 +45,7 @@
     #kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
 
     #kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelPackages = pkgs.linuxPackages_latest;
-    #kernelPackages = pkgs.linuxPackages_testing;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_testing;
   };
 }
