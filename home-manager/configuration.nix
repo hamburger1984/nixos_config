@@ -110,6 +110,7 @@ in
     #hurl
     jetbrains.clion
     jetbrains.rider
+    jetbrains.rust-rover
     #jetbrains-toolbox
     #jo
     #jq
@@ -121,9 +122,9 @@ in
     nim
     nix-du
     #nodejs
-    quickemu
-    spice-gtk
-    valgrind
+    #quickemu
+    #spice-gtk
+    #valgrind
     #visidata
     #yq
     xh
