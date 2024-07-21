@@ -22,6 +22,7 @@
 
 
   networking.hostName = "minis-box"; # Define your hostname.
+
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -102,12 +103,38 @@
   environment.shells = with pkgs; [ zsh ];
   environment.variables.EDITOR = "hx";
 
-
   users.users.andreas = {
     isNormalUser = true;
     description = "Andreas";
     extraGroups = [ "input" "networkmanager" "wheel" ];
   };
+
+  # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+
+  # Configure keymap in X11
+  # services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+
+  # Enable CUPS to print documents.
+  # services.printing.enable = true;
+
+  # Enable sound.
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.alice = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  #   packages = with pkgs; [
+  #     firefox
+  #     tree
+  #   ];
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -118,6 +145,7 @@
     
     helix
     
+    bat
     ripgrep
     fd
 
@@ -125,6 +153,7 @@
     wget
     curl
 
+    gitui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
