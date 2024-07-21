@@ -39,6 +39,8 @@
           ./shared/networking.nix
           ./shared/nix.nix
           ./shared/time-and-locale.nix
+          ./shared/user.nix
+          ./shared/zsh.nix
 
           ./hosts/minis-box.nix
         ];

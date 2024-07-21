@@ -17,4 +17,11 @@
         LC_TELEPHONE = "de_DE.UTF-8";
         LC_TIME = "de_DE.UTF-8";
     };
+
+    services.xserver = {
+        xkb = {
+            layout = "de";
+            options = "eurosign:e,caps:escape";
+        };
+    };
 }
