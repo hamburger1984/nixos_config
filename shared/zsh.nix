@@ -5,10 +5,10 @@
         enableCompletion = true;
     };
 
-    programs.zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    #programs.zoxide = {
+    #  enable = true;
+    #  enableZshIntegration = true;
+    #};
 
     programs.starship = {
       enable = true;
