@@ -64,7 +64,6 @@ in
     #esptool
     #micropython
     #thonny
-    #arduino
     #adafruit-ampy
     #mpfshell
     #rshell
@@ -166,11 +165,11 @@ in
     exiftool
     #falkon
     filelight
-    kalendar
-    #kmix
+    #kalendar
     kolourpaint
     krunner-symbols
     mupdf
+    okular
     #plasma-pa
     #plasma-applet-virtual-desktop-bar
     #plasma-browser-integration

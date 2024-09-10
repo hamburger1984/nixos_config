@@ -182,7 +182,7 @@
   services.udev.packages = with pkgs; [
     libmtp.out
     media-player-info
-    logitech-udev-rules
+    #logitech-udev-rules
     #gnome.gnome-settings-daemon
   ];
 
@@ -243,7 +243,7 @@
     lsof
     lz4
     mesa
-    neofetch
+    #neofetch
     nix-prefetch-git
     nix-prefetch-github
     ntfs3g
@@ -294,7 +294,7 @@
     zenstates
 
     # logitech
-    logitech-udev-rules
+    #logitech-udev-rules
 
     # compiler
     ccache
