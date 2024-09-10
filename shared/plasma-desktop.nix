@@ -8,12 +8,10 @@
     };
   };
 
-  services.xserver = {
-    displayManager = {
-      sddm = {
-        enable = true;
-        enableHidpi = true;
-      };
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      enableHidpi = true;
     };
   };
 

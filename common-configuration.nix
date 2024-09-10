@@ -132,9 +132,9 @@
     #disabledPlugins = [ "sap" ];
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     extraPackages = with pkgs; [ libva ];
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   services.xserver = {
