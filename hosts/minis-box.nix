@@ -71,6 +71,10 @@
     curl
 
     gitui
+
+    zoxide
+
+    zellij
   ];
 
 }
