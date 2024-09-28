@@ -68,7 +68,7 @@ in
     #mpfshell
     #rshell
     #platformio
-    arduino
+    #arduino
 
     ## git
     gitAndTools.git-ignore
@@ -218,6 +218,7 @@ in
     #=== Shells ---#
     #powershell
     zellij
+    kitty
   ];
 
   # home.file.".config/kwinrc" = {};

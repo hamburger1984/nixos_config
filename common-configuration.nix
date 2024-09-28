@@ -300,6 +300,9 @@
     ccache
     llvm
     gnumake
+
+    # editor
+    zed-editor
   ];
 
 }
