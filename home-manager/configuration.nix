@@ -119,7 +119,7 @@ in
     lua
     #miller
     nim
-    nix-du
+    #nix-du
     #nodejs
     #quickemu
     #spice-gtk
@@ -175,7 +175,7 @@ in
     #plasma-browser-integration
     #plasma-nm
     #qpwgraph
-    xdg-desktop-portal-kde
+    #xdg-desktop-portal-kde
     #qownnotes
 
     #calibre

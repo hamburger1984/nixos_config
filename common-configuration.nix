@@ -50,6 +50,12 @@
     #keyMap = "de";
   };
 
+  services.kmscon = {
+    enable = true;
+    hwRender = true;
+    useXkbConfig = true;
+  };
+
   services.acpid.enable = true;
   #services.tlp.enable = false; # false is the default
   services.power-profiles-daemon.enable = lib.mkDefault true;
