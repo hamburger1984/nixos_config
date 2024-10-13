@@ -119,15 +119,15 @@ in
     lua
     #miller
     nim
-    #nix-du
+    nix-du
     #nodejs
     #quickemu
     #spice-gtk
-    #valgrind
+    valgrind
     #visidata
     #yq
     xh
-    #zig
+    zig
     #docker-compose
 
     #=== Communication ===#
@@ -148,7 +148,7 @@ in
     exiftool
     #freetube
     gpu-viewer
-    #libreoffice
+    libreoffice
     mupdf
     nextcloud-client
     #pinta

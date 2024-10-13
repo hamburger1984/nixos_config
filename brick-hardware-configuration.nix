@@ -9,14 +9,17 @@
     ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5797001a-6cf7-433b-bc7e-d5a81055e35c";
-      options = [ "defaults" "noatime" ];
+    {
+      device = "/dev/disk/by-uuid/5797001a-6cf7-433b-bc7e-d5a81055e35c";
       fsType = "ext4";
+      options = [ "defaults" "noatime" "discard" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EC93-E524";
+    {
+      device = "/dev/disk/by-uuid/EC93-E524";
       fsType = "vfat";
+      options = [ "defaults" "noatime" "discard" ];
     };
 
   swapDevices = [ ];

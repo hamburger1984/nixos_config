@@ -13,6 +13,7 @@
   outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }: {
     nixosConfigurations =  {
 
+      # Laptop
       nix2020-14 = nixpkgs.lib.nixosSystem {
         modules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
@@ -30,6 +31,24 @@
         ];
       };
 
+      # Box 1
+      brick-2023 = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./shared/boot.nix
+          ./shared/console-and-fonts.nix
+          ./shared/hardware.nix
+          ./shared/networking.nix
+          ./shared/nix.nix
+          ./shared/time-and-locale.nix
+
+          ./hosts/brick-2023.nix
+
+          ./shared/plasma-desktop.nix
+
+        ];
+      };
+
+      # Box 2
       minis-box = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
