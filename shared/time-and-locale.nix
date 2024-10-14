@@ -2,9 +2,6 @@
 {
     time.timeZone = null;
 
-    services.localtimed.enable = true;
-    services.geoclue2.enable = true;
-
     i18n.defaultLocale = "de_DE.UTF-8";
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "de_DE.UTF-8";

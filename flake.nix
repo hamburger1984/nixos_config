@@ -40,11 +40,17 @@
           ./shared/networking.nix
           ./shared/nix.nix
           ./shared/time-and-locale.nix
+          ./shared/zsh.nix
+          ./shared/packages.nix
+          ./shared/services.nix
 
           ./hosts/brick-2023.nix
 
+          ./shared/andreas.nix
+
           ./shared/plasma-desktop.nix
 
+          ./shared/home-manager.nix
         ];
       };
 
@@ -58,8 +64,10 @@
           ./shared/networking.nix
           ./shared/nix.nix
           ./shared/time-and-locale.nix
-          ./shared/user.nix
+          ./shared/andreas.nix
           ./shared/zsh.nix
+          ./shared/packages.nix
+          ./shared/services.nix
 
           ./hosts/minis-box.nix
 

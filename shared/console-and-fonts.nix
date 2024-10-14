@@ -22,7 +22,4 @@
       victor-mono
     ];
   };
-
-  services.xserver.xkb.layout = "de";
-  services.xserver.xkb.options = "eurosign:e,caps:escape"; # map caps to escape.
 }

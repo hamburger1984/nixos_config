@@ -97,7 +97,7 @@
       #esbenp.prettier-vscode
 
       # Theme
-      monokai.theme-monokai-pro-vscode
+      #monokai.theme-monokai-pro-vscode
       piousdeer.adwaita-theme
 
       # Stats

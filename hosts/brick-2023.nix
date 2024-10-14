@@ -4,7 +4,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  networking.hostName = "minis-box"; # Define your hostname.
+  networking.hostName = "brick-2023"; # Define your hostname.
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -22,7 +22,9 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
+
+  services.power-profiles-daemon.enable = false;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
@@ -30,29 +32,21 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/149edd66-95a6-4b77-9d18-74aab080d621";
+    {
+      device = "/dev/disk/by-uuid/5797001a-6cf7-433b-bc7e-d5a81055e35c";
       fsType = "ext4";
-      options = [ "noatime" "nodiratime" "discard" ];
+      options = [ "defaults" "noatime" "discard" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/99FD-8148";
+    {
+      device = "/dev/disk/by-uuid/EC93-E524";
       fsType = "vfat";
+      options = [ "defaults" "noatime" "discard" ];
     };
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  services.openssh.enable = true;
-
 }
