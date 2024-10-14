@@ -23,11 +23,21 @@
           ./shared/networking.nix
           ./shared/nix.nix
           ./shared/time-and-locale.nix
+          ./shared/zsh.nix
+          ./shared/packages.nix
+          ./shared/services.nix
 
-          ./hosts/nix2020-10.nix
+          ./hosts/nix2020-14.nix
+
+          ./shared/andreas.nix
 
           ./shared/plasma-desktop.nix
 
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.andreas = import ./home-manager/configuration.nix;
+          }
         ];
       };
 
@@ -50,7 +60,11 @@
 
           ./shared/plasma-desktop.nix
 
-          ./shared/home-manager.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.andreas = import ./home-manager/configuration.nix;
+          }
         ];
       };
 

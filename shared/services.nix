@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   #services.tlp.enable = false; # false is the default
   services.acpid.enable = true;
