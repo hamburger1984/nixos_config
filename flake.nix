@@ -15,6 +15,7 @@
 
       # Laptop
       nix2020-14 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
           ./shared/boot.nix
@@ -43,6 +44,7 @@
 
       # Box 1
       brick-2023 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
           ./shared/boot.nix
           ./shared/console-and-fonts.nix
