@@ -145,6 +145,7 @@ in
 
     bitwarden # <-- pulls electron :-/
     #bitwarden-cli
+    coppwr
     exiftool
     #freetube
     gpu-viewer
