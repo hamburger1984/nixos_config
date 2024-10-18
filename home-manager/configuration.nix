@@ -143,7 +143,7 @@ in
 
     #=== Desktop Programs ===#
 
-    #bitwarden # <-- pulls electron :-/
+    bitwarden # <-- pulls electron :-/
     #bitwarden-cli
     exiftool
     #freetube
