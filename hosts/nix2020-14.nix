@@ -1,9 +1,7 @@
 { config, pkgs, lib, modulesPath, ... }:
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   networking.hostName = "nix2020-14";
 
@@ -29,10 +27,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amd_pstate" "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
-  boot.extraModprobeConfig = ''
-      options hid_apple fnmode=0
-    '';
 
   boot.kernelParams = [
       "iommu=soft"
@@ -61,19 +55,10 @@
       #device = "/dev/disk/by-uuid/A57A-64D0";
       device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
-      options = [ "noatime" "discard" ];
+      options = [ "noatime" "nodiratime" "discard" ];
     };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = false;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault t
-  #networking.interfaces.enp2s0f0.useDHCP = false;
-  #networking.interfaces.wlp3s0.useDHCP = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
