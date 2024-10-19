@@ -49,6 +49,11 @@
 
   services.immich = {
     enable = true;
+
+    host = "minis-box";
+    port = 2283;
+    openFirewall = true;
+
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
   };
 
