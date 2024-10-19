@@ -31,8 +31,8 @@
     dotDir = ".config/zsh";
 
     sessionVariables = {
-      PATH = "$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin:/home/andreas/.local/share/JetBrains/Toolbox/scripts";
-      FREETYPE_PROPERTIES = "cff:no-stem-darkening=0";
+      #PATH = "$PATH:/home/andreas/.dotnet/tools:/home/andreas/.local/bin:/home/andreas/.local/share/JetBrains/Toolbox/scripts";
+      #FREETYPE_PROPERTIES = "cff:no-stem-darkening=0";
     };
   };
 
