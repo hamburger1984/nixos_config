@@ -47,7 +47,7 @@
 
   services.openssh.enable = true;
 
-  services.ngix.virtualHosts.minis-box = {
+  services.ngnix.virtualHosts.minis-box = {
     extraConfig = ''
       ## Per https://immich.app/docs/administration/reverse-proxy...
       client_max_body_size 50000M;
