@@ -47,6 +47,7 @@
 
   services.openssh.enable = true;
 
+  services.nginx.enable = true;
   services.nginx.virtualHosts.minis-box = {
     extraConfig = ''
       ## Per https://immich.app/docs/administration/reverse-proxy...
@@ -58,6 +59,11 @@
       proxyPass = "http://127.0.0.1:2283";
       proxyWebsockets = true;
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "hamburger1984@gmail.com";
   };
 
   services.immich = {
