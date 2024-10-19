@@ -47,13 +47,22 @@
 
   services.openssh.enable = true;
 
+  services.ngix.virtualHosts.minis-box = {
+    extraConfig = ''
+      ## Per https://immich.app/docs/administration/reverse-proxy...
+      client_max_body_size 50000M;
+    '';
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:2283";
+      proxyWebsockets = true;
+    };
+  };
+
   services.immich = {
     enable = true;
-
-    host = "0.0.0.0";
     port = 2283;
-    openFirewall = true;
-
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
   };
 
