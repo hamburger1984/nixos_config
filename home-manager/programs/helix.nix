@@ -28,8 +28,8 @@
         };
 
         whitespace.render = {
-          space = "all";
-          tab = "all";
+          space = "trailing";
+          tab = "trailing";
           newline = "none";
         };
 

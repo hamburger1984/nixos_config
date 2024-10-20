@@ -22,6 +22,7 @@ in
     ./programs/fzf.nix
     ./programs/git.nix
     ./programs/helix.nix
+    ./programs/kitty.nix
     ./programs/lazygit.nix
     ./programs/nnn.nix
     ./programs/nushell.nix
@@ -159,6 +160,7 @@ in
     thunderbird
     #vlc
     wayland-utils
+    zed-editor
 
     # >> KDE
     ark
@@ -219,7 +221,6 @@ in
     #=== Shells ---#
     #powershell
     zellij
-    kitty
   ];
 
   # home.file.".config/kwinrc" = {};
