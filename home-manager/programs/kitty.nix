@@ -7,7 +7,7 @@
     font = {
       name = "'ZedMono Nerd Font' features='cv78=7 cv74=1 cv71=4'";
       size = 11.0;
-      package = pkgs.zed-editor
+      package = pkgs.zed-editor;
     };
 
     shellIntegration.enableZshIntegration = true;
