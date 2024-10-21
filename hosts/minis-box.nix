@@ -47,19 +47,19 @@
 
   services.openssh.enable = true;
 
-  services.nginx.enable = true;
-  services.nginx.virtualHosts.minis-box = {
-    extraConfig = ''
-      ## Per https://immich.app/docs/administration/reverse-proxy...
-      client_max_body_size 50000M;
-    '';
-    forceSSL = true;
-    enableACME = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:2283";
-      proxyWebsockets = true;
-    };
-  };
+  #services.nginx.enable = true;
+  #services.nginx.virtualHosts.minis-box = {
+  #  extraConfig = ''
+  #    ## Per https://immich.app/docs/administration/reverse-proxy...
+  #    client_max_body_size 50000M;
+  #  '';
+  #  forceSSL = true;
+  #  enableACME = true;
+  #  locations."/" = {
+  #    proxyPass = "http://127.0.0.1:2283";
+  #    proxyWebsockets = true;
+  #  };
+  #};
 
   security.acme = {
     acceptTerms = true;
