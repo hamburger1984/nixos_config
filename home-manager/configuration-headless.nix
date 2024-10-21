@@ -1,9 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    #./programs/bash.nix
-    ./programs/zsh.nix
     ./programs/bat.nix
     ./programs/broot.nix
     ./programs/direnv.nix
@@ -16,6 +14,7 @@
     ./programs/nushell.nix
     ./programs/starship.nix
     ./programs/zoxide.nix
+    ./programs/zsh.nix
   ];
 
   home.stateVersion = "23.11"; # Did you read the comment?
@@ -26,17 +25,14 @@
 
   home.packages = with pkgs;
     [
-
-    ## git
-    gitAndTools.git-ignore
-    gitui
-
-    nix-du
-    xh
     bat-extras.batdiff
     bat-extras.batgrep
     bat-extras.batman
     bat-extras.batwatch
     bat-extras.prettybat
+    gitAndTools.git-ignore
+    gitui
+    nix-du
+    xh
   ];
 }

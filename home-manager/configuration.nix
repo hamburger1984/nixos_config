@@ -1,19 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
-let
-  #libsForQt5 = pkgs.plasma5Packages;
-  #inherit (libsForQt5) kdeApplications kdeFrameworks plasma5;
-
-  dotnetCombined = with pkgs.dotnetCorePackages; combinePackages [
-    sdk_8_0
-    aspnetcore_8_0
-    runtime_8_0
-  ];
-in
 {
   imports = [
-    #./programs/bash.nix
-    ./programs/zsh.nix
     ./programs/bat.nix
     ./programs/broot.nix
     ./programs/direnv.nix
@@ -27,11 +15,8 @@ in
     ./programs/nnn.nix
     ./programs/nushell.nix
     ./programs/starship.nix
-    ./programs/vscode.nix
     ./programs/zoxide.nix
-
-    #./programs/neovim.nix
-    #./programs/thunderbird.nix
+    ./programs/zsh.nix
   ];
 
   #manual.html.enable = true;
@@ -46,153 +31,103 @@ in
     [
 
     #=== Development ===#
-
-    ## android
-    #android-tools
-    scrcpy
-
-    ## rust
-    #cargo
-    #clippy
-    #rustc
-    #rustfmt
-    rustup
-    openssl
-    #rust-analyzer
-    just
-
-    ## micro*
-    #esptool
-    #micropython
-    #thonny
-    #adafruit-ampy
-    #mpfshell
-    #rshell
-    #platformio
-    #arduino
-
-    ## git
+    clang
+    difftastic
+    fx
+    gdb
     gitAndTools.git-ignore
     gitAndTools.git-standup
     gitAndTools.git-when-merged
     gitui
-
-    ## dotnet
-    dotnetCombined
-    omnisharp-roslyn
-
-    ## python
-    python3
-    #python3Packages.flake8
-    #python3Packages.pip
-    #python3Packages.pylint
-    #python3Packages.python-lsp-black
-    #python3Packages.python-lsp-server
-
-    ## languate servers
-    #nixd
-    #elixir_ls
-    #kotlin-language-server
-    #nimlsp
-    #python-language-server
-
-    ## ..the rest :^)
-    clang
-    difftastic
-    #elixir
-    #erlang
-    fx
-    gnuplot
-    #go
-    #gopls
     heaptrack
-    #htmlq
-    #hurl
     jetbrains.clion
     jetbrains.rider
     jetbrains.rust-rover
+    just
+    nix-du
+    openssl
+    rustup
+
+    #docker-compose
+    #elixir
+    #erlang
+    #gdb-frontend
+    #gdbgui
+    #gnuplot
+    #go
+    #gopls
+    #htmlq
+    #hurl
     #jetbrains-toolbox
     #jo
     #jq
     #k6
     #kotlin
     #kotlin-native
-    lua
+    #lua
     #miller
-    nim
-    nix-du
+    #nim
     #nodejs
+    #python3
     #quickemu
     #spice-gtk
-    valgrind
+    #valgrind
     #visidata
+    #xh
     #yq
-    xh
-    zig
-    #docker-compose
+    #zig
 
     #=== Communication ===#
     discord
+    scrcpy
     signal-desktop
-    #tdesktop
+    thunderbird
+    whatsapp-for-linux
+
     #skypeforlinux
     #slack
+    #tdesktop
     #teams
     #trojita
-    whatsapp-for-linux
     #zoom-us
 
     #=== Desktop Programs ===#
-
     bitwarden # <-- pulls electron :-/
-    #bitwarden-cli
-    coppwr
-    exiftool
-    #freetube
-    gpu-viewer
     libreoffice
     mupdf
     nextcloud-client
-    #pinta
-    #qmapshack
-    spotify # nonfree
-    #stellarium
-    thunderbird
-    #vlc
-    wayland-utils
+    spotify
+    texstudio
+    texlive.combined.scheme-medium
+    vlc
     zed-editor
 
-    # >> KDE
+    #bitwarden-cli
+    #coppwr # <-- pipewire monitoring
+    #freetube
+    #gpu-viewer
+    #pinta
+    #qmapshack
+    #stellarium
+    #wayland-utils
+
+    # === KDE ===
     ark
     digikam
     exiftool
-    #falkon
     filelight
-    #kalendar
     kolourpaint
     krunner-symbols
     mupdf
     okular
-    #plasma-pa
-    #plasma-applet-virtual-desktop-bar
-    #plasma-browser-integration
-    #plasma-nm
-    #qpwgraph
-    #xdg-desktop-portal-kde
-    #qownnotes
+    xdg-desktop-portal-kde
 
     #calibre
     #droidcam
     #focuswriter
-    #solaar
-    #spectacle
+    #qownnotes
     #texlive.combined.scheme-medium
     #vnote
-
-    #=== Theme ===#
-    #flat-remix-icon-theme
-    #graphite-gtk-theme
-    #graphite-kde-theme
 
     #=== Bat ===#
     bat-extras.batdiff
@@ -204,10 +139,9 @@ in
     #=== Games ===#
     steam
     xorg.libxcb
-    #openra
-    #zeroad # <- requires broken spidermonkey_38
 
     #=== nix development ===#
+    nixd
     #nixpkgs-review
     #nix-review
 
@@ -219,8 +153,8 @@ in
     #virtualbox
 
     #=== Shells ---#
-    #powershell
     zellij
+    #powershell
   ];
 
   # home.file.".config/kwinrc" = {};
