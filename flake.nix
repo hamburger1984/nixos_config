@@ -8,6 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Secrets management
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ## Declarative partitioning and formatting
+    #disko = {
+    #  url = "github:nix-community/disko";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
   outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }: {

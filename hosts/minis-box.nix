@@ -1,26 +1,24 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, inputs, lib, modulesPath, ... }:
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
+  sops = {
+    defaultSopsFile = ../secrets.yaml;
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    };
+
+    secrets = {
+      nextcloud.
+
+    };
+  };
 
   networking.hostName = "minis-box"; # Define your hostname.
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
@@ -45,8 +43,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  services.openssh.enable = true;
-
   #services.nginx.enable = true;
   #services.nginx.virtualHosts.minis-box = {
   #  extraConfig = ''
@@ -66,11 +62,16 @@
     defaults.email = "hamburger1984@gmail.com";
   };
 
+  # === immich ===
   services.immich = {
     enable = true;
     port = 2283;
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
   };
-
   users.users.immich.extraGroups = [ "video" "render" ];
+
+  # === nextcloud ===
+  services.nextcloud = {
+    enable = true;
+  };
 }

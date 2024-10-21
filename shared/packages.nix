@@ -14,7 +14,6 @@
     firmwareLinuxNonfree
     git
     gitui
-    glxinfo
     helix
     iftop
     inxi
@@ -28,9 +27,9 @@
     nvd
     parted
     ripgrep
-    ripgrep
     rsync
     smartmontools
+    sops
     strace
     viddy
     wget

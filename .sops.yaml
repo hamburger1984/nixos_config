@@ -1,0 +1,13 @@
+keys:
+  - &users:
+    - &andreas age18l3arur6erwlc22ch7ffwp8tyfh44ukl9ck0cuh82cf8sruc0vgqruq42a
+  - &hosts:
+    - &minis-box age1cjn80689ccf9qwfuk5ynaautz44jxhh4lmldlh0wwgt8q2csfulsnqaj8q
+    - &brick-2023 age1kxp6zpva8tayxj3ndq8y43vek50tmgy5ryx3gfqf6rj84fnyrvhsreea29
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+        - *andreas
+        - *minis-box
+        - *brick-2023
